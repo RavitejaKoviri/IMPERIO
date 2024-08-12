@@ -1,0 +1,71 @@
+@font-face {
+    font-family: marquez;
+    src: url('/assets/fonts/Marquez.ttf');
+
+    font-family: haboro-soft;
+    src: url('/assets/fonts/Haboro/Haboro Soft Norm Regular/Haboro Soft Norm Regular.ttf');
+}
+.H1 {
+    font-weight: 300;
+    font-size: 3rem;
+    text-align: center;
+    padding-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color:rgb(85, 78, 78);
+    font-family: haboro-soft;
+}
+
+.H3 {
+    font-weight: 100;
+    font-size: 20px;
+    font-family: haboro-soft;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+.Grid{
+    text-align: center;
+    width: 80%;
+    height: 350px;
+    margin: 0;
+}
+.Grid:hover{
+    background-color: #fcfcfc;
+    color:#E3364E;
+}
+.img-wrapper .lazy-image{
+    height: 170px;
+    width: 170px;
+  
+}
+.img-wrapper .lazy-image:hover{
+    opacity:0.4;
+    transition: opacity 0.3s ease;
+}
+.btn-products{
+    background-color: transparent;
+    width: 30%;
+    padding:20px;
+    margin:80px 35% 40px;
+    font-size: large;
+    outline: none;
+    border: 1px solid #E3364E;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+.btn-products:hover{
+    background-color: #E3364E;
+    color:white;
+    transition: all 0.3s ease;
+}
+
+.pname{
+    font-weight: 500;
+    font-size: .9rem;
+    text-align: center;
+    color:rgb(0, 0, 0);
+ 
+}
+
+
+  

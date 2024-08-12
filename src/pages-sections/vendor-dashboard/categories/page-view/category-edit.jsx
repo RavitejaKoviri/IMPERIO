@@ -1,0 +1,29 @@
+"use client";
+
+import Box from "@mui/material/Box"; // GLOBAL CUSTOM COMPONENT
+
+import { H3 } from "components/Typography"; // Local CUSTOM COMPONENT
+
+import CategoryForm from "../category-form";
+
+const EditCategoryPageView = () => {
+  const INITIAL_VALUES = {
+    name: "",
+    parent: [],
+    featured: false
+  };
+
+const handleFormSubmit = (values) => {
+  console.log('Submitted values:', values);
+  // Here you can also set the values to the state if needed
+  // setSubmittedValues(values);
+};
+
+  return <Box py={4}>
+      <H3 mb={2}>Edit Category</H3>
+
+      <CategoryForm initialValues={INITIAL_VALUES} handleFormSubmit={handleFormSubmit} />
+    </Box>;
+};
+
+export default EditCategoryPageView;
