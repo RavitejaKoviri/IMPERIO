@@ -16,7 +16,6 @@ export default function ProductsGridView({ products }) {
   const [data,setData]=useState([]);
   const dispatch=useDispatch();
 
-  console.log(cartData,"cartData in page");
 
   useEffect(()=>{
     dispatch(clearsearchProduct())
@@ -33,12 +32,10 @@ export default function ProductsGridView({ products }) {
   },[searchProducts])
 
   
-console.log("data....",data)
   // Create a Set of wishlist product IDs for quick lookup
   const wishlistProductIds = new Set(wishlist.map((item) => item.productid));
 
   const productsLength = products.length;
-  console.log("productsLength",productsLength)
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage =6; // Set the number of items per page
 
@@ -57,7 +54,6 @@ console.log("data....",data)
           remaining_qty: cartItem ? cartItem.remaining_qty : 0 
       };
   });
-  console.log(result,"cartqty");
 
   // getting cart data based on userid 
   
@@ -78,9 +74,7 @@ console.log("data....",data)
     return encodedid;
   };
 
-  console.log("c", searchProducts.length) 
   const totalProducts = searchProducts.length ? searchProducts.length : productsLength;
-  console.log("totalProducts",totalProducts)
 
   return (
     <Fragment>

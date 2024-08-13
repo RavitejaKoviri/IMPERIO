@@ -17,9 +17,7 @@ const userRegisterSlice = createSlice({
   initialState: initialUserValidationState,
   reducers: { 
     saveUserDetails: (state, action) => {
-      console.log(action.payload)
       if (action.payload == "true" ) {
-        console.log("jo");
         state.UserAuth = true;
     }
     else{
@@ -30,27 +28,23 @@ const userRegisterSlice = createSlice({
     },
   
   userMobileNumberValidation:(state,action)=>{
-    console.log(action.payload)
     if(action.payload.success){
       state.validMobileNumber=true;
       state.otp=action.payload.otp;
     }
     else
     state.validMobileNumber=false;
-  console.log(state.validMobileNumber)
-  console.log( state.otp)
+ 
   },
 
   userOtpValidation:(state,action)=>{
-    console.log(typeof action.payload)
     if(action.payload=="true")
       state.otpVerified=true;
     else
     state.otpVerified=false;
   },
   userLoginValidation:(state,action)=>{
-    console.log( action.payload)
-    console.log(typeof(action.payload.auth));
+   
     if(action.payload.auth=="true"){
       state.loginVerified=action.payload.auth;
       state.userid=action.payload.id;
@@ -59,13 +53,11 @@ const userRegisterSlice = createSlice({
       state.userPhoneNumber=action.payload.phnnumber;
     }
     else{
-      console.log("hi logout")
     state.loginVerified=false;
     state.UserAuth=false;
     state.validMobileNumber=false;
     state.otpVerified=false;
     }
-    console.log("initialstate",state.loginVerified+" "+state.userid+" "+state.username+" "+state.usermail+" "+state.userPhoneNumber)
   }
  
 },

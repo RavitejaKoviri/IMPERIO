@@ -9,15 +9,12 @@ const wishlistSlice = createSlice({
   initialState: initialWishlistState,
   reducers: {
     postWishlistDetails: (state, action) => {
-      console.log(action.payload);
     },
 
     getWishlistDetails: (state, action) => {
-      console.log(action.payload, "in slice");
       state.wishlistData = action.payload;
     },
     removeFromWishlist:(state,action)=>{
-      console.log(action.payload);
     }
   },
 });

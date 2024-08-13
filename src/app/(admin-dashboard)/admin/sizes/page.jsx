@@ -25,7 +25,6 @@ export default function Colors() {
     }
   }, [sizeDetails]);
 
-  // console.log(data);
 
   return <SizesPageView sizes={data} />;
 }

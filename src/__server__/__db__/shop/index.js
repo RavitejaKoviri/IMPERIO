@@ -32,7 +32,6 @@ export const ShopEndpoints = Mock => {
       shop.products = getProducts(shops[0].slug);
       return [200, shop];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -47,7 +46,6 @@ export const ShopEndpoints = Mock => {
       }));
       return [200, slugs];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];

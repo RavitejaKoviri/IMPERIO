@@ -24,20 +24,17 @@ export default function HoverActions({
   const [wishlistdata,setWishlistdata]=useState([])
   
 useEffect(()=>{
-  console.log("userId", userId);
-  console.log("productId", productId);
-  console.log("isFavorite", isFavorite);
+
 },[wishlist])
  
 
   // const handleFavorite = (productId, userId) => {
   //   if (userValid) {
   //     const data = { productId, userId };
-  //     console.log("Details", data);
-  //     console.log("is favorite",isFavorite)
+  //   
   //     if(!isFavorite)
   //     {
-  //       console.log("handle favorite")
+  //   
   //     dispatch(addProductToWishlist(data));
   //     }
   //   } else {
@@ -46,14 +43,11 @@ useEffect(()=>{
   // };
 
   const handleClick=(productId, userId)=>{
-    console.log("wislist hhi")
     if(!isFavorite)
     {
-      console.log("fav is false")
       if (userValid) {
         const data = { productId, userId };
-        console.log("Details", data);
-        console.log("is favorite",isFavorite)
+      
         dispatch(addProductToWishlist(data));
         }
         else {
@@ -62,12 +56,9 @@ useEffect(()=>{
       }
       else
       {
-        console.log("fav is true")
 
         if (userValid) {
-          console.log("hello");
-          console.log(productId);
-          console.log("is favorite1",isFavorite)
+         
           dispatch(removeProductFromWishlist(productId, userId));
         } else {
           router.push("/login");
@@ -77,12 +68,9 @@ useEffect(()=>{
 
   // const handleDelete = async (productId) => {
   //   if (userValid) {
-  //     console.log("hello");
-  //     console.log(productId);
-  //     console.log("is favorite1",isFavorite)
+  //   
   //     if(isFavorite)
   //     {
-  //       console.log("handle delete")
   //     dispatch(removeProductFromWishlist(productId, userId));
   //     }
   //   } else {

@@ -9,13 +9,11 @@ const productSlice = createSlice({
   initialState: initialProductState,
   reducers: { 
     postProductDetails: (state, action) => {
-        console.log("in slice",action.payload);
-        console.log(productData);
+      
 
     },
 
     getProductDetails: (state, action) => {
-      console.log("in Slice",action.payload);
       state.productData=action.payload;
     },
   },

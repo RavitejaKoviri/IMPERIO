@@ -15,7 +15,6 @@ const vendorSubCategorySlice = createSlice({
             state.subcategoryPostMessage=action.payload;
         },
         getVendorSubCategory: (state,action)=>{
-            console.log("sliced");
             state.subcategoryList=action.payload;
         },
         updateVendorSubCategory:(state,action)=>{

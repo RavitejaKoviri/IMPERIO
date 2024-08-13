@@ -10,11 +10,9 @@ const productBySubCategorySlice= createSlice({
     initialState: inintialProducts,
     reducers: {
     getProductsBySubCategory : (state,action) => {
-        console.log("in getProductsBySubCategory",action.payload);
         state.productsBasedOnSubcategories = action.payload;
     } ,
     getAllCategoriesProducts:(state,action)=>{
-        console.log("all products in slice",action.payload);
         state.productsBasedOnSubcategories=action.payload;
     }
 }

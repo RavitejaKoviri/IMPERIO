@@ -30,7 +30,6 @@ export default function MiniCart({
   // 
   const cartData = useSelector((state) => state.cartModified.cartData);
   useEffect(()=>{
-    console.log("check",cartData);
   },[cartData])
   
   const handleCartAmountChange = (amount, product) => () => {

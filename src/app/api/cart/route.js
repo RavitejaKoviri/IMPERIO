@@ -6,7 +6,6 @@ dotenv.config();
 // Named export for POST method to add product to wishlist
 export async function POST(req) {
   const { userId, id } = await req.json();
-  console.log("id's", userId,id);
   const now = new Date();
   const addedDate = now.toISOString().split("T")[0]; // YYYY-MM-DD
   const addedTime = now.toTimeString().split(" ")[0]; // HH:MM:SS
@@ -17,20 +16,16 @@ export async function POST(req) {
     //   "SELECT * FROM cart WHERE productid = $1 AND userid = $2",
     //   [productId, userId]
     // );
-    // console.log("checkresult",checkResult.rows.length);
     // if (checkResult.rows.length > 0) {
     //   // If the product is already in the wishlist, return a relevant response
-    //   console.log("enteredd");
     //   return new NextResponse(checkResult.rows.length, { status: 200 });
     // }
     const result = await pool.query(
       "INSERT INTO cart (productid, userid, quantity, remaining_quantity,addeddate,addedtime,addedday) VALUES ($1, $2, $3, $4,$5,$6,$7)",
       [id, userId, "20", "120", addedDate, addedTime, addedDay]
     );
-    console.log("Post call",result);
     return new NextResponse("product added to cart", { status: 201 });
   } catch (error) {
-    console.error("Error inserting data into wishlist:", error);
     return new NextResponse(
       { error: "Failed to add product to wishlist" },
       { status: 500 }
@@ -43,7 +38,6 @@ export async function GET(req) {
     const userId = req.url.split("?")[1];
     const resp = "select products.productid,productname,originalprice,currentprice,discount,quantity from products join cart on products.productid = cart.productid where userid = $1;";
     const result = await pool.query(resp, [userId]);
-    console.log(result.rows, "result data");
     return new NextResponse(JSON.stringify(result.rows), {
       status: 200,
       headers: { "Content-Type": "application/json" },
@@ -77,7 +71,6 @@ export async function DELETE(req) {
     // Send the deleted data back as a response
     return NextResponse.json(result.rows[0], { status: 200 });
   } catch (error) {
-    console.error("Error removing product from wishlist:", error);
     return NextResponse.json(
       { error: "Failed to remove product from wishlist" },
       { status: 500 }

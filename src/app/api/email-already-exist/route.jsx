@@ -11,7 +11,6 @@ export async function GET(request) {
         const sql="SELECT email FROM users WHERE email=$1  ";
         const inputs = [param]
         const result = await pool.query(sql,inputs);
-        console.log(result)
         return new Response(JSON.stringify(result.rows), {
           status: 200,
           headers: { 'Content-Type': 'application/json' },
@@ -28,7 +27,6 @@ export async function GET(request) {
         const sql="SELECT phonenumber FROM users WHERE phonenumber=$1  ";
         const inputs = [param]
         const result = await pool.query(sql,inputs);
-        console.log(result)
         return new Response(JSON.stringify(result.rows), {
           status: 200,
           headers: { 'Content-Type': 'application/json' },

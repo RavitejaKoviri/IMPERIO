@@ -9,11 +9,9 @@ const invoiceSlice = createSlice({
   initialState: initialInvoiceState,
   reducers: { 
     postInvoiceDetails: (state, action) => {
-        console.log(action.payload);
     },
 
     getInvoiceDetails: (state, action) => {
-      console.log(action.payload,"heyyyy")
       state.invoiceData=action.payload;
     },
   },

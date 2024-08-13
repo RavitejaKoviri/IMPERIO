@@ -8,7 +8,6 @@ export const GiftEndpoints = Mock => {
     try {
       return [200, db.mainCarouselData];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -18,7 +17,6 @@ export const GiftEndpoints = Mock => {
     try {
       return [200, db.serviceList];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -28,7 +26,6 @@ export const GiftEndpoints = Mock => {
     try {
       return [200, db.categories];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -38,7 +35,6 @@ export const GiftEndpoints = Mock => {
     try {
       return [200, db.catgoryNavigation];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -54,7 +50,6 @@ export const GiftEndpoints = Mock => {
     try {
       return [200, popularProducts];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -64,7 +59,6 @@ export const GiftEndpoints = Mock => {
     try {
       return [200, topSailedProducts];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -74,7 +68,6 @@ export const GiftEndpoints = Mock => {
     try {
       return [200, allProducts];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];

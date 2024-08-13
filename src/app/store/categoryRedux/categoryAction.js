@@ -12,7 +12,6 @@ export const postCategory = (data) => async (dispatch) => {
 };
 
 export const getCategory = () => async (dispatch) => {
-    // console.log(data);
     try {
         const response = await requestFromServer.getCategoryData();
         // Dispatch the action with the response data
@@ -23,7 +22,6 @@ export const getCategory = () => async (dispatch) => {
 };
 
 export const deleteCategory = (data) => async (dispatch) => {
-    console.log(data,"gggg")
 
     try {
         const response = await requestFromServer.deleteCategoryData(data);

@@ -10,13 +10,10 @@ export async function POST(req) {
         const addedDate = now.toISOString().split("T")[0]; // YYYY-MM-DD
         const addedTime = now.toTimeString().split(" ")[0]; // HH:MM:SS
         const addedDay = now.toLocaleString("en-US", { weekday: "long" });// Full day name (e.g., Monday)
-        console.log("entered in cart crud");
         const { id, userid, qty, remainingqty } = await req.json();
-        console.log(id, userid, qty, remainingqty, "in crud cart");
         // check if product already exist in cart table if not exist add product else increase increment quantity
         const checkProductAlreadyExsitInCart = 'select * from cart where productid=$1 and userid=$2';
         const resultProductCount = await pool.query(checkProductAlreadyExsitInCart, [id, userid]);
-        console.log(resultProductCount, "jsonresult");
         if (resultProductCount.rowCount > 0) {//if product exists updating quantity
             if (qty == 0) {//if qty of product is zero then product will be deleted 
                 const deleteProductFromCart = 'delete from cart where userid=$1 and productid=$2';
@@ -32,7 +29,6 @@ export async function POST(req) {
             else {
                 const updateProductQtyInCart = 'update cart set quantity=$1 where userid=$2 and productid=$3';
                 const updatedProductQty = await pool.query(updateProductQtyInCart, [qty, userid, id]);
-                console.log(updatedProductQty, "qtyincreased");
                 return new Response("product quantity increased", {
                     status: 200,
                     headers: {
@@ -66,12 +62,10 @@ export async function POST(req) {
 
 // getting cart data 
 export async function GET(req) {
-    console.log("url", req);
     try {
         const userid = req.url.split("?")[1];
         const getCartDataQuery = "select cart.cartid,cart.productid,cart.userid,cart.quantity,inventoryy.remaining_qty,inventoryy.selling_price from cart join inventoryy on cart.productid=inventoryy.product_id where cart.userid=$1;";
         const resultCartData = await pool.query(getCartDataQuery, [userid]);
-        console.log(resultCartData.rows, "getCartData");
         return new Response(JSON.stringify(resultCartData.rows), {
             status: 200,
             headers: {

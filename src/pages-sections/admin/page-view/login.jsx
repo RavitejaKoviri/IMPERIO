@@ -48,20 +48,16 @@ const LoginPageView = ({
     initialValues,
     validationSchema,
     // onSubmit: values => {
-    //   console.log(values);
     //   closeDialog?.();
     // }
   });
   const handleAdminSubmit=(e)=>{
     e.preventDefault();
-    // console.log(values);
     // const adminDetails={
     //   email:values.email,
     //   password:values.password
     // }
-    // console.log(adminDetails)
     dispatch(adminLogin(values));
-    //  console.log("hitting");
   }
   return (
     <>
