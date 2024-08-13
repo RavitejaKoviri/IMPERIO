@@ -45,7 +45,6 @@ const ProductsPageView = (
   },[]);
 
    const handelProduct =(e)=>{
-    console.log(e.target.value);
     for(let i=0;i<products.length;i++)
       {
         if(products[i].productid==e.target.value) {
@@ -64,11 +63,9 @@ const ProductsPageView = (
   };
 
   const handleClickDelete=()=>{
-    console.log("hi",productid)
     dispatch(deleteProductById(productid))
   }
   
-  console.log("products",products)
   return <Box py={4}>
       <H3 mb={2}>Product List</H3>
 

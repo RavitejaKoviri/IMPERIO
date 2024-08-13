@@ -18,7 +18,6 @@ import { deleteCategoryById, getCategoriesFromVendor, updateCategoryById } from 
 import { useSelector } from "react-redux";
 // ========================================================================
 const CategoryRow = (props) => {
-  console.log(props.id,"row");
   const dispatch=useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditModalOpen, setEditModalOpen] = useState(false);
@@ -37,9 +36,7 @@ const CategoryRow = (props) => {
   // To show Message dialog box dynamically -$sam
   useEffect(()=>{
     // dispatch(postVendorCategory)
-    console.log(updateVendorCategoryMessage,"state update message")
     setUpdateMessage(updateVendorCategoryMessage);
-    console.log(updateCounter,"countervalue");
     if(updateCounter==0)
           document.getElementById("category").style.display='none';
     else 
@@ -51,7 +48,6 @@ const CategoryRow = (props) => {
   const removePostMessage=()=>{ 
     
     setUpdateCounter(0);
-    // console.log("deleted")
     document.getElementById("category").style.display='none';
     setUpdateMessage("");
     setTimeout(() => {
@@ -65,7 +61,6 @@ const CategoryRow = (props) => {
     const deleteCategory={
       id:EditCategoryId,
     }
-    console.log("delete",deleteCategory.id);
     dispatch(deleteCategoryById(deleteCategory))
     setUpdateCounter(1);
   }
@@ -90,7 +85,6 @@ const CategoryRow = (props) => {
     }
     dispatch(updateCategoryById(updateCategory));
     setUpdateCounter(1);
-    console.log("update Category Object",updateCategory);
     setEditModalOpen(false); // Close modal
     };
 

@@ -73,7 +73,6 @@ const ProductImage = () => {
   const allProducts = useSelector((state) => state.product.productData);
 
   useEffect(() => {
-    console.log("All Products:", allProducts); // Log all products
     setProducts(allProducts);
   }, [allProducts]);
 
@@ -108,7 +107,6 @@ const ProductImage = () => {
 
   const handleCategoryChange = (e) => {
     const selectedCategoryId = e.target.value;
-    console.log("Selected Category ID:", selectedCategoryId); // Log selected category ID
     setCategoryId(selectedCategoryId);
     fetchSubcategories(selectedCategoryId);
     setSubCategoryId(''); // reset subcategory selection
@@ -116,20 +114,16 @@ const ProductImage = () => {
 
   const handleSubcategoryChange = (e) => {
     const selectedSubCategoryId = e.target.value;
-    console.log("Selected SubCategory ID:", selectedSubCategoryId); // Log selected subcategory ID
     setSubCategoryId(selectedSubCategoryId);
 
     // Filter products based on selected category and subcategory
     const filtered = products.filter(
       (product) => product.categoryid === categoryId && product.subcategoryid === selectedSubCategoryId
     );
-    console.log("Filtered Products:", filtered); // Log filtered products
     setFilteredProducts(filtered);
   };
 
   const handleFormSubmit = async (values, { setSubmitting, resetForm }) => {
-    console.log("clicked");
-    console.log("hello",values)
     try {
       const response = await fetch('/api/postimages', {
         method: 'POST',
@@ -140,7 +134,6 @@ const ProductImage = () => {
       });
 
       const result = await response.json();
-      console.log("result:", result)
       if (response.ok) {
         alert('Product saved successfully!');
         resetForm(); // Reset the form after successful submission

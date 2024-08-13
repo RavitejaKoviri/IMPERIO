@@ -17,7 +17,6 @@ import { deleteSize } from "app/store/sizeRedux/sizeAction";
 const SizeRow = ({ sizeData }) => {
   const [sizeDataa,setSizeDataa] = useState(sizeData);
   useEffect(()=>{
-    console.log("reload");
   },[sizeData])
   // const {
   //   name,
@@ -26,17 +25,13 @@ const SizeRow = ({ sizeData }) => {
   //   id,
   //   slug
   // } = size || {};
-  console.log(sizeData);
   const router = useRouter();
   const dispatch = useDispatch();
   const data = useSelector(state=> state.user.sizeDetails);
-  // console.log("vijit",id);
   // const [featuredCategory, setFeaturedCategory] = useState(featured);
   // const hasSelected = selected.indexOf(name) !== -1;
-  // console.log(id);
   const handleNavigate = () => router.push(`/admin/sizes/${slug}`);
   const handleSubmit = () => {
-    // console.log(sizeData.sizeid);  
     dispatch(deleteSize(sizeData.sizeid));
   }
 

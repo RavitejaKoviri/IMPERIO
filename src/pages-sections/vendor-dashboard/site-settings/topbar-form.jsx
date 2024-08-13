@@ -26,7 +26,6 @@ const TopbarForm = () => {
   };
 
   const handleFormSubmit = async values => {
-    console.log(values);
   };
 
   return <Formik initialValues={initialValues} onSubmit={handleFormSubmit}>

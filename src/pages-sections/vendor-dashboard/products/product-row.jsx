@@ -26,7 +26,6 @@ const ProductRow = ({
     dispatch(deleteProductById(productid))
   }
 
-  console.log("name",name,"category",category,"subcategory",subcategory,"price",price)
 
   return <StyledTableRow tabIndex={-1} role="checkbox">
       <StyledTableCell align="left">

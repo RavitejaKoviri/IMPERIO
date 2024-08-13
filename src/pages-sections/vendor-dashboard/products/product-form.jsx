@@ -73,12 +73,10 @@ const ProductForm = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    console.log(getCategoriesState)
     setCategories(getCategoriesState);
   }, [getCategoriesState]);
 
   const handleClickBlur = () => {
-    console.log("category id", categoryId)
     dispatch(getSubCategoriesFromVendor(categoryId));
     setSubcategories(getSubCategoriesState)
   }
@@ -100,7 +98,6 @@ const ProductForm = () => {
 
     valuedup.specification = specString;
 
-    console.log("values", valuedup)
 
     dispatch(postProductFromVendor(valuedup))
 
@@ -109,7 +106,6 @@ const ProductForm = () => {
     resetForm();
   };
 
-  console.log("sub categories", colors)
 
   return (
     <Card sx={{ p: 6 }}>

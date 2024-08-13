@@ -37,9 +37,7 @@ const SubCategoryRow = ({
   // To show Message dialog box dynamically -$sam
   useEffect(()=>{
     // dispatch(postVendorCategory)
-    console.log(updateVendorSubCategoryMessage,"state update message")
     setUpdateMessage(updateVendorSubCategoryMessage);
-    console.log(updateCounter,"countervalue");
     if(updateCounter==0)
           document.getElementById("category").style.display='none';
     else 
@@ -50,7 +48,6 @@ const SubCategoryRow = ({
    const removePostMessage=()=>{ 
     
     setUpdateCounter(0);
-    // console.log("deleted")
     document.getElementById("category").style.display='none';
     setUpdateMessage("");
     setTimeout(() => {
@@ -68,7 +65,6 @@ const SubCategoryRow = ({
       subcategoryname:editData,
       categoryKey: categoryid,
     }
-    console.log("subdata", updateSubCategory);
     dispatch(updateSubCategoryById(updateSubCategory));
     setEditModalOpen(false);
     };
@@ -78,7 +74,6 @@ const SubCategoryRow = ({
         id: subcategoryid,
         parentid:categoryid
       };
-      console.log(deleteSubCategory)
       dispatch(deleteSubCategoryById(deleteSubCategory));
     }
 

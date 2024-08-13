@@ -37,7 +37,7 @@ export default function WishListPageView() {
     dispatch(getProductInWishlist(userId))
   },[])
 
-  console.log("wishlist", products);
+ 
   const { currentPage, handleChangePage } = useWishList();
   return (
     <Fragment>

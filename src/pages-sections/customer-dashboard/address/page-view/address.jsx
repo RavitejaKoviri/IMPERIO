@@ -20,8 +20,7 @@ export default function AddressPageView()
   const userid=useSelector((state)=>state.user.userid);
 
   useEffect(()=>{
-    // console.log("tahrun");
-    // console.log("uid",userid)
+    
     const id={
       id:userid
     }

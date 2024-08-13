@@ -32,7 +32,7 @@ const ResetPassword = () => {
     initialValues,
     validationSchema,
     onSubmit: values => {
-      console.log(values);
+     
     }
   });
   return <Fragment>

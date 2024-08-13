@@ -40,14 +40,11 @@ const InvoiceForm = ({ initialValues, handleFormSubmit, newInvoice }) => {
           //     });
 
           //     const result = await response.json();
-          //     console.log("API response:", result);
 
           //     if (response.ok) {
           //       try {
           //         const resultStatus = await responseUpdate.json();
-          //         console.log("API response:", resultStatus);
           //       } catch (error) {
-          //         console.log(error);
           //       }
 
           //       setFormStatus({

@@ -18,11 +18,9 @@ import { tableHeading } from "../table-heading";
 const ColorsPageView = (colors) => {
   const [searchTerm, setSearchTerm] = useState("");
 
-  console.log("Received colors in ColorsPageView:", colors);
 
   // Ensure colors is an array
   // const colorsArray = Array.isArray(colors.data) ? colors : [];
-  // console.log("heman", typeof colors.colors);
   // RESHAPE THE PRODUCT LIST BASED TABLE HEAD CELL ID
   const filteredColors = colors.colors
     .map((item) => ({

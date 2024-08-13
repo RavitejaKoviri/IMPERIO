@@ -41,8 +41,6 @@ const InvoiceListPageView = (invoices) => {
     },
   ];
 
-  console.log("filtered", filteredInvoices);
-  console.log(typeof invoices, invoices.invoices[0]);
   const {
     order,
     orderBy,

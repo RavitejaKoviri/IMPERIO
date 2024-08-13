@@ -31,7 +31,6 @@ const CategoriesPageView = () => {
   const [getCategories,setGetCategories]=useState(getCategoriesState);
   useEffect(()=>{
     dispatch(getCategoriesFromVendor());
-    console.log("getCategories in main component",getCategoriesState);
   },[])
   
   const {

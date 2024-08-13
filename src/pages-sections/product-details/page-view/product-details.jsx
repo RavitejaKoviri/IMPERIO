@@ -8,7 +8,6 @@ import FrequentlyBought from "../frequently-bought"; // CUSTOM DATA MODEL
 
 // ==============================================================
 export default function ProductDetailsPageView(props) {
-  console.log("props",props);
   return <Container className="mt-2 mb-2">
       {
       /* PRODUCT DETAILS INFO AREA */

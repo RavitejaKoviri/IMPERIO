@@ -4,7 +4,6 @@ import { Exo_2 } from "next/font/google";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function ProductSpecifications(props) {
-  console.log("specifications",props.names)
   const specifications=props.names;
   return (
     <div>

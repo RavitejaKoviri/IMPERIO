@@ -23,10 +23,10 @@ const ContactForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('loading');
-    console.log(formData)
+  
     try {
       const response = await axios.post('/api/contact', formData);
-      console.log(response.data);
+   
       setStatus('succeeded');
       setFormData({ firstName: '', lastName: '', email: '',mobile:''}); // Reset form after successful submission
     } catch (err) {

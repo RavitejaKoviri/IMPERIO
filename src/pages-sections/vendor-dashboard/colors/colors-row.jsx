@@ -20,7 +20,6 @@ const ColorsRow = ({
     id,
     slug
   } = color|| {};
-  console.log(name,id);
   const router = useRouter();
   // const [featuredColor, setFeaturedColor] = useState(featured);
   const hasSelected = selected.indexOf(name) !== -1;

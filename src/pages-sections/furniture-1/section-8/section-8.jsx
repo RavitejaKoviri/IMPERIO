@@ -19,7 +19,6 @@ export default function Section8({ heading, description }) {
           method: 'GET'
         });
 
-        //console.log(await response.json());
         const productData = await response.json();
         setData(productData);
       } catch (error) {

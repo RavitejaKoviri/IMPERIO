@@ -42,7 +42,6 @@ const CategoryForm = (props) => {
   // To close dialog Box to throw message  - $sam
   const removePostMessage=()=>{ 
     setPostCounter(0);
-    // console.log("deleted")
     document.getElementById("category").style.display='none';
     setPostMessage("");
   }

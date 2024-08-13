@@ -11,7 +11,6 @@ import { currency } from "lib"; // CUSTOM DATA MODEL
 export default function UserAnalytics({
   user
 }) {
-  console.log(user)
   const INFO_LIST = [{
     title: "16",
     subtitle: "All Orders"

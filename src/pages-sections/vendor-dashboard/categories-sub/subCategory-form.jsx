@@ -75,7 +75,6 @@ const SubCategoryForm = ({
         initialValues={initialValues}
         validationSchema={VALIDATION_SCHEMA}
         onSubmit={(values) => {
-          console.log("hi")
           const subCategoryData = {
             categoryId: values.parent,
             subcategoryName: values.subCategoryName,

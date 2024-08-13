@@ -22,11 +22,8 @@ import { tableHeading } from "../table-heading"; // ============================
 // =============================================================================
 const SizesPageView = (sizes) => 
   {
-  // console.log(sizes.sizes.length);
   const data=sizes.sizes;
-  // console.log(data.length);  
   
-  // for(let i=0;i<data.length;i++) console.log(data[i]);
   const filteredSizes = data.map((size)=>{
     id:size.sizeid;
     sname:size.sizename

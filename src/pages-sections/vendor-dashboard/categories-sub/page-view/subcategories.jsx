@@ -66,10 +66,8 @@ const SubCategoriesPageView = () => {
 
   // const handleChange = (event) => {
   //   const categorykey = event.target.value;
-  //   console.log("categorykey", categorykey);
   //   const selectedCategory = categories.find(category => category.categoryname === categorykey);
   //   if (selectedCategory) {
-  //     console.log("Selected category id:", selectedCategory.categoryid);
   //     dispatch(getSubCategoriesFromVendor(selectedCategory.categoryid));
   //     setMappedSubCategories(subcategories);
   //   }
@@ -78,7 +76,6 @@ const SubCategoriesPageView = () => {
   const handleClickChange = (val, status) => {
     setsubcategoryIdd(val);
     setUpdateStatus(status);
-    console.log("val:", val);
   };
 
   const handleEdit = () => {
@@ -105,7 +102,6 @@ const SubCategoriesPageView = () => {
       subcategorystatus: editStatus,
       categoryKey: categorykeyid,
     };
-    console.log("subdata", subdata);
     dispatch(updateSubCategoryById(subdata));
   };
 
@@ -114,7 +110,6 @@ const SubCategoriesPageView = () => {
       id: subcategoryIdd,
       parentid:categorykeyid
     };
-    console.log(deleteSubCategory)
     dispatch(deleteSubCategoryById(deleteSubCategory));
     setsubcategoryvalue("");
     setEditStatus("");
@@ -139,7 +134,6 @@ const SubCategoriesPageView = () => {
     // listData: filteredCategories
   });
 
-  console.log("subcategories",subcategories)
 
   return (
     <Box py={4}>
