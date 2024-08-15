@@ -9,10 +9,10 @@ const addressSlice= createSlice({
     initialState: inintialUserAddress,
     reducers: {
     postAddressData : (state,action) => {
-  
+       
     },
     getAddressData : (state,action) => {
-      
+        state.addressDetails = action.payload;
     },   
     deleteAddressData: (state, action) => {
     }, 

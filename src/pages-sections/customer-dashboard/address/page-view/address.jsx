@@ -1,8 +1,7 @@
 "use client";
 
-import { useState, Fragment,useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 import Place from "@mui/icons-material/Place"; // Local CUSTOM COMPONENT
-
 import Pagination from "../../pagination";
 import AddressListItem from "../address-item";
 import DashboardHeader from "../../dashboard-header"; // CUSTOM DATA MODEL
@@ -14,36 +13,49 @@ import { Grid } from "@mui/material";
 export default function AddressPageView() 
 {
   const [allAddress, setAllAddress] = useState([]);
-  const maindata=useSelector(state=>state.address.addressDetails);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(4); // You can adjust this as needed
+
+  const maindata = useSelector(state => state.address.addressDetails);
   const dispatch = useDispatch();
-  const userValid=useSelector((state)=>state.user.loginVerified);
-  const userid=useSelector((state)=>state.user.userid);
+  const userValid = useSelector(state => state.user.loginVerified);
+  const userid = useSelector(state => state.user.userid);
 
-  useEffect(()=>{
-    
-    const id={
-      id:userid
-    }
-      dispatch(getAddress(id));
-    },[])
+  useEffect(() => {
+    const id = { id: userid };
+    dispatch(getAddress(id));
+  }, [dispatch, userid]);
 
-    useEffect(()=>{
-      setAllAddress(maindata)
-    },[maindata])
+  useEffect(() => {
+    setAllAddress(maindata);
+    console.log(allAddress)
+  }, [maindata]);
 
+  const onChangePage = (event, page) => {
+    setCurrentPage(page);
+  };
 
-  return <Fragment>
+  const indexOfLastAddress = currentPage * itemsPerPage;
+  const indexOfFirstAddress = indexOfLastAddress - itemsPerPage;
+  const currentAddresses = allAddress.slice(indexOfFirstAddress, indexOfLastAddress);
+
+  return (
+    <Fragment>
       {
-      /* TITLE HEADER AREA */
-    }
-      <DashboardHeader Icon={Place} href="/address/New-address" title="My Addresses" buttonText="Add New Address" />
+        /* TITLE HEADER AREA */
+      }
+      <DashboardHeader 
+        Icon={Place} 
+        href="/address/New-address" 
+        title="My Addresses" 
+        buttonText="Add New Address" 
+      />
 
       {
-      /* ALL ADDRESS LIST AREA */
-    }
-      {/* {allAddress.map(address => <AddressListItem key={address.id} address={address} handleDelete={handleAddressDelete} />)} */}
+        /* ALL ADDRESS LIST AREA */
+      }
       <Grid container spacing={2}>
-        {allAddress.map(address => (
+        {currentAddresses.map(address => (
           <AddressListItem
             key={address.id}
             address={address}
@@ -52,8 +64,13 @@ export default function AddressPageView()
       </Grid>
          
       {
-      /* PAGINATION AREA */
-    }
-      <Pagination count={5} onChange={data => console.log(data)} />
-    </Fragment>;
+        /* PAGINATION AREA */
+      }
+      <Pagination 
+        count={Math.ceil(allAddress.length / itemsPerPage)} 
+        page={currentPage} 
+        onChange={onChangePage} 
+      />
+    </Fragment>
+  );
 }
