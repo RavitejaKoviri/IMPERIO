@@ -149,6 +149,7 @@ export default function SearchInputWithCategory() {
         id="searchrows"
         onMouseDown={handleMouseDown}
         onClick={handlemouseclick}
+        style={{display:'none'}}
       >
         <SearchResult results={resultSearchProducts} />
       </div>
