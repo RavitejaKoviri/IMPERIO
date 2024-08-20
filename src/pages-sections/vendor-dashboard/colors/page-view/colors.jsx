@@ -14,9 +14,12 @@ import useMuiTable from "hooks/useMuiTable";
 import ColorsRow from "../colors-row";
 import SearchArea from "../../search-box";
 import { tableHeading } from "../table-heading";
-
+import Pagination from "pages-sections/customer-dashboard/pagination";
 const ColorsPageView = (colors) => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const rowsPerPage = 1;
+
 
 
   // Ensure colors is an array
@@ -39,9 +42,9 @@ const ColorsPageView = (colors) => {
     order,
     orderBy,
     selected,
-    rowsPerPage,
+    // rowsPerPage,
     filteredList,
-    handleChangePage,
+    // handleChangePage,
     handleRequestSort,
   } = useMuiTable({
     listData: filteredColors,
@@ -50,6 +53,16 @@ const ColorsPageView = (colors) => {
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
+  };
+
+  const rowsLength = filteredList.length;
+  const indexOfLastRow = currentPage * rowsPerPage;
+  const indexOfFirstRow = indexOfLastRow - rowsPerPage;
+  const requiredRows = filteredList.slice(indexOfFirstRow, indexOfLastRow);
+
+  const handleChangePage = (event, page) => {
+    console.log("cateor",page)
+    setCurrentPage(page); // Pagination library often expects 0-based index
   };
 
   return (
@@ -78,7 +91,7 @@ const ColorsPageView = (colors) => {
               />
 
               <TableBody>
-                {filteredList.map((color) => (
+                {requiredRows.map((color) => (
                   <ColorsRow key={color.id} color={color} selected={selected} />
                 ))}
               </TableBody>
@@ -87,9 +100,10 @@ const ColorsPageView = (colors) => {
         </Scrollbar>
 
         <Stack alignItems="center" my={4}>
-          <TablePagination
+        <Pagination
+            count={Math.ceil(rowsLength/rowsPerPage)}
+            page={currentPage} // Pagination library often expects 0-based index
             onChange={handleChangePage}
-            count={Math.ceil(filteredList.length / rowsPerPage)}
           />
         </Stack>
       </Card>

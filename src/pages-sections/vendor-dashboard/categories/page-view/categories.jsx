@@ -22,63 +22,77 @@ import { useDispatch, useSelector } from "react-redux";
 // getting categories action to get categories where states are active
 import { getCategoriesFromVendor } from "app/store/vendorRedux/CategoryRedux/categoryAction";
 import { TableCell, TableHead, TableRow } from "@mui/material";
-
-// =============================================================================
+import Pagination from "pages-sections/customer-dashboard/pagination";
+// ====imppppppp=========================================================================
 const CategoriesPageView = () => {
-  const dispatch=useDispatch();
+  const dispatch = useDispatch();
   
-  const getCategoriesState=useSelector((state)=>state.vendorCategory.categoryList);
-  const [getCategories,setGetCategories]=useState(getCategoriesState);
-  useEffect(()=>{
+  const getCategoriesState = useSelector((state) => state.vendorCategory.categoryList);
+  const [getCategories, setGetCategories] = useState(getCategoriesState);
+  const [currentPage, setCurrentPage] = useState(1);
+  const rowsPerPage = 2;
+
+  useEffect(() => {
     dispatch(getCategoriesFromVendor());
-  },[])
+  }, [dispatch]);
   
-  const {
-    order,
-    orderBy,
-    selected,
-    rowsPerPage,
-    filteredList,
-    handleChangePage,
-    handleRequestSort
-  } = useMuiTable({
-    // listData: filteredCategories
-  });
-
+  useEffect(() => {
+    setGetCategories(getCategoriesState);
+  }, [getCategoriesState]);
   
+  const rowsLength = getCategories.length;
+  const indexOfLastRow = currentPage * rowsPerPage;
+  const indexOfFirstRow = indexOfLastRow - rowsPerPage;
+  const requiredRows = getCategories.slice(indexOfFirstRow, indexOfLastRow);
 
-  return <Box py={4}>
-      <H3 mb={2}> Categories</H3>
+  const handleChangePage = (event, page) => {
+    console.log("cateor",page)
+    setCurrentPage(page); // Pagination library often expects 0-based index
+  };
 
+  return (
+    <Box py={4}>
+      <H3 mb={2}>Categories</H3>
       <SearchArea handleSearch={() => {}} buttonText="Add Category" url="/admin/categories/create" searchPlaceholder="Search Category..." />
-
       <Card>
         <Scrollbar>
-          <TableContainer sx={{
-          minWidth: 900
-        }}>
+          <TableContainer sx={{ minWidth: 900 }}>
             <Table>
-            <TableHead>
-            <TableRow>
-              <TableCell>Category</TableCell>
-              <TableCell>Status</TableCell>
-              <TableCell>Action</TableCell>
-            </TableRow>
-          </TableHead>
-
+              <TableHead>
+                <TableRow>
+                  <TableCell>Category</TableCell>
+                  <TableCell>Status</TableCell>
+                  <TableCell>Action</TableCell>
+                </TableRow>
+              </TableHead>
               <TableBody>
-                {getCategoriesState.map(category => <CategoryRow id={category.categoryid} category={category.categoryname} selected={selected} status={category.status} />)}
+                {requiredRows.map(category => (
+                  <CategoryRow
+                    key={category.categoryid} // Add key prop to avoid React warnings
+                    id={category.categoryid}
+                    category={category.categoryname}
+                    selected={false} // Assuming this should be false by default; adjust as needed
+                    status={category.status}
+                  />
+                ))}
               </TableBody>
             </Table>
           </TableContainer>
         </Scrollbar>
-
         <Stack alignItems="center" my={4}>
-          {/* <TablePagination onChange={handleChangePage} count={Math.ceil(categories.length / rowsPerPage)} /> */}
+          <Pagination
+            rowsPerPageOptions={[]}
+            component="div"
+            count={Math.ceil(rowsLength/rowsPerPage)}
+            rowsPerPage={rowsPerPage}
+            page={currentPage} // Pagination library often expects 0-based index
+            onChange={handleChangePage}
+          />
         </Stack>
       </Card>
-      
-    </Box>;
+    </Box>
+  );
 };
 
 export default CategoriesPageView;
+
