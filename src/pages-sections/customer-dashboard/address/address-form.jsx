@@ -23,10 +23,10 @@ export default function AddressForm() {
     id: userid,
     name: "",
     address1: "",
-    // city: address.city || "",
+    city: "",
     state: "",
     pincode: "",
-    // country: address.country || "",
+    country: "",
     contact: "",
   };
 
@@ -46,8 +46,8 @@ export default function AddressForm() {
   const handleSubmit = async (values, { resetForm }) => {
     dispatch(postAddress(values));
     setMessage("Your address has been saved!");
-    resetForm(); // Clear form fields
-
+    resetForm({ values: INITIAL_VALUES }); // Reset form to initial values
+  
     // Clear the message after a delay (e.g., 3 seconds)
     setTimeout(() => {
       setMessage("");
@@ -88,6 +88,7 @@ export default function AddressForm() {
                 <TextField
                   fullWidth
                   label="Phone"
+                  type="number"
                   name="contact"
                   onBlur={handleBlur}
                   value={values.contact}
@@ -152,6 +153,7 @@ export default function AddressForm() {
               <Grid item md={6} xs={12}>
                 <TextField
                   fullWidth
+                  type="number"
                   name="pincode"
                   onBlur={handleBlur}
                   label="Pincode"
