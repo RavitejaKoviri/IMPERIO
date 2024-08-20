@@ -22,12 +22,12 @@ export default function AddressForm() {
   const INITIAL_VALUES = {
     id: userid,
     name: "",
-    address1:"",
+    address1: "",
     // city: address.city || "",
-    state:"",
-    pincode:"",
+    state: "",
+    pincode: "",
     // country: address.country || "",
-    contact:"",
+    contact: "",
   };
 
   const VALIDATION_SCHEMA = yup.object().shape({
@@ -37,9 +37,10 @@ export default function AddressForm() {
     pincode: yup.string().required("required"),
     state: yup.string().required("required"),
     country: yup.string().required("required"),
-    contact: yup.string()
-    .matches(/^[6-9]\d{9}$/, "Phone number must be 10 digits")
-    .required("required"),
+    contact: yup
+      .string()
+      .matches(/^[6-9]\d{9}$/, "Phone number must be 10 digits")
+      .required("required"),
   });
 
   const handleSubmit = async (values, { resetForm }) => {
@@ -109,7 +110,6 @@ export default function AddressForm() {
                 />
               </Grid>
 
-
               <Grid item md={6} xs={12}>
                 <TextField
                   fullWidth
@@ -162,13 +162,20 @@ export default function AddressForm() {
                 />
               </Grid>
 
-
-              <Grid item xs={12} style={{ display: "flex", alignItems: "center" }}>
+              <Grid
+                item
+                xs={12}
+                style={{ display: "flex", alignItems: "center" }}
+              >
                 <Button type="submit" variant="contained" color="primary">
                   Save Changes
                 </Button>
                 {message && (
-                  <Typography variant="body1" color="success.main" style={{ marginLeft: 16 }}>
+                  <Typography
+                    variant="body1"
+                    color="success.main"
+                    style={{ marginLeft: 16 }}
+                  >
                     {message}
                   </Typography>
                 )}
