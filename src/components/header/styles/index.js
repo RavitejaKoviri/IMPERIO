@@ -13,7 +13,7 @@ export const HeaderWrapper = styled("div")(({
   // borderBottom: `1px solid ${theme.palette.grey[200]}`,
   [theme.breakpoints.down("sm")]: {
     height: layoutConstant.mobileHeaderHeight
-  }
+  },
 }));
 export const StyledContainer = styled(Container)({
   gap: 2,

@@ -2,7 +2,7 @@ import Link from "next/link";
 import MenuItem from "@mui/material/MenuItem"; // STYLED COMPONENT
 import { SearchResultCard } from "../styles";
 import "./styles.css";
- // ==============================================================
+// ==============================================================
 
 // ==============================================================
 export default function SearchResult(props) {
