@@ -61,7 +61,6 @@ const ColorsPageView = (colors) => {
   const requiredRows = filteredList.slice(indexOfFirstRow, indexOfLastRow);
 
   const handleChangePage = (event, page) => {
-    console.log("cateor",page)
     setCurrentPage(page); // Pagination library often expects 0-based index
   };
 

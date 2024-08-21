@@ -46,7 +46,6 @@ const CategoriesPageView = () => {
   const requiredRows = getCategories.slice(indexOfFirstRow, indexOfLastRow);
 
   const handleChangePage = (event, page) => {
-    console.log("cateor",page)
     setCurrentPage(page); // Pagination library often expects 0-based index
   };
 

@@ -67,6 +67,42 @@ const SubCategoryForm = ({
     setPostMessage("");
   };
 
+
+  const containerStyle = {
+    position: 'fixed',
+    top: '43%',
+    right: '35%',
+    width: '250px',
+    zIndex: 1200, // Ensure it appears above other content
+  };
+  
+  const messageBoxStyle = {
+    display: 'flex',
+    alignItems: 'center',
+    backgroundColor: '#0e98e8', // Light red background for warning
+    color: 'white', // Dark red text color for contrast
+    padding: '16px',
+    borderRadius: '10px',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+    fontSize: '16px',
+    position: 'relative',
+  };
+  
+  const messageTextStyle = {
+    flex: 1,
+    fontWeight: 500,
+  };
+  
+  const messageCloseStyle = {
+    fontSize: '20px',
+    fontWeight: 'bold',
+    color: 'white', // Match the text color
+    cursor: 'pointer',
+    position: 'absolute',
+    top: '16px',
+    right: '16px',
+  };
+
  
 
   return (
@@ -176,14 +212,16 @@ const SubCategoryForm = ({
         <div className="row">
           <div className="col-md-4"></div>
           <div className="col-md-4">
-            <div className="row">
-              <div className="col-md-10">
+          <div style={containerStyle}>
+            <div style={messageBoxStyle}>
+              <span style={messageTextStyle}>
                 {postMessage}
-              </div>
-              <div className="col-md-2">
-                <h6 onClick={removePostMessage} style={{ cursor: 'pointer' }}>x</h6>
-              </div>
+              </span>
+              <span style={messageCloseStyle} onClick={removePostMessage}>
+                &times;
+              </span>
             </div>
+          </div>
           </div>
           <div className="col-md-4"></div>
         </div>
