@@ -39,3 +39,26 @@ export async function GET(request) {
       }
    }
   } 
+
+  export async function PATCH(request){
+    const param = request.url.split('=')[1];
+    const {newPassword} = await request.json(); 
+    if (param === "updatepassword"){
+      try{
+
+        const sql='UPDATE users SET password=$1 WHERE phonenumber=$2';
+      
+        const result = await pool.query(sql,[newPassword,"8309053400"]);
+        console.log(result)
+        return new Response(JSON.stringify(result.rows), {
+          status: 200,
+          headers: { 'Content-Type': 'application/json' },
+        });
+      } catch (error) {
+        return new Response(JSON.stringify({ success: false, error: 'Server Error', details: error.message }), {
+          status: 500,
+          headers: { 'Content-Type': 'application/json' },
+        });
+    }
+  }
+  }
