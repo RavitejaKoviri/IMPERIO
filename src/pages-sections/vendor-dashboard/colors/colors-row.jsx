@@ -47,7 +47,7 @@ const ColorsRow = ({
   return <StyledTableRow tabIndex={-1} role="checkbox" selected={hasSelected}>
       <StyledTableCell align="center">{id}</StyledTableCell>
 
-      <StyledTableCell align="center">{name}</StyledTableCell>
+      <StyledTableCell align="center">{name.charAt(0).toUpperCase()+name.slice(1)}</StyledTableCell>
 
       <StyledTableCell align="center">
 

@@ -43,7 +43,7 @@ const SizeRow = ({ sizeData }) => {
   return <StyledTableRow tabIndex={-1} role="checkbox" >
       <StyledTableCell align="center">{sizeData.sizeid}</StyledTableCell>
 
-      <StyledTableCell align="center">{sizeData.sizename}</StyledTableCell>
+      <StyledTableCell align="center">{sizeData.sizename.charAt(0).toUpperCase()+sizeData.sizename.slice(1)}</StyledTableCell>
 
       {/* <StyledTableCell align="center">
         <Avatar alt={name}  sx={{

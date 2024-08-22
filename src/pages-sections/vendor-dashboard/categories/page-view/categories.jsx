@@ -22,6 +22,7 @@ import { useDispatch, useSelector } from "react-redux";
 // getting categories action to get categories where states are active
 import { getCategoriesFromVendor } from "app/store/vendorRedux/CategoryRedux/categoryAction";
 import { TableCell, TableHead, TableRow } from "@mui/material";
+import { capital } from "app/store/capitalize/capitalizeText";
 
 // =============================================================================
 const CategoriesPageView = () => {
@@ -68,7 +69,7 @@ const CategoriesPageView = () => {
           </TableHead>
 
               <TableBody>
-                {getCategoriesState.map(category => <CategoryRow id={category.categoryid} category={category.categoryname} selected={selected} status={category.status} />)}
+                {getCategoriesState.map(category => <CategoryRow id={category.categoryid} category={dispatch(capital(category.categoryname))} selected={selected} status={dispatch(capital(category.status))} />)}
               </TableBody>
             </Table>
           </TableContainer>

@@ -28,6 +28,7 @@ import { StyledTableCell } from "pages-sections/vendor-dashboard/styles";
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { deleteProductById, getProductFromVendor } from "app/store/vendorRedux/ProductRedux/productAction";
+import { capital } from "app/store/capitalize/capitalizeText";
 // =============================================================================
 const ProductsPageView = (
 ) => {
@@ -147,7 +148,7 @@ const ProductsPageView = (
        
       </TableCell>
             </TableRow> */}
-                {products.map(product => <ProductRow productid={product.productid} name={product.productname} category={product.categoryname} categoryid={product.categoryid} subcategory={product.subcategoryname} subcategoryid={product.subcategoryid} price={product.currentprice}  slug={product.productid} status={product.status} />)}
+                {products.map(product => <ProductRow productid={product.productid} name={dispatch(capital(product.productname))} category={dispatch(capital(product.categoryname))} categoryid={product.categoryid} subcategory={dispatch(capital(product.subcategoryname))} subcategoryid={product.subcategoryid} price={product.currentprice}  slug={product.productid} status={dispatch(capital(product.status))} />)}
           </TableBody>
         </Table>
       </TableContainer>
