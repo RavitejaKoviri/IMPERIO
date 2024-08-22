@@ -29,6 +29,7 @@ import SubCategoryRow from "../subcategory-row";
 import { Card } from "@mui/material";
 import Scrollbar from "components/scrollbar/scrollbar";
 import useMuiTable from "hooks/useMuiTable";
+import { capital } from "app/store/capitalize/capitalizeText";
 
 const SubCategoriesPageView = () => {
   const [loading, setLoading] = useState(true);
@@ -291,7 +292,7 @@ const SubCategoriesPageView = () => {
             </TableHead>
 
               <TableBody>
-                {subcategories.map(subcategory => <SubCategoryRow subcategoryid={subcategory.subcategoryid} subcategory={subcategory.subcategoryname} category={subcategory.categoryname} categoryid={subcategory.categoryid} selected={selected} status={subcategory.status} />)}
+                {subcategories.map(subcategory => <SubCategoryRow subcategoryid={subcategory.subcategoryid} subcategory={dispatch(capital(subcategory.subcategoryname))} category={dispatch(capital(subcategory.categoryname))} categoryid={subcategory.categoryid} selected={selected} status={subcategory.status} />)}
               </TableBody>
             </Table>
           </TableContainer>
