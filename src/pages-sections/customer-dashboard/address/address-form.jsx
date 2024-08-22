@@ -31,16 +31,16 @@ export default function AddressForm() {
   };
 
   const VALIDATION_SCHEMA = yup.object().shape({
-    name: yup.string().required("required"),
-    address1: yup.string().required("required"),
-    city: yup.string().required("required"),
-    pincode: yup.string().required("required"),
-    state: yup.string().required("required"),
-    country: yup.string().required("required"),
+    name: yup.string().required("name is required!"),
+    address1: yup.string().required("addressr is equired!"),
+    city: yup.string().required("city is required!"),
+    pincode: yup.string().required("pincode is required!"),
+    state: yup.string().required("state is required!"),
+    country: yup.string().required("country is required!"),
     contact: yup
       .string()
       .matches(/^[6-9]\d{9}$/, "Phone number must be 10 digits")
-      .required("required"),
+      .required("phone is required"),
   });
 
   const handleSubmit = async (values, { resetForm }) => {
