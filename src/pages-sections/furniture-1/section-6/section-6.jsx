@@ -6,6 +6,7 @@ import { Carousel } from "components/carousel";
 import { H1, Paragraph } from "components/Typography";
 import { ProductCard7 } from "components/product-cards/product-card-7"; // CUSTOM DATA MODEL
 import { useState,useEffect } from "react";
+import { capital } from "app/store/capitalize/capitalizeText";
 // ====================================================
  export default function Section6(
 {
@@ -92,7 +93,7 @@ import { useState,useEffect } from "react";
           <div key={item.id} className="pt-1 pb-1">
             <ProductCard7
               id={item.productid}
-              ptitle={item.productname}
+              ptitle={dispatch(capital(item.productname))}
               price={item.currentprice}
               discount={item.originalprice}
              />

@@ -117,7 +117,6 @@ const CategoryRow = (props) => {
   <StyledTableRow tabIndex={-1} role="checkbox" >
      
       <StyledTableCell align="left">
-        <CategoryWrapper></CategoryWrapper> 
         {props.category}
       </StyledTableCell>
 

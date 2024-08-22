@@ -14,6 +14,7 @@ import Pagination from "../pagination";
 import DashboardHeader from "../dashboard-header"; // ==================================================================
 import { useDispatch, useSelector } from "react-redux";
 import { clearWishlistData, getProductInWishlist } from "app/store/wishlistRedux/wishlistActions";
+import { capital } from "app/store/capitalize/capitalizeText";
 
 // ==================================================================
 export default function WishListPageView() {
@@ -48,7 +49,7 @@ export default function WishListPageView() {
       <Grid container spacing={3}>
         {wishlistProducts.map((item) => (
           <Grid item lg={4} sm={6} xs={12} key={item.id}>
-          <ProductCard id={item.productid} slug={item.productid} title={item.productname} currentprice={item.currentprice} rating={item.rating} imgUrl={item.thumbnail} discount={item.discount} originalPrice={item.originalprice} specs={item.specification} fav={true}/>
+          <ProductCard id={item.productid} slug={item.productid} title={dispatch(capital(item.productname))} currentprice={item.currentprice} rating={item.rating} imgUrl={item.thumbnail} discount={item.discount} originalPrice={item.originalprice} specs={item.specification} fav={true}/>
           </Grid>
         ))}
       </Grid>

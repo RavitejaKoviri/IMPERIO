@@ -10,6 +10,7 @@ import Link from "next/link";
 import { Grid } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts } from "app/store/ProductsRedux/productAction";
+import { capital } from "app/store/capitalize/capitalizeText";
 
 // ====================================================
 export default function Section14({
@@ -84,7 +85,7 @@ export default function Section14({
             <ProductCard7
               slug={encode(item.productname, item.productid)}
               id={item.productid}
-              ptitle={item.productname}
+              ptitle={dispatch(capital(item.productname))}
               price={item.currentprice}
               discount={item.originalprice}
              />
