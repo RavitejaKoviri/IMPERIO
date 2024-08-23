@@ -1,4 +1,4 @@
-image: node:16
+image: node:18.17.0
 
 pipelines:
   default:
@@ -17,4 +17,4 @@ pipelines:
     - step:
         name: Deploy
         script:
-          - echo "Deploy step here (e.g., upload files to a server)"
+          - echo "Deploy step here"
