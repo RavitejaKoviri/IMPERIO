@@ -1,5 +1,5 @@
 "use client";
-import "../../../components/product-cards/product-card-7/styles/card.css";
+// import "../../../components/product-cards/product-card-7/styles/card.css";
 import Link from "next/link";
 // GLOBAL CUSTOM COMPONENTS
 import LazyImage from "components/LazyImage";
@@ -38,7 +38,7 @@ export default function ProductCard7(props) {
           /* PRODUCT IMAGE / THUMBNAIL */
         }
           <div className="img-wrapper bg-white ">
-            <LazyImage alt={props.ptitle} width={300} height={273}  src="/assets/images/furniture-products/b-3.png"/>
+            <LazyImage  className="image" alt={props.ptitle} width={300} height={273}  src="/assets/images/furniture-products/b-3.png"/>
           </div>
         </ImgBox>
       </Link>
@@ -49,9 +49,12 @@ export default function ProductCard7(props) {
           /* PRODUCT TITLE / NAME */
         }
           <Link href={`/products/${props.slug}`}>
-            <p className="pname" mb={1} ellipsis title={props.ptitle} >
-              {props.ptitle}
-            </p>
+            <div  className= "product-title">
+              <p className="pname" mb={1} ellipsis title={props.ptitle}  >
+                {props.ptitle}
+              </p>
+            </div>
+            
           </Link>
 
           {
