@@ -76,7 +76,7 @@ export default function Section13({ heading, description }) {
       {data.map(item => (
           
           <div key={item.id} className="pt-1 pb-1">
-            <ProductCard7
+            <ProductCard7 className="product-card7"
               slug={encode(item.productname, item.productid)}
               id={item.productid}
               ptitle={item.productname}
