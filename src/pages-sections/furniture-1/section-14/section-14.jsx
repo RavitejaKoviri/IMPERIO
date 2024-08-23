@@ -10,6 +10,8 @@ import Link from "next/link";
 import { Grid } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts } from "app/store/ProductsRedux/productAction";
+import '../../../components/product-cards/product-card-7/styles/card.css'
+
 
 // ====================================================
 export default function Section14({
@@ -110,4 +112,3 @@ export default function Section14({
   </Link>
 </Container>
 }
-//section-7.jsx
