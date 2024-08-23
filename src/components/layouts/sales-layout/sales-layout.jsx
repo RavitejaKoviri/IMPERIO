@@ -63,6 +63,6 @@ export default function SalesLayout(props) {
       {
       /* SMALLER DEVICE NAVIGATION */
     }
-      <MobileNavigationBar />
+      {/* <MobileNavigationBar /> */}
     </Fragment>;
 }
