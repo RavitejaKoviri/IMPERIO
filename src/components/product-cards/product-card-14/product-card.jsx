@@ -49,9 +49,12 @@ export default function ProductCard14(props) {
           /* PRODUCT TITLE / NAME */
         }
           <Link href={`/products?key=${props.id}`}>
-            <p className="pname" mb={1} ellipsis title={props.ptitle} >
+          <div className="product-title">
+          <p className="pname" mb={1} ellipsis title={props.ptitle} >
               {props.ptitle}
             </p>
+          </div>
+           
           </Link>
 
           {
