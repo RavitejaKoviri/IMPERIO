@@ -8,12 +8,15 @@ import { useEffect, useState } from "react";
 import { Navbar } from "components/navbar";
 import Section12 from "pages-sections/furniture-1/section-12";
 import './app.css';
+import Sticky from "components/sticky/Sticky";
+import { MobileNavigationBar } from "components/mobile-navigation";
 
 export default function IndexPage() {
 
     return (
     <>
-      <Header />
+      {/* <Header /> */}
+     
       <Navbar />
       <Furniture  />
       <Section12 id="contact"></Section12>
