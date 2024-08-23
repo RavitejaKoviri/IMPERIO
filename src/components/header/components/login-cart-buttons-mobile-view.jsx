@@ -49,9 +49,9 @@ export default function LoginCartButtonsMobileView({
               {/* <IconButton onClick={handleClick}>
                 <Avatar alt="Remy Sharp" src="/assets/images/avatars/001-man.svg" />
               </IconButton> */}
-                  <div style={{textAlign:'center',marginTop:'6px'}}>
+                  <div style={{textAlign:'center',justifyContent:'center',paddingBottom:'50%'}}>
                       <UserAccountPopover  username={username}/>
-                      {username&&<p style={{fontSize:"12px"}}>{username}</p>}
+                      {/* {username&&<p style={{fontSize:"12px"}}>{username}</p>} */}
                   </div>
               </div>
               :<div style={{marginBottom:'15px'}}><IconButton onClick={toggleDialog}>
