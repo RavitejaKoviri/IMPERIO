@@ -22,12 +22,13 @@ import Section9 from "../section-9/section-9";
 import Section13 from "../section-13/section-13";
 import Section14 from "../section-14/section-14";
 import Section12 from "../section-12";
+import { HomeWrapper } from "./styles";
 
 export default  function FurnitureOnePageView() {
     
 
     
-    return <div className="bg-white " style={{padding:"0% 4% 0% 4%"}}>
+    return <HomeWrapper>
         {
         /* HERO SECTION */
       }
@@ -114,7 +115,7 @@ export default  function FurnitureOnePageView() {
       {
       /* SETTINGS IS USED ONLY FOR DEMO, YOU CAN REMOVE THIS */
     }
-      <Setting />
+      {/* <Setting /> */}
 
       {/* Products */}
       <Section13 heading="PRODUCTS"/>
@@ -144,7 +145,7 @@ export default  function FurnitureOnePageView() {
   }
 
     {/* Contact-form */}
-    </div>
+    </HomeWrapper>
         {
         /* SETTINGS IS USED ONLY FOR DEMO, YOU CAN REMOVE THIS */
       }

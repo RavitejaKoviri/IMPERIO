@@ -11,7 +11,7 @@ export default function Navbar({
   elevation = 2,
   hideCategories = false
 }) {
-  return <NavBarWrapper hoverEffect={false} elevation={elevation} style={{border:'1px solid transparent',boxShadow:'none'}}>
+  return <NavBarWrapper hoverEffect={false} elevation={elevation}>
       {hideCategories ? <InnerContainer sx={{
      
     }}>
