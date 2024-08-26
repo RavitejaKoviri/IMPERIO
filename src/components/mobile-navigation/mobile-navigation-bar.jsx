@@ -7,6 +7,8 @@ import Home from "icons/Home";
 import User2 from "icons/User2";
 import CategoryOutlined from "icons/CategoryOutline";
 import ShoppingBagOutlined from "icons/ShoppingBagOutlined"; // GLOBAL CUSTOM HOOK
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+
 
 import useCart from "hooks/useCart"; // STYLED COMPONENTS
 
@@ -27,7 +29,7 @@ export default function MobileNavigationBar() {
             {title === "Cart" ? <Badge badgeContent={state.cart.length} color="primary">
                 <Icon fontSize="small" sx={iconStyle} />
               </Badge> : <Icon sx={iconStyle} fontSize="small" />}
-
+              
             {title}
           </StyledNavLink>)}
       </Wrapper>;
@@ -42,13 +44,21 @@ const list = [{
 }, {
   title: "Category",
   Icon: CategoryOutlined,
-  href: "/mobile-category-nav"
-}, {
+  href: "/products"
+}, 
+{
+  title: "WishList",
+  Icon: FavoriteBorderOutlinedIcon,
+  href: "/wish-list"
+}, 
+{
   title: "Cart",
   Icon: ShoppingBagOutlined,
   href: "/cart"
-}, {
-  title: "Account",
-  Icon: User2,
-  href: "/profile"
-}];
+}, 
+// {
+//   title: "Account",
+//   Icon: User2,
+//   href: "/profile"
+// }
+];
