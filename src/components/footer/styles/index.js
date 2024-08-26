@@ -46,3 +46,16 @@ export const Heading = styled("h6")({
   fontWeight: 600,
   marginBottom: 12
 });
+
+export const HrTag = styled("hr")({
+  marginTop:"2%",
+  marginBottom:"2%",
+  opacity:"0.2"
+})
+export const H3Tag = styled("h3")({
+  marginBottom:"20px"
+})
+
+export const ATag = styled("a")({
+  marginRight:"20px"
+})
