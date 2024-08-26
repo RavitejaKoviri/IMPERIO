@@ -12,11 +12,20 @@ import "i18n"; // IMPORT i18n SUPPORT FILE
 import { Person2Rounded } from "@mui/icons-material"; // Icon component
 import { persistor } from "./store/store";
 import store from "./store/store";
+import Header from "components/header/header";
+import Sticky from "components/sticky/Sticky";
+import { useCallback, useState } from "react";
+import SearchInput from "components/SearchInput";
+import { MobileNavigationBar } from "components/mobile-navigation";
+import MobileNavigationBar2 from "components/mobile-navigation/mobile-navigation-bar-2";
 export const openSans = Open_Sans({
   subsets: ["latin"]
 });
 
 export default function RootLayout({ children }) {
+
+  const [isFixed, setIsFixed] = useState(false);
+  const toggleIsFixed = useCallback(fixed => setIsFixed(fixed), []);
   return (
     <html lang="en" suppressHydrationWarning>
       <Provider store={store}>
@@ -26,7 +35,11 @@ export default function RootLayout({ children }) {
               <SettingsProvider>
                 <ThemeProvider>
                   <ProgressBar />
+                  <Sticky fixedOn={0} onSticky={toggleIsFixed} scrollDistance={70}>
+                    <Header isFixed={isFixed} midSlot={<SearchInput />} />
+                  </Sticky>
                   <RTL>{children}</RTL>
+                  <MobileNavigationBar/>
                 </ThemeProvider>
               </SettingsProvider>
             </CartProvider>
