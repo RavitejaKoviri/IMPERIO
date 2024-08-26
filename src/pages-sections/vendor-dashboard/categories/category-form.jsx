@@ -27,6 +27,9 @@ const CategoryForm = (props) => {
   const postVendorCategoryMessage=useSelector((state)=> state.vendorCategory.categoryPostMessage);
   const [postMessage,setPostMessage]=useState("");
   const [postCounter,setPostCounter]=useState(0);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [snackbarSeverity, setSnackbarSeverity] = useState('success');
   
   // To show Message dialog box dynamically -$sam
   useEffect(()=>{
@@ -47,23 +50,37 @@ const CategoryForm = (props) => {
     setPostMessage("");
   }
 
+  const handleSnackbarOpen = (message, severity = 'success') => {
+    setSnackbarMessage(message);
+    setSnackbarSeverity(severity);
+    setSnackbarOpen(true);
+  };
+
+  const handleSnackbarClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setSnackbarOpen(false);
+  };
+
   return (
     <Card sx={{ p: 6 }}>
       <Formik
         initialValues={initialValues}
         validationSchema={VALIDATION_SCHEMA}
         // submitting form on succesfull form filling 
-        onSubmit={async (values, { setSubmitting,resetForm }) => { 
-          // dispatching post event to vendor/Category/categoryAction.js
-          const categoryData={
-            categoryName : values.name,
-            // categoryStatus : values.parent
-          }//setting json object to post data 
-          dispatch(postCategoryFromVendor(categoryData));
-          values.name="";
-          // values.status="";
-          setPostCounter(1);
-          
+        onSubmit={async (values, { setSubmitting, resetForm }) => { 
+          const categoryData = {
+            categoryName: values.name,
+          };
+          try {
+            await dispatch(postCategoryFromVendor(categoryData));
+            handleSnackbarOpen("Category added successfully", "success");
+            resetForm();
+          } catch (error) {
+            handleSnackbarOpen("Error adding category", "error");
+          }
+          setSubmitting(false);
         }}
       >
         {({
@@ -145,6 +162,12 @@ const CategoryForm = (props) => {
           <div className="col-md-4"></div>
         </div>
       </div>
+
+      <Snackbar open={snackbarOpen} autoHideDuration={3000} onClose={handleSnackbarClose}>
+        <Alert onClose={handleSnackbarClose} severity={snackbarSeverity} sx={{ width: '100%' }}>
+          {snackbarMessage}
+        </Alert>
+      </Snackbar>
     </Card>
   );
 };
