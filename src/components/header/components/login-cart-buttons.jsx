@@ -63,7 +63,7 @@ export default function LoginCartButtons({
           <div>
             <div style={{ textAlign: 'center', marginTop: '6px' }}>
               <UserAccountPopover username={username} />
-              {username && <p style={{ fontSize: "12px" }}>{username}</p>}
+              {/* {username && <p style={{ fontSize: "12px" }}>{username}</p>} */}
             </div>
           </div>
         ) : (
