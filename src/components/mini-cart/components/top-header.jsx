@@ -15,7 +15,7 @@ export default function TopHeader({
       <FlexBox gap={1} alignItems="center" color="secondary.main">
         <CartBag color="inherit" />
 
-        <Paragraph lineHeight={0} fontWeight={600}>
+        <Paragraph lineHeight={0} fontWeight={600} style={{ paddingTop: '10px' }}>
           {total} item
         </Paragraph>
       </FlexBox>

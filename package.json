@@ -36,6 +36,7 @@
     "formik": "^2.4.6",
     "i18next": "^23.8.1",
     "install": "^0.13.0",
+    "latest": "^0.2.0",
     "libphonenumber-js": "^1.11.4",
     "lodash": "^4.17.21",
     "namer": "^0.0.0",
