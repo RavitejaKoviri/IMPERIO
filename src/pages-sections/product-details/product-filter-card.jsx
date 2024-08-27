@@ -208,7 +208,8 @@ export default function ProductFilterCard() {
               onClick={() => handleCollapseToggle(item.categoryname)}
               sx={{ padding: ".5rem 0", cursor: "pointer", color: "grey.600" }}
             >
-              <Span>{item.categoryname}</Span>
+              <Span>{item.categoryname.toUpperCase().charAt(0)+item.categoryname.slice(1)}</Span>
+
             </AccordionHeader>
             <Collapse in={collapsed[item.categoryname]}>
               {item.subcategories.map((name) => (
@@ -223,7 +224,7 @@ export default function ProductFilterCard() {
                   onClick={() =>dispatch(getProducts(name.subcategoryid))}
                   // style={{border:'1px solid black'}}
                 >
-                  {name.subcategoryname}
+                  {name.subcategoryname.toUpperCase().charAt(0)+name.subcategoryname.slice(1)}
                 </Paragraph>
               ))}
             </Collapse>

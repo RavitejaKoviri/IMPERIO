@@ -6,6 +6,8 @@ import {
   MenuItem,
   TextField,
   IconButton,
+  Snackbar,
+  Alert,
 } from "@mui/material";
 import { Formik, FieldArray } from "formik";
 import * as yup from "yup";
@@ -63,6 +65,9 @@ const ProductForm = () => {
   const getCategoriesState = useSelector((state) => state.vendorCategory.categoryList);
   const getSubCategoriesState = useSelector((state) => state.vendorSubCategory.subcategoryList);
   const colors = useSelector((state) => state.color.colorData);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
+  const [snackbarSeverity, setSnackbarSeverity] = useState("success");
 
   useEffect(() => {
     dispatch(getCategoriesFromVendor());
@@ -88,24 +93,47 @@ const ProductForm = () => {
   const handleFormSubmit = (values, { setSubmitting, resetForm }) => {
     let valuedup = { ...values };
     let specification = valuedup.specification;
-
+  
     // Convert the specification array to a string
     let specString = "";
     for (let i = 0; i < specification.length; i++) {
       specString += specification[i].name + ";";
       specString += specification[i].value + ";";
     }
-
+  
     valuedup.specification = specString;
 
 
+  
+    console.log("values", valuedup)
+  
     dispatch(postProductFromVendor(valuedup))
-
-    // Reset the form after successful submission
-    setSubmitting(false);
-    resetForm();
+      .then(() => {
+        handleSnackbarOpen("Product added successfully!");
+        // Reset the form after successful submission
+        setSubmitting(false);
+        resetForm();
+      })
+      .catch((error) => {
+        handleSnackbarOpen("Error adding product. Please try again.", "error");
+        setSubmitting(false);
+      });
   };
 
+  const handleSnackbarOpen = (message, severity = "success") => {
+    setSnackbarMessage(message);
+    setSnackbarSeverity(severity);
+    setSnackbarOpen(true);
+  };
+  
+  const handleSnackbarClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setSnackbarOpen(false);
+  };
+
+  console.log("sub categories", colors)
 
   return (
     <Card sx={{ p: 6 }}>
@@ -404,6 +432,11 @@ const ProductForm = () => {
           );
         }}
       </Formik>
+      <Snackbar open={snackbarOpen} autoHideDuration={3000} onClose={handleSnackbarClose}>
+      <Alert onClose={handleSnackbarClose} severity={snackbarSeverity} sx={{ width: '100%' }}>
+        {snackbarMessage}
+      </Alert>
+    </Snackbar>
     </Card>
   );
 };

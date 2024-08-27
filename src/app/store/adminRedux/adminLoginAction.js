@@ -1,3 +1,4 @@
+import { success } from 'theme/theme-colors';
 import * as requestFromServer from './adminLoginCrud';
 import { adminLoginAuthentication } from './adminLoginSlice'; // Ensure correct import
 
@@ -9,6 +10,9 @@ export const adminLogin = (data) => async (dispatch) => {
         // Dispatch the action with the response data
      
         dispatch(adminLoginAuthentication(responseData));
+        return {
+            success: responseData.bool
+        }
     } catch (error) {
        
     }

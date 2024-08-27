@@ -9,6 +9,7 @@ import EditAddressForm from "./edit-address-form";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteAddress } from "app/store/AddressRedux/addressAction";
 import { useSelectedLayoutSegment } from "next/navigation";
+import { capital } from "app/store/capitalize/capitalizeText";
 
 
 export default function AddressListItem({ address, handleEdit, isSelected, onClick }) {
@@ -92,9 +93,12 @@ export default function AddressListItem({ address, handleEdit, isSelected, onCli
 
         {/* <Link href={`/address/${id}`} passHref> */}
           <Box sx={{ textDecoration: 'none', color: 'inherit' }}>
-            <H6 mb={1} color="primary.main">{name}</H6>
-            <Paragraph color="text.secondary" mb={0.5}>{`${city}, ${street}, ${statename} ${pincode}`}</Paragraph>
-            <Paragraph color="text.secondary" mb={0.5}>{country}</Paragraph>
+            <H6 mb={1} color="primary.main">{name.toUpperCase().charAt(0)+name.slice(1)}</H6>
+            <Paragraph color="text.secondary" mb={0.5}>{`${city.toUpperCase().charAt(0)+city.slice(1)},
+             ${street.toUpperCase().charAt(0)+street.slice(1)},
+              ${statename.toUpperCase().charAt(0)+statename.slice(1)},
+               ${pincode}`}</Paragraph>
+            <Paragraph color="text.secondary" mb={0.5}>{dispatch(capital(country))}</Paragraph>
             <Paragraph color="text.primary" fontWeight="medium">{mobilenumber}</Paragraph>
           </Box>
         {/* </Link> */}

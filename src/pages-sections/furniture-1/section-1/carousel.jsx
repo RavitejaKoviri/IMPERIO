@@ -22,7 +22,7 @@ export default function HeroCarousel({mainCarouselData}) {
   // }
   return <Carousel dots arrows={false} slidesToShow={1} spaceBetween={0} dotStyles={COMMON_DOT_STYLES} dotColor={palette.primary.main}>
       {mainCarouselData.map(item => <div key={item.id} >
-          <ContentWrapper style={{backgroundImage:`url(${item.imgUrl})`}} >
+          <ContentWrapper >
           <Container >
               {/* <div className="carousel-content" >
                 <H6>{item.subTitle}</H6>

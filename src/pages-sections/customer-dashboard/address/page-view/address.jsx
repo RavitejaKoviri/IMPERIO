@@ -10,8 +10,7 @@ import { getAddress } from "app/store/AddressRedux/addressAction";
 import { Grid } from "@mui/material";
 
 // =======================================================
-export default function AddressPageView() 
-{
+export default function AddressPageView() {
   const [allAddress, setAllAddress] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(4); // You can adjust this as needed

@@ -11,6 +11,7 @@ import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategory } from "app/store/categoryRedux/categoryAction";
 import ProductCard14 from "components/product-cards/product-card-14/product-card";
+import { capital } from "app/store/capitalize/capitalizeText";
 
 
 // ====================================================
@@ -84,7 +85,7 @@ export default function Section9({ heading, description }) {
           <div key={item.id} className="pt-1 pb-1">
             <ProductCard14
              id={item.categoryid}
-             ptitle={item.categoryname}
+             ptitle={dispatch(capital(item.categoryname))}
              price={item.currentprice}
              discount={item.originalprice}
              />

@@ -83,10 +83,10 @@ const SizeForm = props => {
 
       <Snackbar
         open={openSnackbar}
-        autoHideDuration={6000}
+        autoHideDuration={3000}
         onClose={() => setOpenSnackbar(false)}
       >
-        <Alert onClose={() => setOpenSnackbar(false)} severity="success" sx={{marginLeft:'560px',marginBottom:'430px', width: '100%' }}>
+        <Alert onClose={() => setOpenSnackbar(false)} severity="success" >
           Size saved successfully!
         </Alert>
       </Snackbar>

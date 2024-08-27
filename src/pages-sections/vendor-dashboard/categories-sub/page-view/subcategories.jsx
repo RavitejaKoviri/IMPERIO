@@ -29,6 +29,7 @@ import SubCategoryRow from "../subcategory-row";
 import { Card } from "@mui/material";
 import Scrollbar from "components/scrollbar/scrollbar";
 import useMuiTable from "hooks/useMuiTable";
+import { capital } from "app/store/capitalize/capitalizeText";
 import Pagination from "pages-sections/customer-dashboard/pagination";
 const SubCategoriesPageView = () => {
   const [loading, setLoading] = useState(true);

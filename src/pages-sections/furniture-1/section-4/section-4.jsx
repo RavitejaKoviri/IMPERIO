@@ -5,6 +5,7 @@ import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import { H1, Paragraph } from "components/Typography";
 import { ProductCard7 } from "components/product-cards/product-card-7";
+import { capital } from 'app/store/capitalize/capitalizeText';
 
 export default function Section4() {
   const [data, setData] = useState([]);
@@ -58,7 +59,7 @@ export default function Section4() {
           <Grid key={item.id} item md={4} sm={6} xs={12}>
             <ProductCard7
               id={item.productid}
-              ptitle={item.productname}
+              ptitle={dispatch(capital(item.productname))}
               price={item.currentprice}
               discount={item.originalprice}
             />
