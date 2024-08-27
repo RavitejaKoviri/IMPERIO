@@ -57,7 +57,7 @@ export default function Section13({ heading, description }) {
     <Container>
       <p className="H1">{heading}</p>
 
-      <Carousel
+      <Carousel className="outergrid"
         responsive={responsive}
         slidesToShow={4}
         arrowStyles={{
