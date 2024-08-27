@@ -13,7 +13,7 @@ const colorSlice = createSlice({
     },
 
     getColorDetails: (state, action) => {
-      console.log(action.payload,"in slice")
+      console.log(action.payload);
       state.colorData=action.payload;
     },
   },

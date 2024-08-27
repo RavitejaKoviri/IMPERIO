@@ -1,7 +1,7 @@
 "use client";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField"; // LOCAL CUSTOM COMPONENTS
-
+import "./components/styles.css";
 import SearchResult from "./components/search-result";
 // import CategoryDropdown from "./components/category-dropdown"; // LOCAL CUSTOM HOOKS
 
@@ -154,7 +154,6 @@ export default function SearchInputWithCategory() {
         id="searchrows"
         onMouseDown={handleMouseDown}
         onClick={handlemouseclick}
-        style={{display:'none'}}
       >
         <SearchResult results={resultSearchProducts} />
       </div>

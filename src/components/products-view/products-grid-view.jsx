@@ -7,6 +7,7 @@ import ProductCard from "components/product-cards/product-card/product-card";
 import { useDispatch, useSelector } from "react-redux";
 import { clearsearchProduct } from "app/store/SearchProductRedux/searchProductSlice";
 import { getCartProducts } from "app/store/UserCartRedux/UserCartAction";
+import { capital } from "app/store/capitalize/capitalizeText";
 export default function ProductsGridView({ products }) {
   // Access the wishlist from the Redux store
   const wishlist = useSelector((state) => state.wishlist.wishlistData);
@@ -90,7 +91,7 @@ console.log("data....",data)
             <ProductCard
               id={item.productid}
               slug={encode(item.productname, item.productid)}
-              title={item.productname}
+              title={dispatch(capital(item.productname))}
               currentprice={item.currentprice}
               rating={item.overallrating}
               imgUrl={item.thumbnail}

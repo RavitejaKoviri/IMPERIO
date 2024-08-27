@@ -6,12 +6,15 @@
   import { Footer1 } from "components/footer";
   import { Navbar } from "components/navbar";
   import './app.css';
+import Sticky from "components/sticky/Sticky";
+import { MobileNavigationBar } from "components/mobile-navigation";
 
   export default function IndexPage() {
 
     return (
       <>
-        <Header />
+        {/* <Header /> */}
+     
         <Navbar />
         <Furniture />
         <Footer1 />
