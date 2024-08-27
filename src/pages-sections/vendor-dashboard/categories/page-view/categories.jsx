@@ -23,6 +23,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCategoriesFromVendor } from "app/store/vendorRedux/CategoryRedux/categoryAction";
 import { TableCell, TableHead, TableRow } from "@mui/material";
 import { capital } from "app/store/capitalize/capitalizeText";
+
+// =============================================================================
+import { capital } from "app/store/capitalize/capitalizeText";
 import Pagination from "pages-sections/customer-dashboard/pagination";
 // ====imppppppp=========================================================================
 const CategoriesPageView = () => {

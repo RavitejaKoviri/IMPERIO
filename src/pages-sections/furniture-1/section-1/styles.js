@@ -20,7 +20,7 @@ export const ContentWrapper = styled("div")(({
   backgroundSize: "cover",
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
-  // backgroundImage:"url('/assets/images/headers/furniture-1.jpg')",
+  backgroundImage:"url('/assets/images/headers/furniture-1.jpg')",
   [theme.breakpoints.down("md")]: {
     h1: {
       fontSize: 50

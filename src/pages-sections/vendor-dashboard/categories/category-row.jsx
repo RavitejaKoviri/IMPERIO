@@ -3,10 +3,11 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Avatar from "@mui/material/Avatar"; // MUI ICON COMPONENTS
 import TextField from "@mui/material/TextField";
-import MenuItem from "@mui/material";
+import MenuItem, { IconButton, Snackbar } from "@mui/material";
 import Grid from "@mui/material";
 import Edit from "@mui/icons-material/Edit";
 import Delete from "@mui/icons-material/Delete";
+import CloseIcon from '@mui/icons-material/Close';
 import RemoveRedEye from "@mui/icons-material/RemoveRedEye"; // GLOBAL CUSTOM COMPONENT
 import { Modal, Box, Typography, Button } from "@mui/material"; 
 import BazaarSwitch from "components/BazaarSwitch"; // STYLED COMPONENTS
@@ -16,6 +17,8 @@ import { Formik } from "formik";
 import { useDispatch } from "react-redux";
 import { deleteCategoryById, getCategoriesFromVendor, updateCategoryById } from "app/store/vendorRedux/CategoryRedux/categoryAction";
 import { useSelector } from "react-redux";
+import DeleteIcon from '@mui/icons-material/Delete';
+import UndoIcon from '@mui/icons-material/Undo';
 // ========================================================================
 const CategoryRow = (props) => {
   console.log(props.id,"row");
@@ -31,20 +34,23 @@ const CategoryRow = (props) => {
   const updateVendorCategoryMessage=useSelector((state)=> state.vendorCategory.categoryUpdateMessage);
   const [updateMessage,setUpdateMessage]=useState("");
   const [updateCounter,setUpdateCounter]=useState(0);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [deletedCategory, setDeletedCategory] = useState(null);
 
   
   
   // To show Message dialog box dynamically -$sam
-  useEffect(()=>{
-    // dispatch(postVendorCategory)
-    console.log(updateVendorCategoryMessage,"state update message")
-    setUpdateMessage(updateVendorCategoryMessage);
-    console.log(updateCounter,"countervalue");
-    if(updateCounter==0)
-          document.getElementById("category").style.display='none';
-    else 
-      document.getElementById("category").style.display='block';
-  },[updateVendorCategoryMessage,updateCounter])
+  // useEffect(()=>{
+  //   // dispatch(postVendorCategory)
+  //   console.log(updateVendorCategoryMessage,"state update message")
+  //   setUpdateMessage(updateVendorCategoryMessage);
+  //   console.log(updateCounter,"countervalue");
+  //   if(updateCounter==0)
+  //         document.getElementById("category").style.display='none';
+  //   else 
+  //     document.getElementById("category").style.display='block';
+  // },[updateVendorCategoryMessage,updateCounter])
  
 
   // To close dialog Box to throw message  - $sam
@@ -59,16 +65,26 @@ const CategoryRow = (props) => {
   }, 1000); 
   }
 
+
   
   // const hasSelected = selected.indexOf(name) !== -1;
-  const handleDelete=async ()=>{
-    const deleteCategory={
-      id:EditCategoryId,
+  const handleDelete = async () => {
+    const categoryToDelete = {
+      id: EditCategoryId,
+      name: props.category // Assuming you have the category name in props
+    };
+    setDeletedCategory(categoryToDelete);
+    
+    try {
+      await dispatch(deleteCategoryById({ id: EditCategoryId }));
+      setSnackbarMessage(`Category ${categoryToDelete.name} deleted`);
+      setSnackbarOpen(true);
+      setUpdateCounter(1);
+    } catch (error) {
+      setSnackbarMessage('Error deleting category');
+      setSnackbarOpen(true);
     }
-    console.log("delete",deleteCategory.id);
-    dispatch(deleteCategoryById(deleteCategory))
-    setUpdateCounter(1);
-  }
+  };
   
   const handleView = () => {
     setIsModalOpen(true); // Open modal on view button click
@@ -94,11 +110,16 @@ const CategoryRow = (props) => {
     setEditModalOpen(false); // Close modal
     };
 
-
+    const handleSnackbarClose = (event, reason) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+      setSnackbarOpen(false);
+    };
   
  
   return <>
-  <div className="container " id="category" style={{display:'none',position:'absolute',marginTop:'0%',marginLeft:'30%'}}>
+  {/* <div className="container " id="category" style={{display:'none',position:'absolute',marginTop:'0%',marginLeft:'30%'}}>
         <div className="row">
           <div className="col-md-2 "></div>
           <div className="col-md-3">
@@ -113,11 +134,10 @@ const CategoryRow = (props) => {
           </div>
           <div className="col-md-4"></div>
         </div>
-  </div>
+  </div> */}
   <StyledTableRow tabIndex={-1} role="checkbox" >
      
       <StyledTableCell align="left">
-        <CategoryWrapper></CategoryWrapper> 
         {props.category}
       </StyledTableCell>
 
@@ -210,6 +230,36 @@ const CategoryRow = (props) => {
             <Button onClick={handleEditModalClose}>Submit</Button>
           </Box>
         </Modal>
+
+        <Snackbar
+  open={snackbarOpen}
+  autoHideDuration={6000}
+  onClose={handleSnackbarClose}
+  sx={{
+    '& .MuiSnackbarContent-root': {
+      backgroundColor: '#f3722c', // Light red background
+      color: 'white', // Black text
+    }
+  }}
+  message={
+    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+      <DeleteIcon sx={{ marginRight: 1 }} />
+      <Typography variant="body2">{snackbarMessage}</Typography>
+    </Box>
+  }
+  action={
+    <>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={handleSnackbarClose}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </>
+  }
+/>
 
       </StyledTableCell>
       </StyledTableRow>

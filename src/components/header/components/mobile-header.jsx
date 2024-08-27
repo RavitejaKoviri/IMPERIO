@@ -60,16 +60,16 @@ export default function MobileHeader() {
         /* RIGHT CONTENT - LOGIN, CART, SEARCH BUTTON */
       }
         <FlexBox justifyContent="end" flex={1}>
-         <IconButton  href="/wish-list">
+         {/* <IconButton  href="/wish-list">
              <FavoriteBorderOutlinedIcon sx={ICON_COLOR}/>
-        </IconButton>
+        </IconButton> */}
          
 
-          <Badge badgeContent={state.cart.length} color="primary">
+          {/* <Badge badgeContent={state.cart.length} color="primary">
             <IconButton onClick={toggleSidenav}>
               <Icon.CartBag sx={ICON_STYLE} />
             </IconButton>
-          </Badge>
+          </Badge> */}
 
             <LoginCartButtonsMobileView toggleDialog={toggleDialog} toggleSidenav={toggleSidenav} />
 

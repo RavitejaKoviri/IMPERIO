@@ -13,7 +13,7 @@ import { H1, Paragraph, Span } from "components/Typography";
 import { FlexBox, FlexRowCenter } from "components/flex-box";
 export default function Section1() {
   return <div>
-      <Header />
+      {/* <Header /> */}
 
       <Container id="section-1" sx={{
       mt: 12,
