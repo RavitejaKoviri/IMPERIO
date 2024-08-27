@@ -29,7 +29,8 @@ import SubCategoryRow from "../subcategory-row";
 import { Card } from "@mui/material";
 import Scrollbar from "components/scrollbar/scrollbar";
 import useMuiTable from "hooks/useMuiTable";
-
+import { capital } from "app/store/capitalize/capitalizeText";
+import Pagination from "pages-sections/customer-dashboard/pagination";
 const SubCategoriesPageView = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -41,12 +42,16 @@ const SubCategoriesPageView = () => {
   const [updateStatus, setUpdateStatus] = useState("");
   const categories = useSelector((state) => state.vendorCategory.categoryList);
   const subcategories = useSelector((state) => state.vendorSubCategory.subcategoryList);
+  const [getSubCategories, setGetSubCategories] = useState(subcategories);
   const [subcategoryvalue, setsubcategoryvalue] = useState("");
   const [editStatus, setEditStatus] = useState();
   const [subcategoryIdd, setsubcategoryIdd] = useState("");
   const [categoryName, setCategoryName] = useState("");
   const [categorykeyid, setCategoryId] = useState("");
   const dispatch = useDispatch();
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const rowsPerPage = 4;
 
   // useEffect(() => {
   //   dispatch(getCategoriesFromVendor());
@@ -54,7 +59,11 @@ const SubCategoriesPageView = () => {
 
   useEffect(() => {
     dispatch(getAllSubCategoriesFromVendor());
-  }, []);
+  }, [dispatch]);
+
+  useEffect(() => {
+    setGetSubCategories(subcategories);
+  }, [subcategories]);
 
   // useEffect(() => {
   //   setMappingCategories(categories);
@@ -66,10 +75,8 @@ const SubCategoriesPageView = () => {
 
   // const handleChange = (event) => {
   //   const categorykey = event.target.value;
-  //   console.log("categorykey", categorykey);
   //   const selectedCategory = categories.find(category => category.categoryname === categorykey);
   //   if (selectedCategory) {
-  //     console.log("Selected category id:", selectedCategory.categoryid);
   //     dispatch(getSubCategoriesFromVendor(selectedCategory.categoryid));
   //     setMappedSubCategories(subcategories);
   //   }
@@ -78,7 +85,6 @@ const SubCategoriesPageView = () => {
   const handleClickChange = (val, status) => {
     setsubcategoryIdd(val);
     setUpdateStatus(status);
-    console.log("val:", val);
   };
 
   const handleEdit = () => {
@@ -105,7 +111,6 @@ const SubCategoriesPageView = () => {
       subcategorystatus: editStatus,
       categoryKey: categorykeyid,
     };
-    console.log("subdata", subdata);
     dispatch(updateSubCategoryById(subdata));
   };
 
@@ -114,7 +119,6 @@ const SubCategoriesPageView = () => {
       id: subcategoryIdd,
       parentid:categorykeyid
     };
-    console.log(deleteSubCategory)
     dispatch(deleteSubCategoryById(deleteSubCategory));
     setsubcategoryvalue("");
     setEditStatus("");
@@ -131,15 +135,24 @@ const SubCategoriesPageView = () => {
     order,
     orderBy,
     selected,
-    rowsPerPage,
+    // rowsPerPage,
     filteredList,
-    handleChangePage,
+    // handleChangePage,
     handleRequestSort
   } = useMuiTable({
     // listData: filteredCategories
   });
 
-  console.log("subcategories",subcategories)
+  const rowsLength = getSubCategories.length;
+  const indexOfLastRow = currentPage * rowsPerPage;
+  const indexOfFirstRow = indexOfLastRow - rowsPerPage;
+  const requiredRows = getSubCategories.slice(indexOfFirstRow, indexOfLastRow);
+
+  const handleChangePage = (event, page) => {
+    console.log("cateor",page)
+    setCurrentPage(page); // Pagination library often expects 0-based index
+  };
+
 
   return (
     <Box py={4}>
@@ -291,15 +304,23 @@ const SubCategoriesPageView = () => {
             </TableHead>
 
               <TableBody>
-                {subcategories.map(subcategory => <SubCategoryRow subcategoryid={subcategory.subcategoryid} subcategory={subcategory.subcategoryname} category={subcategory.categoryname} categoryid={subcategory.categoryid} selected={selected} status={subcategory.status} />)}
+                {requiredRows.map(subcategory => <SubCategoryRow subcategoryid={subcategory.subcategoryid} subcategory={subcategory.subcategoryname} category={subcategory.categoryname} categoryid={subcategory.categoryid} selected={selected} status={subcategory.status} />)}
               </TableBody>
             </Table>
           </TableContainer>
         </Scrollbar>
 
         <Stack alignItems="center" my={4}>
-          {/* <TablePagination onChange={handleChangePage} count={Math.ceil(categories.length / rowsPerPage)} /> */}
+          <Pagination
+            rowsPerPageOptions={[]}
+            component="div"
+            count={Math.ceil(rowsLength / rowsPerPage)}
+            rowsPerPage={rowsPerPage}
+            page={currentPage}
+            onChange={handleChangePage}
+          />
         </Stack>
+
       </Card>
     </Box>
   );
