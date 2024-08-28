@@ -44,7 +44,7 @@
 }
 .btn-products{
     background-color: transparent;
-    width: 30%;
+    width: 40%;
     padding:20px;
     margin:80px 35% 40px;
     font-size: large;
@@ -55,6 +55,7 @@
     text-align: center;
     justify-content: center;
     margin-right: 40px;
+    margin-left: 30%;
 
 }
 
@@ -73,13 +74,16 @@
         margin-right: 20%;
         margin-top: 20px;
     }
+    .pname {
+        margin-top: 20px;
+    }
    
 } 
 
 @media screen and (min-width: 431px) and (max-width: 765px) {
     .product-title {
         margin-left: 3%;
-        margin-top: 5px !important;
+        /* margin-top: 5px !important; */
         justify-content: center;
         align-items: center;
         text-align: center;
@@ -90,6 +94,10 @@
     .btn-products{
         font-size: 9px;
         font-weight: 600;
+        margin-top: -5px;
+        /* margin-left: 108px; */
+        align-items: center;
+        justify-content: center;
     }
     .product-title {
         margin-left: 10px;
@@ -120,44 +128,44 @@
         margin-top: -60px;
     }
     .pname {
-        margin-top: -30PX !important;
+        margin-top: -20PX !important;
     }
     
     
 }
-@media screen and (min-width: 412px) and (max-width: 914px) {
+/* @media screen and (min-width: 412px) and (max-width: 914px) {
     .product-title {
         margin-top: 20px !important;
     }
    
-}
+} */
 
-@media screen and (max-width: 1024px)  {
+/* @media screen and (max-width: 1024px)  {
     .product-title {
         margin-top: -25px;
         margin-left: 10px;
         /* margin-left: -2px; */
         /* margin-right: 10px; */
-        margin-left: 30px;
-    }
+        /* margin-left: 30px; */
+    /* } */
     
-}
-@media screen and (max-width: 430px) {
-    .pname {
+/* }  */
+/* @media screen and (max-width: 430px) {
+    /* .pname {
         margin-top: 10px !important;
-    }
-}
+    } */
+/* }  */
 
-@media screen and (max-width : 1280px) and (min-width: 800px){
-    .product-title {
+/* @media screen and (max-width : 1280px) and (min-width: 800px){
+    /* .product-title {
         margin-top: 90px;
     }
     .pname {
         margin-top: 40px !important;
-    }
-}
+    } */
+/* } */ 
 
-@media screen and (max-width: 360px) {
+/* @media screen and (max-width: 360px) {
     .product-title {
         margin-top: -20px !important;
     }
@@ -170,15 +178,18 @@
     .pname {
         margin-top: -20px;
     }
-}
-@media screen and (max-width: 540px) and (max-width: 720px) {
+} */
+
+/* @media screen and (max-width: 540px) and (max-width: 720px) {
         .product-title {
             margin-right: 36px !important;
             margin-left: 9px;
             margin-top: -80px;
             /* margin-bottom: -80px; */
-        }    
-}
+        /* }     */
+/* } */ 
+
+
 .btn-products:hover{
     background-color: #E3364E;
     color:white;
@@ -193,6 +204,95 @@
     color:rgb(0, 0, 0);
  
 }
+
+/* Mobile phones */
+@media only screen and (max-width: 480px) {
+    /* Styles for mobile phones */
+    .product-title {
+        margin-top: -20px !important;
+    }
+    .pname {
+        margin-top: -20px;
+    }
+    .product-title {
+        margin-top: -20px !important;
+    }
+    .pname {
+        margin-top: 10px !important;
+    }
+
+  }
+  
+  /* Large smartphones */
+  @media only screen and (min-width: 481px) and (max-width: 767px) {
+    /* Styles for larger smartphones */
+    .product-title {
+        margin-right: 36px !important;
+        margin-left: 9px;
+        margin-top: -80px;
+        
+    }  
+  }
+  
+  /* iPads and tablets */
+  @media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .product-title {
+        margin-top: -25px;
+        margin-left: 10px;
+        /* margin-left: -2px; */
+        /* margin-right: 10px; */
+        margin-left: 30px;
+    }
+    /* Styles for iPads and tablets */
+  }
+  .product-title {
+    margin-left: 20px;
+   margin-top: -60px;
+}
+.pname {
+   margin-top: -10px !important;
+   margin-left: -25px;
+}
+  
+  /* iPad Pro */
+  @media only screen and (min-width: 1024px) and (max-width: 1366px) {
+    .product-title {
+        margin-top: -25px;
+        margin-left: 10px;
+        
+        margin-left: 30px;
+    }
+  }
+  
+  /* Laptops and small desktops */
+  @media only screen and (min-width: 1025px) and (max-width: 1280px) {
+    /* Styles for laptops and small desktop monitors */
+    .product-title {
+        margin-left: 75px;
+        
+    }
+    .pname {
+        margin-top: 40px !important;
+    }
+  }
+  
+  /* Large desktop monitors */
+  @media only screen and (min-width: 1281px) and (max-width: 1680px) {
+    /* Styles for larger desktop monitors */
+    .product-title {
+         text-align: center; 
+        margin-top: -20px;
+    }
+  
+  }
+  
+  /* Extra large monitors */
+  @media only screen and (min-width: 1681px) {
+    /* Styles for extra large monitors */
+  }
+  
+ 
+  
 
 
   
