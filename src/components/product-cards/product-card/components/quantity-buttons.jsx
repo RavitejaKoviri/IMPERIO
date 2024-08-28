@@ -10,7 +10,6 @@ import { Paragraph } from "components/Typography"; // ==========================
 // ==============================================================
 export default function QuantityButtons(props) {
   const handleClick = ()=>{
-    console.log("in progress");
   }
   const {
     quantity,

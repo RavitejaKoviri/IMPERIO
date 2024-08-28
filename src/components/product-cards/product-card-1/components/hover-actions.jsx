@@ -17,12 +17,11 @@ export default function HoverActions({
   const dispatch = useDispatch();
   const userId=useSelector((state)=>state.user.userid)
   const handleDelete = async (productId) => {
-    console.log("hello");
-    console.log(productId);
+   
     dispatch(removeProductFromWishlist(productId,userId));
   };
   const handleclick =()=>{
-    console.log("clicked");
+    
   }
 
   return (

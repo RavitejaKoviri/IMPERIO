@@ -15,7 +15,6 @@ export default function ProductComment(props) {
     rating,
     reviewcomment
   } = props || {};
-// console.log(props);
   return (
     <Box mb={4} maxWidth={600} borderBottom="1px solid #e0e0e0"  padding={2}>
       <Box maxHeight={400} overflow="auto" css={{ '&::-webkit-scrollbar': { width: '8px' }, '&::-webkit-scrollbar-track': { background: '#f1f1f1' }, '&::-webkit-scrollbar-thumb': { background: '#888' }, '&::-webkit-scrollbar-thumb:hover': { background: '#555' } }}>

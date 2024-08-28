@@ -10,7 +10,6 @@ export default function ProductPrice({
   currentprice ,originalPrice
 })
  {
-   console.log(currentprice ,originalPrice);
   return <FlexBox alignItems="center" gap={1} mt={0.5}>
       <Paragraph fontWeight={600} color="primary.main">
         {currency(currentprice)}

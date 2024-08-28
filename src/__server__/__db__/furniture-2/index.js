@@ -7,7 +7,6 @@ export const Furniture2Endpoints = Mock => {
     try {
       return [200, newArrivalProducts];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -19,7 +18,6 @@ export const Furniture2Endpoints = Mock => {
     try {
       return [200, trendingProducts];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -29,7 +27,6 @@ export const Furniture2Endpoints = Mock => {
     try {
       return [200, db.testimonialList];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -39,7 +36,6 @@ export const Furniture2Endpoints = Mock => {
     try {
       return [200, db.serviceList];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];

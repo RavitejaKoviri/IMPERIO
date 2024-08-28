@@ -25,6 +25,6 @@ export default function OrdersPageView({
       {
       /* ORDERS PAGINATION */
     }
-      <Pagination count={5} onChange={data => console.log(data)} />
+      <Pagination count={5} onChange={data} />
     </Fragment>;
 }

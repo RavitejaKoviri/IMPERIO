@@ -9,10 +9,8 @@ const reviewSlice= createSlice({
     initialState: inintialReviews,
     reducers: {
     postReviewData : (state,action) => {
-        console.log(action.payload);
     },
     getReviewData : (state,action) => {
-        console.log("in slice",action.payload);
         state.reviewDetails = action.payload;
     } 
 }

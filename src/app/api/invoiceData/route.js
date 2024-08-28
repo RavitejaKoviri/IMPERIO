@@ -1,4 +1,3 @@
-import { log } from 'console';
 import dotenv from 'dotenv';
 import pool from 'utils/db';
 const { GET: getHandler } = require('./route.js'); 
@@ -9,11 +8,9 @@ export async function POST(req) {
     const { invoiceNumber, invoiceImage} = await req.json();
 
     // Log received data
-    console.log("Received data:", { invoiceNumber, invoiceImage});
 
     // Validate input data
     if (!invoiceNumber || !invoiceImage) {
-      console.error("Missing required fields");
       return new Response(JSON.stringify({ success: false, error: 'Missing required fields' }), {
         status: 400,
         headers: { 'Content-Type': 'application/json' },
@@ -25,8 +22,6 @@ export async function POST(req) {
 
     // Execute the query
     const response = await pool.query(sql, inputs);
-    console.log( response.rowCount);//to hold the no of rows inserted and recorded in this response
-    console.log("Data inserted successfully");
     
     
     return new Response(JSON.stringify({ success: true }), {
@@ -34,7 +29,6 @@ export async function POST(req) {
       headers: { 'Content-Type': 'application/json' },
     });
   } catch (error) {
-    console.error('Server Error:', error);
     return new Response(JSON.stringify({ success: false, error: 'Server Error', details: error.message }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },

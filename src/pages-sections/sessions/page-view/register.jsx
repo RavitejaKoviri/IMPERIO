@@ -70,7 +70,6 @@
 
 
     useEffect(()=>{
-      console.log(Registerauth)
       setValidity(Registerauth)
     },[Registerauth])
 
@@ -101,7 +100,6 @@
         })
         const result=  await response.json()
         const existedEmail = result[0].email
-        console.log(existedEmail)
         
         if (e.target.value === existedEmail){
           setEmailExist(true)
@@ -110,8 +108,7 @@
       }catch(error){
         setEmailExist(false)
        
-        console.log(e.target.value)
-        console.log("email not existed")
+
       }
   }
 
@@ -137,7 +134,7 @@
     }catch(error){
       setPhoneAlreadyExist(false)
       
-      console.log("email not existed")
+     
     }
   }
 
@@ -165,7 +162,7 @@
     const handleSubmit = async (e) => {
       e.preventDefault();
       if(values.email!=''||values.first_name!=''||values.last_name!=''||values.password!=''||values.phone_number!=''){
-        console.log("Register values",values)
+      
       dispatch(userRegister(values))
       }
       else{

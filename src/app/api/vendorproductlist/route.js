@@ -7,7 +7,6 @@ export async function GET(request) {
         return new Response(JSON.stringify(result.rows))
     }
     catch(error){
-        console.error("Error occurred:", error);
         return new Response(JSON.stringify({ success: false, error: 'Server Error', details: error.message }))
     }
 }

@@ -31,6 +31,7 @@ import Scrollbar from "components/scrollbar/scrollbar";
 import useMuiTable from "hooks/useMuiTable";
 import { capital } from "app/store/capitalize/capitalizeText";
 import Pagination from "pages-sections/customer-dashboard/pagination";
+import Pagination from "pages-sections/customer-dashboard/pagination";
 const SubCategoriesPageView = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -52,6 +53,9 @@ const SubCategoriesPageView = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const rowsPerPage = 4;
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const rowsPerPage = 4;
 
   // useEffect(() => {
   //   dispatch(getCategoriesFromVendor());
@@ -59,6 +63,11 @@ const SubCategoriesPageView = () => {
 
   useEffect(() => {
     dispatch(getAllSubCategoriesFromVendor());
+  }, [dispatch]);
+
+  useEffect(() => {
+    setGetSubCategories(subcategories);
+  }, [subcategories]);
   }, [dispatch]);
 
   useEffect(() => {

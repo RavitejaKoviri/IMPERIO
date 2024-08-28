@@ -10,18 +10,14 @@ const subcategorySlice= createSlice({
     initialState: inintialsubcategories,
     reducers: {
     postSubcategoryData : (state,action) => {
-        console.log(action.payload);
     },
     getSubcategoryData : (state,action) => {
-        console.log(action.payload);
         state.subcatgeoryDetails = action.payload;
     },
     deleteSubcategoryData : (state,action) => {
-        console.log(action.payload);
     },
     putSubcategoryData : (state,action) => {
         state.subcategoryUpdatedMessage = action.payload;
-        console.log(action.payload,"in slice");
     }   
 }
 })

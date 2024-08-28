@@ -5,7 +5,6 @@ dotenv.config();
 export async function POST(req) {
   try {
     const {id, name, address1, city, pincode, country, state, contact } = await req.json();
-    console.log(id, name, address1, city, pincode, country, state, contact);
 
     if (!id || !name || !address1 || !city || !pincode || !country || !state || !contact) {
       return new Response(JSON.stringify({ success: false, error: 'Missing required fields' }), {
@@ -39,13 +38,11 @@ export async function POST(req) {
 
 export async function GET(request) {
   const id=request.url.split("?")[1].split("=")[1]
-  // console.log(id)
   try {
 
     const Load="SELECT * FROM address where userid=$1";
 
     const result = await pool.query(Load,[id]);
-    // console.log(result.rows)
     return new Response(JSON.stringify(result.rows), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
@@ -61,7 +58,6 @@ export async function GET(request) {
 export async function DELETE(req) {
   try {
     const { id } = await req.json();
-    console.log(`Deleting address with id: ${id}`);
 
     if (!id) {
       return new Response(JSON.stringify({ success: false, error: 'ID is required' }), {

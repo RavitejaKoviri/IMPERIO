@@ -22,7 +22,6 @@ export const getSizeDetails = async (params) => {
 
 export const deleteSizeDetails = async (data) => {
   try {
-    console.log("cruddata",data);
     const response = await axios.delete(`/api/postSize?id=${data}`, data);
     return response.data;
   } catch (error) {

@@ -86,7 +86,6 @@ export default function ProfileEditForm({ user }) {
 
   const handleFormSubmit = async (values, { setSubmitting }) => {
     try {
-      console.log("Form submitted with values:", values);
       await new Promise(resolve => setTimeout(resolve, 1000));
       alert("Profile updated successfully!");
     } catch (error) {
@@ -148,7 +147,6 @@ export default function ProfileEditForm({ user }) {
 
   const handleSendOtp = async (emailType) => {
     const emailToVerify = emailType === "current" ? editValue : newEmail;
-    console.log(`Sending OTP for ${emailType} email to`, emailToVerify);
     setOtpSent(true);
   };
 

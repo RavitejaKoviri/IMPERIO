@@ -9,10 +9,8 @@ const ratingSlice= createSlice({
     initialState: inintialRatings,
     reducers: {
     postRatingData : (state,action) => {
-        console.log(action.payload);
     },
     getRatingData : (state,action) => {
-        console.log("in sliceeee",action.payload);
         state.ratingDetails = action.payload;
     } 
 }

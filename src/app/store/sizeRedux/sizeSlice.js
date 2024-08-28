@@ -9,14 +9,11 @@ const sizeSlice= createSlice({
     initialState: inintialSizes,
     reducers: {
     postSizeData : (state,action) => {
-        console.log(action.payload);
     },
     getSizeData : (state,action) => {
-        console.log(action.payload);
         state.sizeDetails = action.payload;
     },
     deleteSizeData : (state,action) => {
-        console.log(action.payload);
     }   
 }
 })

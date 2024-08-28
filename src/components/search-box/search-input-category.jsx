@@ -28,7 +28,6 @@ export default function SearchInputWithCategory() {
     setCount(1);
     document.getElementById("searchrows").style.display = "block";
     const value = e.target?.value;
-    console.log(value, "val");
     dispatch(getSearchProducts(value));
   };
 
@@ -37,17 +36,13 @@ export default function SearchInputWithCategory() {
   const [resultSearchProducts, setResultSearchProducts] = useState([]);
   const searchProducts = useSelector((state) => state.search.searchData);
   let prouductSearch = [];
-  console.log("searchProducts", searchProducts);
 
   const searchInputRef = useRef(null);
 
   useEffect(() => {
-    console.log("search Products", searchProducts);
     if (count == 0) {
-      console.log("href");
       document.getElementById("searchrows").style.display = "none";
       setResultSearchProducts(prouductSearch);
-      console.log("href", resultSearchProducts);
     }
 
     setResultSearchProducts(searchProducts);

@@ -31,7 +31,6 @@ export default function NewAddressForm({
 }) {
   const dispatch=useDispatch();
   const userid=useSelector((state)=>state.user.userid);
-  console.log(userid)
   const [openModal, setOpenModal] = useState(false);
 
   const handleCloseModal = () => setOpenModal(false);
@@ -48,8 +47,7 @@ export default function NewAddressForm({
   };
   
   const handleSubmit=(values)=>{
-    console.log("hi");
-    console.log(values)
+    
     const userData={
       name:values.name,
       city:values.city,
@@ -61,7 +59,6 @@ export default function NewAddressForm({
       state:values.state,
       id:userid
     }
-    console.log("user data",userData)
     dispatch(postAddress(userData));
   }
 

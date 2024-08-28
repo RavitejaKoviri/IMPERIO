@@ -11,7 +11,6 @@ export default function Error({
   error,
   reset
 }) {
-  console.log(error, error.message);
   return <FlexRowCenter height="100vh">
       <Card sx={{
       p: 4,
