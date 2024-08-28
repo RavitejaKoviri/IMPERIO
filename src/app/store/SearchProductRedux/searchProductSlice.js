@@ -9,7 +9,6 @@ const searchSlice = createSlice({
     initialState : initialSearchState,
     reducers : {
         searchProduct : (state,action)=>{
-            console.log("in slice",action.payload);
             state.searchData = action.payload;
         },
         clearsearchProduct:(state,action)=>{

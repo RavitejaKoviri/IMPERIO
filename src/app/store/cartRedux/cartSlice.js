@@ -9,11 +9,9 @@ const cartSlice = createSlice({
   initialState: initialCartState,
   reducers: { 
     postCartDetails: (state, action) => {
-        console.log(action.payload);
     },
 
     getCartDetails: (state, action) => {
-      console.log(action.payload,"in slice");
       state.cartData=action.payload;
     },
   },

@@ -9,7 +9,6 @@ export async function POST(request) {
         const sql="select * from users where email=$1 and password=$2";
         const result=await pool.query(sql,[umail,password]);
         const {userid,firstname,lastname,email,phonenumber}= result.rows[0];
-        console.log("hiiii",userid,firstname,email,phonenumber);
         if(result.rowCount==1)
         {
             const val = {auth:"true",id:userid,name:firstname,lname:lastname,mail:email,phnnumber:phonenumber};

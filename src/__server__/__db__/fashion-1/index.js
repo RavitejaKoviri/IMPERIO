@@ -10,7 +10,6 @@ export const Fashion1Endpoints = Mock => {
     try {
       return [200, flashItems];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -21,7 +20,6 @@ export const Fashion1Endpoints = Mock => {
     try {
       return [200, newItems];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -32,7 +30,6 @@ export const Fashion1Endpoints = Mock => {
     try {
       return [200, trendingItems];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -42,7 +39,6 @@ export const Fashion1Endpoints = Mock => {
     try {
       return [200, db.serviceList];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -52,7 +48,6 @@ export const Fashion1Endpoints = Mock => {
     try {
       return [200, db.dealOfTheWeekList];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -62,7 +57,6 @@ export const Fashion1Endpoints = Mock => {
     try {
       return [200, db.hotDealsData];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];

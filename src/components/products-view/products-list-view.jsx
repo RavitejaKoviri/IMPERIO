@@ -10,7 +10,6 @@ import { useEffect } from "react";
 export default function ProductsListView({
   products
 }) {
-    console.log("products",products)
   // Access the wishlist from the Redux store
   const wishlist = useSelector(state => state.wishlist.wishlistData);
   
@@ -19,10 +18,8 @@ export default function ProductsListView({
 
   // Effect to log changes in wishlist
   useEffect(() => {
-    console.log("Wishlist state changed", wishlist);
   }, [wishlist]);
 
-  console.log("Current wishlist:", wishlist);
 
   return <div>
       {products.map(item => 

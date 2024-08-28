@@ -14,7 +14,6 @@ const EditCategoryPageView = () => {
   };
 
 const handleFormSubmit = (values) => {
-  console.log('Submitted values:', values);
   // Here you can also set the values to the state if needed
   // setSubmittedValues(values);
 };

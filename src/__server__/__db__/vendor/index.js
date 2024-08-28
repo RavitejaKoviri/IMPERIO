@@ -8,7 +8,6 @@ export const VendorEndpoints = Mock => {
     try {
       return [200, productReviews];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -18,7 +17,6 @@ export const VendorEndpoints = Mock => {
     try {
       return [200, refundRequest];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -28,7 +26,6 @@ export const VendorEndpoints = Mock => {
     try {
       return [200, payoutRequests];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];

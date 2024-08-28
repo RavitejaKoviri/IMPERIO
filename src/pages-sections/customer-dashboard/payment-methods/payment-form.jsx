@@ -20,7 +20,6 @@ export default function PaymentForm() {
   });
 
   const handleFormSubmit = async values => {
-    console.log(values);
   };
 
   return <Formik onSubmit={handleFormSubmit} initialValues={INITIAL_VALUES} validationSchema={VALIDATION_SCHEMA}>

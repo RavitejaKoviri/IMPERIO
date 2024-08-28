@@ -11,21 +11,18 @@ export const postCategoryFromVendor=(CategoryData)=>async(dispatch)=>{
     }
     catch(error)
     {
-        console.log("failed to post in dispatch -> vendor/category/categoryAction",error);
     }
 }
 
 //HITTING GET CALL FOR CATEGORIES FOR VENDOR VIEW -$SAM
 export const getCategoriesFromVendor=()=>async(dispatch)=>{
     try{
-        console.log("hitting");
         // fetching data from crud -> route.js
         const response = await requestFromCategoryCRUD.getCategoriesData();
         dispatch(getVendorCategory(response.data));
     }catch(error)
     {
         // if failed to fetch 
-        console.log("falied to get categories {actionVendor}");
     }
 }
 
@@ -41,7 +38,6 @@ export const updateCategoryById=(updateObject)=>async(dispatch)=>{
         }
     }catch(error)
     {
-        console.log("failed updating category Vendor",error);
     }
 }
 
@@ -57,6 +53,5 @@ export const deleteCategoryById=(deleteObject)=>async(dispatch)=>{
         }
     }catch(error)
     {
-        console.log(`falied to delete in Category ${error}`);
     }
 }

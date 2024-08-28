@@ -32,16 +32,12 @@ import { useRouter } from "next/navigation";
 import { capital } from "app/store/capitalize/capitalizeText";
 
 export default function ProductIntro({ product }) {
-  console.log("this is product",typeof(product.productid));
-  console.log(product,"pr");
-  console.log(product.specification,"pr");
-  console.log("helloooo",product[0]?.overallrating);
+ 
   const router=useRouter();
   const userValid=useSelector((state)=>state.user.loginVerified)
   const [productid,setProductid]=useState(product.productid); 
   const rate = useSelector(state=>state.rating.ratingDetails)
   const [overallRating,setOverallRating]= useState(rate);
-  console.log(productid,"this is product id")
   useEffect(()=>{
      
   },[rate])
@@ -68,13 +64,12 @@ export default function ProductIntro({ product }) {
   const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
   const imageRef = useRef(null);
   const dispatch1=useDispatch();
-  // console.log(rate,"finallllllll")
+  
 
   const handleChangeVariant = (variantName, value) => () => {
     setSelectVariants(state => ({ ...state, [variantName.toLowerCase()]: value }));
   };
   const cartItem = state.cart.find(item => item.id === productid);
-  console.log(cartItem)
 
 
   const handleCartAmountChange = amount => () => {
@@ -141,7 +136,6 @@ export default function ProductIntro({ product }) {
 
 
   useEffect(()=>{
-    console.log("welcome");
      dispatch1(getRating(productid));
   },[overallRating])
 
@@ -166,9 +160,7 @@ export default function ProductIntro({ product }) {
   const color_id=product.colorids.split(",");
   const color_name=product.colornames.split(",");
   const color_code=product.colorcodes.split(",");
-  console.log("color id",color_id)
-  console.log("color name",color_name)
-  console.log("color code",color_code)
+ 
   return (
     <Box width="100%">
       <Grid container spacing={12} padding="5% 5% 0% 5%" >

@@ -15,6 +15,7 @@ import ColorsRow from "../colors-row";
 import SearchArea from "../../search-box";
 import { tableHeading } from "../table-heading";
 import Pagination from "pages-sections/customer-dashboard/pagination";
+import Pagination from "pages-sections/customer-dashboard/pagination";
 const ColorsPageView = (colors) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -61,7 +62,6 @@ const ColorsPageView = (colors) => {
   const requiredRows = filteredList.slice(indexOfFirstRow, indexOfLastRow);
 
   const handleChangePage = (event, page) => {
-    console.log("cateor",page)
     setCurrentPage(page); // Pagination library often expects 0-based index
   };
 

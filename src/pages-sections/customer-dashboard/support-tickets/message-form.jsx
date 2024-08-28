@@ -20,7 +20,7 @@ export default function MessageForm() {
     initialValues,
     validationSchema,
     onSubmit: values => {
-      console.log(values);
+     
     }
   });
   return <form onSubmit={handleSubmit}>

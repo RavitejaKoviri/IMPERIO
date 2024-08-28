@@ -13,7 +13,6 @@ import { capital } from "app/store/capitalize/capitalizeText";
 export default function UserAnalytics({
   user
 }) {
-  console.log(user)
   const INFO_LIST = [{
     title: "16",
     subtitle: "All Orders"

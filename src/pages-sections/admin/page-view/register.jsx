@@ -80,7 +80,6 @@ const RegisterPageView = () => {
     }
 
     // try {
-    //   console.log(values)
     //   const response = await fetch('/api/postnewdata', {
     //     method: 'POST',
     //     headers: {
@@ -90,7 +89,6 @@ const RegisterPageView = () => {
     //   });
 
     //   const result = await response.json();
-    //   console.log("API response:", result);
 
     //   if (response.ok) {
     //   } else {

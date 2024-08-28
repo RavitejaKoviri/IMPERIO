@@ -1,4 +1,3 @@
-import { log } from 'console';
 import dotenv from 'dotenv';
 import pool from 'utils/db';
 dotenv.config();
@@ -21,7 +20,6 @@ export async function POST(req) {
     } = await req.json();
 
     if (!invoicenumber || !productname || !remainingquantity || !marginprice || !originalprice || !discount || !profit || !sellingprice || !quantity) {
-      console.error("Missing required fields");
       return new Response(JSON.stringify({ success: false, error: 'Missing required fields' }), {
         status: 400,
         headers: { 'Content-Type': 'application/json' },
@@ -36,8 +34,7 @@ export async function POST(req) {
     // Execute the query
     
 
-    console.log( response.rowCount);//to hold the no of rows inserted and recorded in this response
-    console.log("Data inserted successfully");
+ 
     
     
     return new Response(JSON.stringify({ success: true }), {
@@ -45,7 +42,6 @@ export async function POST(req) {
       headers: { 'Content-Type': 'application/json' },
     });
   } catch (error) {
-    console.error('Server Error:', error);
     return new Response(JSON.stringify({ success: false, error: 'Server Error', details: error.message }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },
@@ -57,7 +53,6 @@ export async function POST(req) {
 //   try {
 //     // const resUrl=request.url.split('?')[1].split('=')[1];
 //     const resUrl=request.url.split('?')[1].split('=');
-//     console.log("url",resUrl);
 //     const Load="SELECT * FROM invoices order by id desc limit 10";
 //     // let updated="select * from invoices order by id desc limit 1";
 //     // let resQuery = (resUrl === "onLoad") ? Load : updated;

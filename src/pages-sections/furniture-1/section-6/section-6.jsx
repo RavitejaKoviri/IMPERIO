@@ -40,7 +40,6 @@ import { capital } from "app/store/capitalize/capitalizeText";
           method: 'GET'
         });
 
-        //console.log(await response.json());
         const productData = await response.json();
         
         setData(productData);

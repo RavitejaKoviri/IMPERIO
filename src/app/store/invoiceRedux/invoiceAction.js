@@ -2,7 +2,6 @@ import * as requestFromServer from './invoiceCRUD';
 import { postInvoiceDetails,getInvoiceDetails } from './invoiceSlice'; // Ensure correct import
 
 export const postInvoice = (data) => async (dispatch) => {
-    // console.log(data);
     try {
         const response = await requestFromServer.postInvoiceData(data);
         // Dispatch the action with the response data
@@ -13,7 +12,6 @@ export const postInvoice = (data) => async (dispatch) => {
 };
 
 export const getInvoice = () => async (dispatch) => {
-    // console.log(data);
     try {
         const response = await requestFromServer.getInvoiceData();
         // Dispatch the action with the response data
@@ -24,7 +22,6 @@ export const getInvoice = () => async (dispatch) => {
 };
 
 // export const adminLogout=()=>(dispatch)=>{
-//     // console.log('thank you for logout')
 //     const { data: responseData } = false;
 //     dispatch(adminLoginAuthentication(responseData));
 // }

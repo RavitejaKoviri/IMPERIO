@@ -18,7 +18,7 @@ export default function Section4() {
           method: 'GET'
         });
 
-        //console.log(await response.json());
+      
         const productData = await response.json();
         
         setData(productData);
@@ -29,7 +29,7 @@ export default function Section4() {
 
     fetchData();
   }, []);
-  console.log(data);
+ 
   const [visibleProducts, setVisibleProducts] = useState(6); // Initial number of visible products
 
   const loadMore = () => {

@@ -61,16 +61,14 @@ export default function ProductSearchPageView() {
   // const allProducts = useSelector((state)=>state.productBySubCategory.productsBasedOnSubcategories);
   const [alProducts,setAlProducts] = useState([]);
   const searchParams=useSearchParams();
-  // console.log("params",params);
   const key = searchParams.get('key');
-  console.log("key",key)
   const cartData = useSelector((state) => state.cartModified.cartData);
-  useEffect(()=>{console.log("changing",cartData)},[cartData]);
+  useEffect(()=>{
+    
+  },[cartData]);
 
-  // console.log("all products",allProducts);
   const dispatch=useDispatch();
   useEffect(()=>{
-    console.log(productBysub,"sam");
     setData(productBysub);
     // setAlProducts(allProducts);
   },[productBysub])
@@ -86,7 +84,6 @@ export default function ProductSearchPageView() {
     dispatch(getAllProducts(key));
   }, []);
 
-  console.log("data",data)
 
   return (
     <Container className="mt-2 mb-3">

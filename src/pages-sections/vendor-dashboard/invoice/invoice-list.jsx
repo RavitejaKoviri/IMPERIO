@@ -31,7 +31,6 @@ const InvoiceList = (props) => {
     //       },
     //     });
     //     const result = await response.json();
-    //     console.log("API response:", result);
     //     setInvoices(result);
     //   } catch (error) {
     //     console.error("Error fetching invoices:", error);
@@ -40,7 +39,6 @@ const InvoiceList = (props) => {
 
     // fetchInvoices();
   }, []);
-  // console.log("res" + updateResult);
 
   // useEffect(() => {
   //   dispatch(getInvoice());

@@ -91,7 +91,6 @@ const SubCategoryForm = ({
         initialValues={initialValues}
         validationSchema={VALIDATION_SCHEMA}
         onSubmit={(values) => {
-          console.log("hi")
           const subCategoryData = {
             categoryId: values.parent,
             subcategoryName: values.subCategoryName,
@@ -193,14 +192,16 @@ const SubCategoryForm = ({
         <div className="row">
           <div className="col-md-4"></div>
           <div className="col-md-4">
-            <div className="row">
-              <div className="col-md-10">
+          <div style={containerStyle}>
+            <div style={messageBoxStyle}>
+              <span style={messageTextStyle}>
                 {postMessage}
-              </div>
-              <div className="col-md-2">
-                <h6 onClick={removePostMessage} style={{ cursor: 'pointer' }}>x</h6>
-              </div>
+              </span>
+              <span style={messageCloseStyle} onClick={removePostMessage}>
+                &times;
+              </span>
             </div>
+          </div>
           </div>
           <div className="col-md-4"></div>
         </div>

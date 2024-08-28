@@ -40,7 +40,6 @@ export default function CheckoutForm() {
   };
 
   const handleFormSubmit = async values => {
-    console.log(values);
     router.push("/payment");
   };
 
