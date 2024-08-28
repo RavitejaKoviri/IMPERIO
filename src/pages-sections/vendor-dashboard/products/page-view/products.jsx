@@ -30,6 +30,7 @@ import { useRouter } from "next/navigation";
 import Pagination from "pages-sections/customer-dashboard/pagination";
 import { deleteProductById, getProductFromVendor } from "app/store/vendorRedux/ProductRedux/productAction";
 import { capital } from "app/store/capitalize/capitalizeText";
+import { capital } from "app/store/capitalize/capitalizeText";
 // =============================================================================
 const ProductsPageView = (
 ) => {
