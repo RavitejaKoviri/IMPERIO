@@ -24,7 +24,8 @@ import { getCategoriesFromVendor } from "app/store/vendorRedux/CategoryRedux/cat
 import { TableCell, TableHead, TableRow } from "@mui/material";
 
 // =============================================================================
- import Pagination from "pages-sections/customer-dashboard/pagination";
+import { capital } from "app/store/capitalize/capitalizeText";
+import Pagination from "pages-sections/customer-dashboard/pagination";
 // ====imppppppp=========================================================================
 const CategoriesPageView = () => {
   const dispatch = useDispatch();
