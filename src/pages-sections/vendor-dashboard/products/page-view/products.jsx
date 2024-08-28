@@ -27,6 +27,7 @@ import { getProduct, getProductById } from "app/store/vendorProductRedux/product
 import { StyledTableCell } from "pages-sections/vendor-dashboard/styles";
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from "@mui/material";
 import { useRouter } from "next/navigation";
+import Pagination from "pages-sections/customer-dashboard/pagination";
 import { deleteProductById, getProductFromVendor } from "app/store/vendorRedux/ProductRedux/productAction";
 import { capital } from "app/store/capitalize/capitalizeText";
 // =============================================================================
@@ -41,12 +42,13 @@ const ProductsPageView = (
   const[subcat,setSubCat]=useState("");
   const[price,setPrice]=useState("");
   const products = useSelector((state)=>state.vendorProduct.productList);
+  const [currentPage,setCurrentPage] = useState(1);
+  const productsPerPage = 1;
   useEffect(() => {
     dispatch(getProductFromVendor());
   },[]);
 
    const handelProduct =(e)=>{
-    console.log(e.target.value);
     for(let i=0;i<products.length;i++)
       {
         if(products[i].productid==e.target.value) {
@@ -65,11 +67,18 @@ const ProductsPageView = (
   };
 
   const handleClickDelete=()=>{
-    console.log("hi",productid)
     dispatch(deleteProductById(productid))
   }
+
+  const productsLength = products.length;
+  const indexOfLastRow = currentPage * productsPerPage;
+  const indexOfFirstRow = indexOfLastRow - productsPerPage;
+  const requiredProducts = products.slice(indexOfFirstRow, indexOfLastRow);
+
+  const handleChangePage = (event, page) => {
+    setCurrentPage(page); // Pagination library often expects 0-based index
+  };
   
-  console.log("products",products)
   return <Box py={4}>
       <H3 mb={2}>Product List</H3>
 
@@ -148,10 +157,12 @@ const ProductsPageView = (
        
       </TableCell>
             </TableRow> */}
-                {products.map(product => <ProductRow productid={product.productid} name={dispatch(capital(product.productname))} category={dispatch(capital(product.categoryname))} categoryid={product.categoryid} subcategory={dispatch(capital(product.subcategoryname))} subcategoryid={product.subcategoryid} price={product.currentprice}  slug={product.productid} status={dispatch(capital(product.status))} />)}
+                {requiredProducts.map(product => <ProductRow productid={product.productid} name={product.productname} category={product.categoryname} categoryid={product.categoryid} subcategory={product.subcategoryname} subcategoryid={product.subcategoryid} price={product.currentprice}  slug={product.productid} status={product.status} />)}
           </TableBody>
         </Table>
       </TableContainer>
+      <Pagination count={Math.ceil(productsLength/productsPerPage)} onChange={handleChangePage} page={currentPage} />
+
     </Box>;
 };
 
