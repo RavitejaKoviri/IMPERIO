@@ -38,7 +38,7 @@ const ValidationForm = () => {
   },[isValid])
 
   useEffect(() => {
-    console.log(otpVerified)
+   
     if (otpVerified) {
       router.push('/login');
     }
@@ -69,8 +69,7 @@ const ValidationForm = () => {
           dispatch(mobileValidation(values.emailOrMobile))
       else
       {
-          console.log("hi")
-          console.log(values)
+        
           dispatch(otpVerification(values))
       }
     },

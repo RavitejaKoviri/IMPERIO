@@ -17,17 +17,14 @@ export async function GET(req) {
     let  placeHolders=[];
     if(param=="products")
     {
-    console.log("hi")
     url="SELECT products.*,ratings.overallrating FROM products left join ratings on products.productid=ratings.productid where products.status='active'";
     placeHolders=[]
     }
     else
     {
-      console.log("hi else")
       url="SELECT products.*,ratings.overallrating FROM products left join ratings on products.productid=ratings.productid where products.categoryid=$1";
       placeHolders=[param];
     }
     let result = await pool.query(url,placeHolders);
-    console.log("result...rows",result.rowCount);
     return NextResponse.json(result.rows);
 }

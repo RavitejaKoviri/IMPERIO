@@ -40,9 +40,9 @@ export default function Section10({
   //         method: 'GET'
   //       });
 
-  //       //console.log(await response.json());
+  //     
   //       const productData = await response.json();
-  //       console.log(productData);
+  //    
   //       setData(productData);
   //     } catch (error) {
   //       console.error("Error fetching data:", error);

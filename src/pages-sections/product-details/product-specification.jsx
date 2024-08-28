@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import { capital } from "app/store/capitalize/capitalizeText";
 
 export default function ProductSpecifications(props) {
-  console.log("specifications",props.names)
   const specifications=props.names;
   const [capitalizedSpecs, setCapitalizedSpecs] = useState([]);
 

@@ -14,7 +14,6 @@ export const Fashion2Endpoints = Mock => {
     try {
       return [200, bestSellingProducts];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -25,7 +24,6 @@ export const Fashion2Endpoints = Mock => {
     try {
       return [200, featureProducts];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -36,7 +34,6 @@ export const Fashion2Endpoints = Mock => {
     try {
       return [200, saleProducts];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -47,7 +44,6 @@ export const Fashion2Endpoints = Mock => {
     try {
       return [200, latestProducts];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -58,7 +54,6 @@ export const Fashion2Endpoints = Mock => {
     try {
       return [200, bestWeekProducts];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -69,7 +64,6 @@ export const Fashion2Endpoints = Mock => {
     try {
       return [200, popularProducts];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -80,7 +74,6 @@ export const Fashion2Endpoints = Mock => {
     try {
       return [200, db.articles];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -91,7 +84,6 @@ export const Fashion2Endpoints = Mock => {
     try {
       return [200, db.serviceList];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -102,7 +94,6 @@ export const Fashion2Endpoints = Mock => {
     try {
       return [200, db.categories];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -113,7 +104,6 @@ export const Fashion2Endpoints = Mock => {
     try {
       return [200, db.mainCarouselData];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -124,7 +114,6 @@ export const Fashion2Endpoints = Mock => {
     try {
       return [200, db.brandList];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];

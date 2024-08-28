@@ -11,7 +11,6 @@ const cartSlice = createSlice({
     reducers:{
         getCartProductsData : (state,action)=>{
             state.cartData=action.payload;
-            console.log("instate cart",state.cartData);
         }
     }
 })

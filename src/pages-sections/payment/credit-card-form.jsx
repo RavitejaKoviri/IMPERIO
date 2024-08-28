@@ -45,7 +45,6 @@ export default function CreditCardForm() {
 
   const handleFormSubmit = values => {
     router.push("/payment");
-    console.log(values);
   };
 
   return <Formik onSubmit={handleFormSubmit} initialValues={INITIAL_VALUES} validationSchema={VALIDATION_SCHEMA}>

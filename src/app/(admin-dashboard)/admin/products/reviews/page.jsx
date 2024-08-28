@@ -19,6 +19,5 @@ export default async function ProductReviews() {
     dispatch(getReview("AllProducts"));
   }, []);
   const reviews = useSelector((state)=>state.review.reviewDetails);
-  console.log("reviews",reviews);
   return <ProductReviewsPageView reviews={reviews} />;
 }

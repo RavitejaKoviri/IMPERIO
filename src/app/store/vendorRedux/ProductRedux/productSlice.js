@@ -15,7 +15,6 @@ const vendorProductSlice = createSlice({
             state.productPostMessage=action.payload;
         },
         getVendorProduct: (state,action)=>{
-            console.log("sliced");
             state.productList=action.payload;
         },
         updateVendorProduct:(state,action)=>{

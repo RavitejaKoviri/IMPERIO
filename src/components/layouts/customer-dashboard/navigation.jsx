@@ -24,7 +24,6 @@ import { MainContainer, StyledNavLink } from "./styles";
 export default function Navigation() {
   const address = useSelector((state) => state.address.addressDetails);
   const addressCount = address.length;
-  console.log("address count", addressCount);
 
   const pathname = usePathname();
 

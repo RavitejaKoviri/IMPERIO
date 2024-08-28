@@ -23,7 +23,6 @@ export default function AccountPopover() {
   const dispatch=useDispatch();
   const open = Boolean(anchorEl);
   const handleLogout=()=>{
-    // console.log("thankyou")
     dispatch(adminLogout())
   }
   const handleClose = () => setAnchorEl(null);

@@ -46,7 +46,7 @@ const ContactForm = () => {
     setStatus('loading');
     try {
       const response = await axios.post('/api/ContactApi', formData);
-      console.log(response.data);
+    
       setStatus('succeeded');
       setFormData({ firstName: '', lastName: '', email: '', message: '' }); // Reset form after successful submission
     } catch (err) {

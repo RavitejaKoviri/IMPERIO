@@ -77,7 +77,6 @@ export default function ProductFilterCard() {
         });
   
         const result = await response.json();
-        console.log("GET API response:", result);
   
         if (response.ok) {
           setColorData(result.data);
@@ -157,7 +156,6 @@ export default function ProductFilterCard() {
         }
 
         const result = await response.json();
-        console.log("API response:", result);
         setSubcategories(result);
       } catch (error) {
         console.error("Error fetching subcategories:", error);
@@ -191,13 +189,9 @@ export default function ProductFilterCard() {
     }
   }, [subcategories]);
 
-  console.log(mappingCategories,"mapping categories");
-  console.log(categoryList);
-  console.log(subcategories);
-
+  
 
   const getid=(id)=>{
-    console.log(id,"hi hello");
   }
 
   return (

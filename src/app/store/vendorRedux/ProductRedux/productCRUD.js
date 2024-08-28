@@ -14,6 +14,5 @@ export const updateProductsDataById=async(data)=>{
 }
 
 export const deleteProductData=async(id)=>{
-        console.log("id in crud",id)
         return await axios.delete(`/api/VendorAPIRoutes/Product?key=${id}`);
 }

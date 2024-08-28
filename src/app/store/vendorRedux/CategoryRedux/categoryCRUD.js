@@ -17,6 +17,5 @@ export const updateCategoriesData=async(updateObject)=>{
 
 // delete categories By id
 export const deleteCategoriesData=async(deleteObject)=>{
-        console.log("incrud",deleteObject);
         return await axios.delete(`/api/VendorAPIRoutes/Category?id=${deleteObject.id}`,deleteObject);
 }

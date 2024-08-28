@@ -29,7 +29,6 @@ const Wrapper = styled(Card)({
 
 // ===========================================================
 export default function ProductCard9(props) {
-  console.log(props)
   const {
     imgUrl,
     title,

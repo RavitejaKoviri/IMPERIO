@@ -21,7 +21,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import UndoIcon from '@mui/icons-material/Undo';
 // ========================================================================
 const CategoryRow = (props) => {
-  console.log(props.id,"row");
   const dispatch=useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditModalOpen, setEditModalOpen] = useState(false);
@@ -57,7 +56,6 @@ const CategoryRow = (props) => {
   const removePostMessage=()=>{ 
     
     setUpdateCounter(0);
-    // console.log("deleted")
     document.getElementById("category").style.display='none';
     setUpdateMessage("");
     setTimeout(() => {
@@ -106,7 +104,6 @@ const CategoryRow = (props) => {
     }
     dispatch(updateCategoryById(updateCategory));
     setUpdateCounter(1);
-    console.log("update Category Object",updateCategory);
     setEditModalOpen(false); // Close modal
     };
 

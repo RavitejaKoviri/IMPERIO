@@ -18,7 +18,6 @@ export const AdminDashboardEndpoints = Mock => {
     try {
       return [200, cardList];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -28,7 +27,6 @@ export const AdminDashboardEndpoints = Mock => {
     try {
       return [200, recentPurchase];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -38,7 +36,6 @@ export const AdminDashboardEndpoints = Mock => {
     try {
       return [200, stockOutProducts];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -49,7 +46,6 @@ export const AdminDashboardEndpoints = Mock => {
     try {
       return [200, products];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -59,7 +55,6 @@ export const AdminDashboardEndpoints = Mock => {
     try {
       return [200, categories];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -69,7 +64,6 @@ export const AdminDashboardEndpoints = Mock => {
     try {
       return [200, brands];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -79,7 +73,6 @@ export const AdminDashboardEndpoints = Mock => {
     try {
       return [200, reviews];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -90,7 +83,6 @@ export const AdminDashboardEndpoints = Mock => {
     try {
       return [200, orders];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -105,7 +97,6 @@ export const AdminDashboardEndpoints = Mock => {
 
       return [200, orders[0]];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -115,7 +106,6 @@ export const AdminDashboardEndpoints = Mock => {
     try {
       return [200, customers];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -125,7 +115,6 @@ export const AdminDashboardEndpoints = Mock => {
     try {
       return [200, refundRequest];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -135,7 +124,6 @@ export const AdminDashboardEndpoints = Mock => {
     try {
       return [200, sellers];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -145,7 +133,6 @@ export const AdminDashboardEndpoints = Mock => {
     try {
       return [200, packagePayments];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -155,7 +142,6 @@ export const AdminDashboardEndpoints = Mock => {
     try {
       return [200, earningHistory];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -165,7 +151,6 @@ export const AdminDashboardEndpoints = Mock => {
     try {
       return [200, payouts];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -175,7 +160,6 @@ export const AdminDashboardEndpoints = Mock => {
     try {
       return [200, payoutRequests];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];

@@ -8,7 +8,6 @@ export const Gadget2Endpoints = Mock => {
     try {
       return [200, db.serviceList];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -23,7 +22,6 @@ export const Gadget2Endpoints = Mock => {
     try {
       return [200, bestSellerProducts];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -33,7 +31,6 @@ export const Gadget2Endpoints = Mock => {
     try {
       return [200, newArrivalProducts];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -43,7 +40,6 @@ export const Gadget2Endpoints = Mock => {
     try {
       return [200, db.blogs];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];

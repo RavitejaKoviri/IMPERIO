@@ -45,11 +45,7 @@ const ProductReviewsPageView = (
   const review1 = useSelector(state => state.review.reviewDetails);
   const username = useSelector(state =>state.user.username);
   const product = useSelector(state=>state.product.productData);
-  // console.log(review1);
-  console.log("hoyaaaaa",username);
-  // console.log("review product data in",product);
 
-  // console.log("rrr",reviews);
   // RESHAPE THE REVIEW LIST BASED TABLE HEAD CELL ID
   const filteredReviews = reviews.reviews.map(item => ({
     id: item.reviewid,

@@ -10,7 +10,6 @@ export const UserAddressEndpoints = Mock => {
     try {
       return [200, addressList];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -26,7 +25,6 @@ export const UserAddressEndpoints = Mock => {
       }));
       return [200, ids];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -42,7 +40,6 @@ export const UserAddressEndpoints = Mock => {
 
       return [200, addressList[0]];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];

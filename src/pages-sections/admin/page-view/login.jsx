@@ -44,13 +44,11 @@ const LoginPageView = ({ closeDialog }) => {
     initialValues,
     validationSchema,
     // onSubmit: values => {
-    //   console.log(values);
     //   closeDialog?.();
     // }
   });
   const handleAdminSubmit = (e) => {
     e.preventDefault();
-    // console.log(values);
     // const adminDetails={
     //   email:values.email,
     //   password:values.password

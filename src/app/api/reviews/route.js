@@ -33,22 +33,18 @@ export async function POST(req) {
 
 export async function GET(req) {
   try {
-    console.log(req.url,"request url");
     const productId=req.url.split("?")[1];
     let result;
     if(productId!="AllProducts")
     {
-      console.log("if");
     const sql='select  productname,reviewcomment,reviews.userid,users.firstname,rating from reviews join products on products.productid = reviews.productid join users on users.userid = reviews.userid where products.productid=$1 order by reviewid DESC';
      result = await pool.query(sql,[productId]);
     }
     else
     {
-      console.log("else block");
       const sql='select firstname,reviewcomment,reviews.productid,products.productname  from reviews join users on users.userid = reviews.userid join products ON products.productid = reviews.productid';
       result = await pool.query(sql);
     }
-    console.log("in route",result);
     return new Response(JSON.stringify(result.rows), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },

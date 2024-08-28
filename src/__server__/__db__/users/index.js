@@ -8,7 +8,6 @@ export const UsersEndpoints = Mock => {
     try {
       return [200, users];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -18,7 +17,6 @@ export const UsersEndpoints = Mock => {
     try {
       return [200, users[0]];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
@@ -33,7 +31,6 @@ export const UsersEndpoints = Mock => {
       }));
       return [200, idList];
     } catch (err) {
-      console.error(err);
       return [500, {
         message: "Internal server error"
       }];
