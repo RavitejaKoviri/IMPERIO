@@ -41,14 +41,15 @@ export async function GET(request) {
   } 
 
   export async function PATCH(request){
-    const param = request.url.split('=')[1];
-    const {newPassword} = await request.json(); 
-    if (param === "updatepassword"){
+    const newPassword = request.url.split('?')[2].split('=')[1];
+    const phoneNumber = request.url.split('?')[3].split('=')[1];
+    console.log(phoneNumber,newPassword);
+  
       try{
 
         const sql='UPDATE users SET password=$1 WHERE phonenumber=$2';
       
-        const result = await pool.query(sql,[newPassword,"8309053400"]);
+        const result = await pool.query(sql,[newPassword,phoneNumber]);
         console.log(result)
         return new Response(JSON.stringify(result.rows), {
           status: 200,
@@ -61,4 +62,4 @@ export async function GET(request) {
         });
     }
   }
-  }
+  
