@@ -268,7 +268,7 @@
   @media only screen and (min-width: 1025px) and (max-width: 1280px) {
     /* Styles for laptops and small desktop monitors */
     .product-title {
-        margin-left: 75px;
+        margin-left: 85px;
         
     }
     .pname {
@@ -281,15 +281,32 @@
     /* Styles for larger desktop monitors */
     .product-title {
          text-align: center; 
-        margin-top: -20px;
+        margin-top: -10px;
+        margin-left: 70px;
     }
-  
   }
+
   
   /* Extra large monitors */
   @media only screen and (min-width: 1681px) {
     /* Styles for extra large monitors */
+    .pname {
+        margin-left: 20px;
+    }
+    .product-title {
+        margin-left: 20px;
+    }
   }
+
+  @media only screen and (min-width: 2560px) {
+    .product-title {
+        margin-left: 20px;
+    }
+    .pname {
+        margin-left: 40px;
+        
+    }
+}
   
  
   
