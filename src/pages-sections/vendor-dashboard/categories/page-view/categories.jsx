@@ -22,7 +22,6 @@ import { useDispatch, useSelector } from "react-redux";
 // getting categories action to get categories where states are active
 import { getCategoriesFromVendor } from "app/store/vendorRedux/CategoryRedux/categoryAction";
 import { TableCell, TableHead, TableRow } from "@mui/material";
-import { capital } from "app/store/capitalize/capitalizeText";
 
 // =============================================================================
 import { capital } from "app/store/capitalize/capitalizeText";
