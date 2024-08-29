@@ -192,12 +192,12 @@ const SubCategoryForm = ({
         <div className="row">
           <div className="col-md-4"></div>
           <div className="col-md-4">
-          <div style={containerStyle}>
-            <div style={messageBoxStyle}>
-              <span style={messageTextStyle}>
+          <div >
+            <div >
+              <span >
                 {postMessage}
               </span>
-              <span style={messageCloseStyle} onClick={removePostMessage}>
+              <span onClick={removePostMessage}>
                 &times;
               </span>
             </div>
