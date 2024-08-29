@@ -20,8 +20,6 @@ const ProductCreatePageView = () => {
   };
 
   // const handleFormSubmit = values => {
-  //   console.log(values);
-  //   console.log("shek",values.specifications);
     
   //   };
   

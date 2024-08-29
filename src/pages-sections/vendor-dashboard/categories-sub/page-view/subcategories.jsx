@@ -61,6 +61,8 @@ const SubCategoriesPageView = () => {
     dispatch(getAllSubCategoriesFromVendor());
   }, [dispatch]);
 
+
+
   useEffect(() => {
     setGetSubCategories(subcategories);
   }, [subcategories]);

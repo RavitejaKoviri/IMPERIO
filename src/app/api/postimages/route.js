@@ -9,9 +9,7 @@ export async function POST(req) {
     const sql = `INSERT INTO images (imgurl1,imgurl2,imgurl3,imgurl4,imgurl5,imgurl6) VALUES ($1, $2, $3, $4, $5,$6)`;
   const inputs = [imageUrls[0],imageUrls[1],imageUrls[2],imageUrls[3],imageUrls[4],imageUrls[5]]
     
-    console.log(imageUrls)
     const result = await pool.query(sql,inputs);
-    console.log(result);
     return new Response(JSON.stringify({ success: true }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },

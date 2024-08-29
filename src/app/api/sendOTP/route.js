@@ -5,7 +5,6 @@ dotenv.config();
 
 export async function POST(request) {
   const emailOrMobile=await request.json();
-  console.log(emailOrMobile)
   try{
     const sql="select * from users where phonenumber=$1"
     const result=await pool.query(sql,[emailOrMobile]);
@@ -17,7 +16,6 @@ export async function POST(request) {
       const result1=await pool.query(sql,[otp,validuserid])
       if(result1.rowCount==1){
         const result2=await pool.query("select otpnumber from otp order by id desc limit 1")
-        console.log(result2.rows[0].otpnumber)
       
       return new Response(JSON.stringify({success:"true",otp:result2.rows[0].otpnumber}), {
         status: 200,
@@ -34,7 +32,6 @@ export async function POST(request) {
   }
   catch(error)
     {
-        console.error('GET Error:', error);
         return new Response(JSON.stringify({ success: false, error: 'Server Error', details: error.message }), {
         status: 500,
         headers: { 'Content-Type': 'application/json' },

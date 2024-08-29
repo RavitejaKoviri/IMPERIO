@@ -25,16 +25,14 @@ const StyledTabs = styled(Tabs)(({ theme }) => ({
 }));
 
 export default function ProductTabs(props) {
-  console.log(props,"props....")
-  console.log(props.specs.description,"prop for product")
-  console.log(props.specs.specifications, "specssss")
+ 
   const [selectedOption, setSelectedOption] = useState(0);
   const dispatch = useDispatch();
   const detail = useSelector((state) => state?.review?.reviewDetails);
   const [reviewDetails,setReviewDetails] = useState(detail);
   const handleOptionClick = (_, value) => setSelectedOption(value);
   useEffect(() => {
-    console.log("in use effect");
+   
     dispatch(getReview(props.specs.productid));
   }, [reviewDetails]); // Add dispatch to the dependency array
 
@@ -44,7 +42,6 @@ export default function ProductTabs(props) {
   const specnames=props.specs.specifications.split(",");
   // const specvalues=props.specs.specificationsvalues.split(",");
 
-  console.log("spec names",specnames)
   return (
     <>
       <StyledTabs

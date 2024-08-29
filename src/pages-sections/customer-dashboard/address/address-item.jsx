@@ -38,7 +38,6 @@ export default function AddressListItem({ address, handleEdit, isSelected, onCli
   };
 
   const handleDelete = () => {
-    // console.log("hi")
     const data={addressid:id,uid:userid}
     dispatch(deleteAddress(data));
   };

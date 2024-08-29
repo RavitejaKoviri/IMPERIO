@@ -6,7 +6,6 @@ dotenv.config();
 // POST CALL FOR CATEGORIES FROM VENDOR -$SAM
 export async function POST(req)
 {
-    // console.log("in crud route js")
     try{
         const {categoryId,subcategoryName,subcategoryStatus}=await req.json();
         // Adding date with day and time 
@@ -16,7 +15,6 @@ export async function POST(req)
         const addedDay = now.toLocaleString('en-US', { weekday: 'long' }); // Full day name (e.g., Monday)
         const categoryInsertQuery = "Insert into subcategories(subcategoryname,addeddate,addedtime,addedday,status,categoryid) values($1,$2,$3,$4,$5,$6)";
         const response=await pool.query(categoryInsertQuery,[subcategoryName.toLowerCase(),addedDate,addedTime,addedDay,subcategoryStatus.toLowerCase(),categoryId]);
-        console.log(response,"in respones for category post");
         return new Response("SubCategory Added Successfully",{
             status:200,
             headers:{
@@ -39,7 +37,6 @@ export async function POST(req)
 //GET CALL FOR GETTING CATEGORIES FROM VENDOR -$SAM
 export async function GET(request)
 {
-    console.log("in route.js")
     const id=request.url.split("?")[1].split("=")[1];
     let sql="";
     let values=[];
@@ -56,7 +53,6 @@ export async function GET(request)
     try{
         const getCategoriesQuery=sql;
         const response = await pool.query(getCategoriesQuery,values);
-        console.log("res",response.rows)
         return new Response(JSON.stringify(response.rows),{
             status:200,
             headers:{
@@ -79,10 +75,8 @@ export async function GET(request)
 export async function PATCH(req){
     try{
         const {subcategoryid,subcategoryname,categoryKey}=await req.json();
-        console.log(subcategoryid,subcategoryname,categoryKey)
         const updateQuery="update subcategories set subcategoryname=$1 where categoryid=$2 and subcategoryid=$3";
         const response=await pool.query(updateQuery,[subcategoryname.toLowerCase(),categoryKey,subcategoryid]);
-        console.log(response.rowCount)
         if(response.rowCount>0)
         {//id name not exists in db
             return new Response("udpated Successfully",{
@@ -115,9 +109,7 @@ export async function PATCH(req){
 export async function DELETE(req)
 {   
     try{
-        console.log("reqobject",req.url);
         const id = req.url.split("?")[1].split("=")[1];
-        console.log("id",id)
         const deleteQuery="update subcategories set status='inactive' where subcategoryid=$1";
         const response=await pool.query(deleteQuery,[id]);
         if(response.rowCount>0)

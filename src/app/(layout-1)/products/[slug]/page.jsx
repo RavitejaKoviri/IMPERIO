@@ -22,8 +22,6 @@ export default async function ProductDetails({
     // Decoding the encode string by removing extra text added and decoding encoded text by Buffer class
     const decode = (encodedText) => 
       {
-      console.log("enn",encodedText);
-      console.log("dnn",encodedText.split("&")[1].split("=")[1]);
       const base64 = encodedText.split("&")[1].split("=")[1]
           .replace(/-/g, '+') //replacing - with + because while encoding change to +
           .replace(/_/g, '/');
@@ -37,17 +35,13 @@ export default async function ProductDetails({
 
       const fetchData = async () => {
       try {
-        console.log("hellow ",decodeURIComponent(params.slug));
-        console.log(decode(decodeURIComponent(params.slug)),"param/slug"); // Log the slug for debugging
         const value = decode(decodeURIComponent(params.slug)); // Extract the slug parameter
         const response = await fetch(`/api/product?key=${value}`, {
           method: 'GET'
         });
         const productData = await response.json(); // Parse the JSON response
-        console.log(productData); // Log the product data for debugging
         setData(productData); // Update the state with the fetched data
       } catch (error) {
-        console.error("Error fetching product data:", error);
       }
     };
 

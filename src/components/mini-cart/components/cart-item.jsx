@@ -66,7 +66,6 @@ export default function MiniCartItem({
 
   const productBysub = useSelector(state => state.productBySubCategory.productsBasedOnSubcategories);
 
-  console.log("in lov", item, productBysub);
 
   // Find the product in productBysub based on productid
   const product = productBysub.find(product => product.productid === item.productid);

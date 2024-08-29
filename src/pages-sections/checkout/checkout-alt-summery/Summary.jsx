@@ -76,7 +76,6 @@ export default function MiniCart({
     dispatch
   } = useCart();
   const cartList = state.cart;
-  console.log(cartList)
   const handleCartAmountChange = (amount, product) => () => {
     dispatch({
       type: "CHANGE_CART_AMOUNT",

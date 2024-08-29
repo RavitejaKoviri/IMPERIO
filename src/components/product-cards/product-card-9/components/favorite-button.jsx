@@ -14,23 +14,18 @@ export default function FavoriteButton({
   toggleView,
   productId
 }) {
-  console.log(productId)
   const dispatch = useDispatch();
   const userId = useSelector((state)=>state.user.userid);
-  console.log("userId",userId);
-  console.log("productId",productId);
+ 
   
   const handleFavorite = (productId,userId) =>{
     const data = {productId,userId};
-    console.log("Details",data);
     dispatch(addProductToWishlist(data));
   }
   const handleDelete = async (productId) => {
-    console.log("hello");
-    console.log(productId);
+   
     dispatch(removeProductFromWishlist(productId,userId));
   };
-  console.log("isfav",isFavorite)
 
   return <IconButton size="small" onClick={()=>{handleFavorite(productId,userId),handleDelete(productId),toggleFavorite}} sx={{
     position: "absolute",

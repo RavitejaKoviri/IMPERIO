@@ -25,7 +25,6 @@ export default function UserAccountPopover(username) {
   const router = useRouter();
   const open = Boolean(anchorEl);
   const handleLogout=()=>{
-    console.log("ready to hit action")
     dispatch(userLogout())
   }
   const handleClose = () => setAnchorEl(null);

@@ -58,7 +58,6 @@ const [deletedSubCategory, setDeletedSubCategory] = useState(null);
    const removePostMessage=()=>{ 
     
     setUpdateCounter(0);
-    // console.log("deleted")
     document.getElementById("category").style.display='none';
     setUpdateMessage("");
     setTimeout(() => {
@@ -76,7 +75,6 @@ const [deletedSubCategory, setDeletedSubCategory] = useState(null);
       subcategoryname:editData,
       categoryKey: categoryid,
     }
-    console.log("subdata", updateSubCategory);
     dispatch(updateSubCategoryById(updateSubCategory));
     setEditModalOpen(false);
     };

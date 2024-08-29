@@ -15,7 +15,6 @@ import {
 
 // ========================================================================
 const InvoiceRow = ({ invoice }) => {
-  console.log(invoice);
   const { id, number, url } = invoice || {};
   const router = useRouter();
   return (

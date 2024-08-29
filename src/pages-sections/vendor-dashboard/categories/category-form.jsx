@@ -45,7 +45,6 @@ const CategoryForm = (props) => {
   // To close dialog Box to throw message  - $sam
   const removePostMessage=()=>{ 
     setPostCounter(0);
-    // console.log("deleted")
     document.getElementById("category").style.display='none';
     setPostMessage("");
   }
@@ -150,14 +149,17 @@ const CategoryForm = (props) => {
         <div className="row">
           <div className="col-md-4"></div>
           <div className="col-md-4">
-            <div className="row bg-primary">
-              <div className="col-md-10">
+          <div>
+            <div >
+              <span >
                 {postMessage}
-              </div>
-              <div className="col-md-2">
-                <h6 onClick={removePostMessage} style={{cursor: 'pointer'}}>x</h6>
-              </div>
+              </span>
+              <span  onClick={removePostMessage}>
+                &times;
+              </span>
             </div>
+          </div>
+
           </div>
           <div className="col-md-4"></div>
         </div>

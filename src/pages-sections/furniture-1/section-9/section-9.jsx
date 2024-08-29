@@ -23,7 +23,6 @@ export default function Section9({ heading, description }) {
   }, []);
 
   const val = useSelector(state=> state.category.categoryData);
-  console.log(val)
 
   const responsive = [{
     breakpoint: 1440,
@@ -49,7 +48,6 @@ export default function Section9({ heading, description }) {
     setData(val);
   },[val])
 
-  console.log("data",data)
   return (
     <Container>
       <H1 className="H1">{heading}</H1>

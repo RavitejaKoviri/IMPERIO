@@ -100,7 +100,7 @@ const PaymentDetails = ({
           </Grid>
 
           <Grid item xs={12}>
-            <FormControlLabel label="Save this card" control={<Checkbox size="small" />} onChange={e => console.log(e.target)} />
+            <FormControlLabel label="Save this card" control={<Checkbox size="small" />} onChange={e} />
           </Grid>
 
           

@@ -85,16 +85,13 @@ export async function GET(request) {
   //   `+param
   //   ;
 
-  //   console.log("Executing SQL query...");
   //   const result = await pool.query(resQuery);
-  //   console.log("Query executed successfully");
 
   //   return new Response(JSON.stringify(result.rows), {
   //     status: 200,
   //     headers: { 'Content-Type': 'application/json' },
   //   });
   // } catch (error) {
-  //   console.error("Error occurred:", error);
 
   //   return new Response(JSON.stringify({ success: false, error: 'Server Error', details: error.message }), {
   //     status: 500,
@@ -108,16 +105,13 @@ export async function GET(request) {
 `
       ;
   
-      console.log("Executing SQL query...");
       const result = await pool.query(resQuery);
-      console.log("Query executed successfully");
   
       return new Response(JSON.stringify(result.rows), {
         status: 200,
         headers: { 'Content-Type': 'application/json' },
       });
     } catch (error) {
-      console.error("Error occurred:", error);
   
       return new Response(JSON.stringify({ success: false, error: 'Server Error', details: error.message }), {
         status: 500,
@@ -128,20 +122,16 @@ export async function GET(request) {
 }
 
 export async function DELETE(request) {
-  console.log("Hello");
  
   try {
     const {id} = await request.json();
-    console.log("Hello",id);
     const sql = "update subcategories set status = 'inactive' where subcategoryid = $1";
     const result = await pool.query(sql,[id]);
-    console.log("result",result);
     return new Response("Deleted successfully",{
       status:200,
       headers:{'Content-Type':'application/json'}
     })
   } catch (error) {
-    console.error("Error occurred:", error);
     return new Response(JSON.stringify({ success: false, error: 'Server Error', details: error.message }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },
@@ -152,7 +142,6 @@ export async function DELETE(request) {
 export async function PUT(req) {
   try{
     const {id,val} = await req.json();
-    console.log("daa",id,val);
     const sql = "update subcategories set subcategoryname = $1 where subcategoryid = $2";
     const input = [val,id];
     const result = await pool.query(sql,input);
@@ -169,7 +158,6 @@ export async function PUT(req) {
       })
     }
   } catch (error) {
-    console.error("Error occurred:", error);
     return new Response(JSON.stringify({error:'error'}),{
       status:500,
       headers: { 'Content-Type': 'application/json' }

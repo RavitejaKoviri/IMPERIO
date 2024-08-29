@@ -20,7 +20,6 @@ const GeneralForm = () => {
   };
 
   const handleFormSubmit = async values => {
-    console.log(values);
   };
 
   return <Formik onSubmit={handleFormSubmit} initialValues={initialValues} validationSchema={validationSchema}>
@@ -34,7 +33,7 @@ const GeneralForm = () => {
     }) => <form onSubmit={handleSubmit} encType="multipart/form-data">
           <Grid container spacing={3}>
             <Grid item xs={12}>
-              <DropZone onChange={files => console.log(files)} title="Drag & Drop Site Logo" />
+              <DropZone onChange={files} title="Drag & Drop Site Logo" />
             </Grid>
 
             <Grid item md={6} xs={12}>
@@ -50,7 +49,7 @@ const GeneralForm = () => {
             </Grid>
 
             <Grid item xs={12}>
-              <DropZone onChange={files => console.log(files)} title="Drag & Drop Site Banner Image" />
+              <DropZone onChange={files} title="Drag & Drop Site Banner Image" />
             </Grid>
 
             <Grid item xs={12}>

@@ -34,7 +34,7 @@ const AccountSettingsPageView = () => {
   };
 
   const handleFormSubmit = async values => {
-    console.log(values.city);
+    
   };
 
   return <Box py={4}>

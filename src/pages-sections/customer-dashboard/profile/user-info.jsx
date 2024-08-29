@@ -7,8 +7,7 @@ import { Small, Span } from "components/Typography"; // CUSTOM DATA MODEL
 
 // ==============================================================
 export default function UserInfo({ user }) {
-  // console.log("a",user.userProfile[0].firstname);
-  // const val = user.userProfile[0];
+ 
   const downMd = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
     <Card
@@ -39,7 +38,7 @@ export default function UserInfo({ user }) {
 }
 
 function TableRowItem({ title, value }) {
-  console.log(value);
+ 
   return (
     <FlexBox flexDirection="column" p={1}>
       <Small color="grey.600" mb={0.5}>

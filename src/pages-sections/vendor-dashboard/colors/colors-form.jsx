@@ -43,7 +43,6 @@ const ColorsForm = (props) => {
       });
 
       const result = await response.json();
-      console.log("GET API response:", result);
 
       if (response.ok) {
         setColorData(result.data);
@@ -76,7 +75,6 @@ const ColorsForm = (props) => {
     //   });
 
     //   const result = await response.json();
-    //   console.log("POST API response:", result);
 
     //   if (response.ok) {
     //     alert("Color Saved Successfully!");

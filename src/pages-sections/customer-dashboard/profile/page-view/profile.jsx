@@ -42,7 +42,7 @@ export default function ProfilePageView() {
   //       if (response.ok) {
   //         const userData = await response.json(); // Parse JSON response
   //         setUserProfile(userData); // Update userProfile state with parsed data
-  //         console.log("hello user", userData);
+  //        
   //       } else {
   //         const result = await response.json();
   //         alert(`Error: ${result.error}`);

@@ -86,7 +86,6 @@ GROUP BY
 // GROUP BY 
 //     products.productid;
     const result = await pool.query(sql, [id])
-    console.log(result.rows)
     return new Response(JSON.stringify(result.rows), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },

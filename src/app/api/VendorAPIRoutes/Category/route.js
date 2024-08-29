@@ -6,11 +6,9 @@ dotenv.config();
 // POST CALL FOR CATEGORIES FROM VENDOR -$SAM
 export async function POST(req)
 {
-    console.log("in crud route js")
     try{
         const {categoryName,categoryStatus}=await req.json();
         const row = await pool.query('select * from categories where categoryname = $1',[categoryName.toLowerCase()]);
-        console.log("row",row);
         //Verifying if category name already exists in database
         if(row.rowCount>0){
             return new Response("Category already exists",{
@@ -29,7 +27,6 @@ export async function POST(req)
             const status = 'active';
             const categoryInsertQuery = "Insert into categories(categoryname,addeddate,addedtime,addedday,status) values($1,$2,$3,$4,$5)";
             const response=await pool.query(categoryInsertQuery,[categoryName.toLowerCase(),addedDate,addedTime,addedDay,status]);
-            console.log(response,"in respones for category post");
             return new Response("Category Added Successfully",{
                 status:200,
                 headers:{
@@ -54,7 +51,6 @@ export async function POST(req)
 //GET CALL FOR GETTING CATEGORIES FROM VENDOR -$SAM
 export async function GET()
 {
-    console.log("in route.js")
     try{
         const status="active";
         const getCategoriesQuery='select * from categories where status=$1';
@@ -114,7 +110,6 @@ export async function PATCH(req){
 export async function DELETE(req)
 {   
     try{
-        console.log("reqobject",req.url);
         const id = req.url.split("?")[1].split("=")[1];
         const deleteQuery="update categories set status='inactive' where categoryid=$1";
         const response=await pool.query(deleteQuery,[id]);
