@@ -46,7 +46,7 @@
     background-color: transparent;
     width: 40%;
     padding:20px;
-    margin:80px 35% 40px;
+    margin: 20px 35% 40px 22px;
     font-size: large;
     outline: none;
     border: 1px solid #E3364E;
@@ -77,6 +77,7 @@
     .pname {
         margin-top: 20px;
     }
+  
    
 } 
 
@@ -109,6 +110,10 @@
 @media screen and (max-width: 390px) {
     .product-title {
         margin-top: -20px !important;
+    }
+    .H1 {
+        font-size: 1.5rem;
+        font-weight: 300;
     }
 }
 
@@ -220,6 +225,14 @@
     .pname {
         margin-top: 10px !important;
     }
+    .H1 {
+        font-size: 1.5rem;
+        padding-bottom: 10px;
+        font-weight: 600;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
 
   }
   
@@ -252,6 +265,11 @@
 .pname {
    margin-top: -10px !important;
    /* margin-left: -25px; */
+}
+.btn-products {
+    margin-bottom: 30px;
+    align-items: center;
+    text-align: center;
 }
   
   /* iPad Pro */
