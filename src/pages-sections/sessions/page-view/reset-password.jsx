@@ -9,8 +9,9 @@ import * as yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { mobileValidation, otpVerification } from "app/store/userRedux/userAction";
 import { useRouter } from "next/navigation";
+import { getResetPassword } from "app/store/resetPasswordRedux/resetPasswordAction";
 
-const ValidationForm = () => {
+const ValidationForm = ({closeDialog}) => {
   const [showOtpField, setShowOtpField] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState('');
@@ -67,17 +68,12 @@ const ValidationForm = () => {
     onSubmit: async (values) => {
       setIsLoading(true);
       setMessage('');
-
+      setPhoneNotExist(false)
       if (!showOtpField) {
+       
         try {
-          // API call to check if the phone number exists
-          const response = await fetch(`/api/email-already-exist?phone=${values.emailOrMobile}`, {
-            method: "GET"
-          });
-          const result = await response.json();
-          const existedPhoneNumber = result[0]?.phonenumber;
-
-          if (values.emailOrMobile === existedPhoneNumber) {
+          const response = await dispatch(getResetPassword(values.emailOrMobile));
+          if (values.emailOrMobile === response) {
             dispatch(mobileValidation(values.emailOrMobile));
             setPhoneNotExist(false);
           } else {
