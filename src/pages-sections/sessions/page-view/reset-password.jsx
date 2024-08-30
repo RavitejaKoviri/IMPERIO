@@ -11,7 +11,7 @@ import { mobileValidation, otpVerification } from "app/store/userRedux/userActio
 import { useRouter } from "next/navigation";
 import { getResetPassword } from "app/store/resetPasswordRedux/resetPasswordAction";
 
-const ValidationForm = () => {
+const ValidationForm = ({closeDialog}) => {
   const [showOtpField, setShowOtpField] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState('');
@@ -23,7 +23,6 @@ const ValidationForm = () => {
   const otpVerified = useSelector((state) => state.user.otpVerified);
   const [isValid, setValidity] = useState(false);
   const router = useRouter();
-  const resetPassword = useSelector((state) => state.resetPassword.resetPasswordDetails)
 
   const initialValues = {
     emailOrMobile: "",
@@ -69,19 +68,12 @@ const ValidationForm = () => {
     onSubmit: async (values) => {
       setIsLoading(true);
       setMessage('');
-
+      setPhoneNotExist(false)
       if (!showOtpField) {
        
         try {
-          const response =  dispatch(getResetPassword(values.emailOrMobile))
-          // API call to check if the phone number exists
-          // const response = await fetch(`/api/email-already-exist?phone=${values.emailOrMobile}`, {
-          //   method: "GET"
-          // });
-          // const result = await response.json();
-          // const existedPhoneNumber = result[0]?.phonenumber;
- 
-          if (values.emailOrMobile === resetPassword) {
+          const response = await dispatch(getResetPassword(values.emailOrMobile));
+          if (values.emailOrMobile === response) {
             dispatch(mobileValidation(values.emailOrMobile));
             setPhoneNotExist(false);
           } else {

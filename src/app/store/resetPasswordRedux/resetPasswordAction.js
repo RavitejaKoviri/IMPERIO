@@ -10,6 +10,7 @@ export const getResetPassword = (proid) => async (dispatch) => {
         const result = response[0].phonenumber;
         // Dispatch the action with the response data
           dispatch(getResetPasswordData(result));
+          return result;
     } catch (error) {
         console.error("Error in action:", error);
     }
