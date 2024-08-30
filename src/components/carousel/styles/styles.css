@@ -19,4 +19,15 @@
       margin-top: 20px; 
     }
   }
+  /* Media query for iPad Pro (both portrait and landscape) */
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) 
+and (-webkit-min-device-pixel-ratio: 1.5) {
+
+.css-e7l9xk {
+  min-height: 405px  !important; /* Override min-height for iPad Pro */
+ /* Example height adjustment for iPad Pro */
+}
+}
+
+
   
