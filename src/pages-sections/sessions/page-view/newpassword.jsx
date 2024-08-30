@@ -10,7 +10,8 @@ import { useRouter } from 'next/navigation';
 import EyeToggleButton from "../components/eye-toggle-button";
 import usePasswordVisible from "../use-password-visible";
   import useConfirmPasswordVisible from '../use-confirm-password-visible';
-
+import { useSelector,useDispatch } from 'react-redux';
+import { updatePassword } from 'app/store/resetPasswordRedux/resetPasswordAction';
 const NewPassword = () => {
   const router = useRouter();
   const { visiblePassword, togglePasswordVisible } = usePasswordVisible();
@@ -21,6 +22,8 @@ const NewPassword = () => {
   const inputProps2 = {
     endAdornment: <EyeToggleButton show={visibleConfirmPassword}  click={toggleConfirmPasswordVisible} />
   };
+  const resetPassword = useSelector((state) => state.resetPassword.resetPasswordDetails)
+  const dispatch = useDispatch();
 
 
   // Validation schema to ensure passwords match and are of appropriate length
@@ -36,6 +39,7 @@ const NewPassword = () => {
   });
 
   // Formik setup
+  
   const formik = useFormik({
     initialValues: {
       newPassword: '',
@@ -43,21 +47,21 @@ const NewPassword = () => {
     },
     validationSchema,
     onSubmit: async (values, { resetForm, setSubmitting, setErrors }) => {
-      console.log(values.newPassword);
-      // const newPassword = {values.newPassword};
+    
       try {
-        const response = await fetch(`/api/email-already-exist?key=updatepassword`, {
-          method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json',
-          }, 
-          body: JSON.stringify({newPassword: values.newPassword}),
+        const response = dispatch(updatePassword({newPassword: values.newPassword,phoneNumber:resetPassword}))
+        // const response = await fetch(`/api/email-already-exist?key=updatepassword`, {
+        //   method: 'PATCH',
+        //   headers: {
+        //     'Content-Type': 'application/json',
+        //   }, 
+        //   body: JSON.stringify({newPassword: values.newPassword,phoneNumber:resetPassword}),
 
-        });
-
-        if (!response.ok) {
-          throw new Error('Failed to update password');
-        }
+        // });
+        // console.log("rrr",response)
+        // if (response != "OK") {
+        //   throw new Error('Failed to update password');
+        // }
 
         // Handle success
         resetForm();
