@@ -1,0 +1,22 @@
+/* @media screen and (max-width: 480px) {
+    .css-e7l9xk {
+        min-height: 186px !important; 
+        margin-top: 25px ;
+      }      
+} */
+/* Extra Small Devices (xs) - Portrait phones, less than 600px */
+@media (max-width: 599.98px) {
+    .css-e7l9xk {
+      min-height: 186px !important; 
+      margin-top: 20px;
+    }
+  }
+  
+  /* Small Devices (sm) - Landscape phones, less than 960px */
+  @media (min-width: 600px) and (max-width: 959.98px) {
+    .css-e7l9xk {
+      min-height: 315px !important;
+      margin-top: 20px; 
+    }
+  }
+  
