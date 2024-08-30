@@ -9,6 +9,7 @@ import CarouselArrows from "./components/carousel-arrows"; // SLICK CAROUSEL CSS
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css"; // STYLED COMPONENT
+import './styles/styles.css'
 
 import { RootStyle } from "./styles";
 
@@ -54,7 +55,7 @@ const Carousel = forwardRef((props, ref) => {
   };
   return (
     <RootStyle space={spaceBetween}>
-      <SlickCarousel ref={(c) => (carouselRef.current = c)} {...settings}>
+      <SlickCarousel className="carousel" ref={(c) => (carouselRef.current = c)} {...settings}>
         {children}
       </SlickCarousel>
     </RootStyle>
