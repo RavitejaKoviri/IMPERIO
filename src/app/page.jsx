@@ -16,16 +16,7 @@ import StickyNew from "components/sticky/issticky";
     console.log('Is sticky:', isSticky);
   };
     return (
-      <>
-        {/* <Header /> */}
-     
-        <Navbar />
-        <Furniture />
-        <Footer1 />
-      </>
-    );
-  }
-    <>
+          <>
       <StickyNew fixedOn={0} scrollDistance={200}>
         <Header style={{ background: '', padding: '1rem' }}/>
       </StickyNew>
