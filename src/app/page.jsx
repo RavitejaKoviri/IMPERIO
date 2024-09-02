@@ -8,16 +8,23 @@
   import './app.css';
 import Sticky from "components/sticky/Sticky";
 import { MobileNavigationBar } from "components/mobile-navigation";
+import StickyNew from "components/sticky/issticky";
 
   export default function IndexPage() {
 
+  const handleSticky = (isSticky) => {
+    console.log('Is sticky:', isSticky);
+  };
     return (
-      <>
-        {/* <Header /> */}
-     
-        <Navbar />
-        <Furniture />
-        <Footer1 />
-      </>
-    );
-  }
+          <>
+      <StickyNew fixedOn={0} scrollDistance={200}>
+        <Header style={{ background: '', padding: '1rem' }}/>
+      </StickyNew>
+
+      <Navbar />
+      <Furniture  />
+      <Section12 id="contact"></Section12>
+      <Footer1 />
+    </>
+  );
+}
