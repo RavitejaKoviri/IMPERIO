@@ -23,6 +23,7 @@ const ValidationForm = ({closeDialog}) => {
   const otpVerified = useSelector((state) => state.user.otpVerified);
   const [isValid, setValidity] = useState(false);
   const router = useRouter();
+  const [ifInvalidOTP,setIfInvalidOTP] = useState(false);
 
   const initialValues = {
     emailOrMobile: "",
@@ -36,8 +37,8 @@ const ValidationForm = ({closeDialog}) => {
   useEffect(() => {
     if (isValid) {
       setIsLoading(false);
-      setShowOtpField(true);
-      setMessage(otp);
+      setShowOtpField(false);
+      setMessage(false);
     }
   }, [isValid]);
 
@@ -67,7 +68,8 @@ const ValidationForm = ({closeDialog}) => {
     validationSchema,
     onSubmit: async (values) => {
       setIsLoading(true);
-      setMessage('');
+      
+      // setMessage('');
       setPhoneNotExist(false)
       if (!showOtpField) {
        
@@ -76,6 +78,8 @@ const ValidationForm = ({closeDialog}) => {
           if (values.emailOrMobile === response) {
             dispatch(mobileValidation(values.emailOrMobile));
             setPhoneNotExist(false);
+            setShowOtpField(true);
+            setMessage(otp);
           } else {
             setPhoneNotExist(true);
           }
@@ -85,7 +89,22 @@ const ValidationForm = ({closeDialog}) => {
           setIsLoading(false);
         }
       } else {
-        dispatch(otpVerification(values));
+        try {
+         const response = await dispatch(otpVerification(values));
+         console.log("ootttpp",response)
+         if (response === "false"){
+          setIfInvalidOTP(true)
+         }else{
+         console.log("hhhhhh")
+          setIfInvalidOTP(false)
+         }
+          // If OTP verification is successful, otpVerified should be set to true
+        } catch (error) {
+          // If there's an error in OTP verification, show an alert
+          alert('OTP verification failed. Please check your OTP and try again.');
+        }finally {
+          setIsLoading(false);
+        }
       }
     },
   });
@@ -142,6 +161,14 @@ const ValidationForm = ({closeDialog}) => {
           </p>
         )}
 
+        { ifInvalidOTP && (
+          <p style={{ color: "maroon", marginLeft: "15px", fontSize: "12px", marginTop: "-5px", marginBottom: "5px" }}>
+            Invalid OTP
+          </p>
+        )}
+      
+      
+
         <Button
           fullWidth
           type="submit"
@@ -158,7 +185,7 @@ const ValidationForm = ({closeDialog}) => {
             {message}
           </Typography>
         )}
-      </Box>
+      </Box>  
     </Box>
   );
 };
