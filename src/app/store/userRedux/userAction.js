@@ -24,6 +24,7 @@ export const mobileValidation=(mobileNumber)=>async (dispatch)=>{
     try{
       const response=await requestFromServer.verifyOtp(numberwithotp);
       dispatch(userOtpValidation(response.data))
+      return response.data;
     }
     catch{
     }
