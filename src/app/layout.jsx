@@ -24,8 +24,6 @@ export const openSans = Open_Sans({
 
 export default function RootLayout({ children }) {
 
-  const [isFixed, setIsFixed] = useState(false);
-  const toggleIsFixed = useCallback(fixed => setIsFixed(fixed), []);
   return (
     <html lang="en" suppressHydrationWarning>
       <Provider store={store}>
@@ -35,9 +33,6 @@ export default function RootLayout({ children }) {
               <SettingsProvider>
                 <ThemeProvider>
                   <ProgressBar />
-                  <Sticky fixedOn={0} onSticky={toggleIsFixed} scrollDistance={70}>
-                    <Header isFixed={isFixed} midSlot={<SearchInput />} />
-                  </Sticky>
                   <RTL>{children}</RTL>
                   <MobileNavigationBar/>
                 </ThemeProvider>

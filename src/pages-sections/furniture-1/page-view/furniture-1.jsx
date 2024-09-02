@@ -143,10 +143,10 @@ export default  function FurnitureOnePageView() {
     {
             /* Contact Form */
   }
-    <div id="Contact">
+    {/* <div id="Contact">
     <Section12  />
 
-    </div>
+    </div> */}
     {/* Contact-form */}
     </HomeWrapper>
     
