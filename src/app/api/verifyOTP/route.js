@@ -7,7 +7,7 @@ const {emailOrMobile,otp}=await request.json();
 try{
   const sql="select otp.otpnumber from otp inner join users on otp.userid=users.userid where users.phonenumber=$1 and otp.otpnumber=$2"
   const result=await pool.query(sql,[emailOrMobile,otp])
-  if(result.rowCount==1)
+  if(result.rowCount > 0)
   {
     return new Response(JSON.stringify("true"));
   }
