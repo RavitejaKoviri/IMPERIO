@@ -16,7 +16,7 @@ export default function MobileMenu() {
 
   const handleClose = () => setOpenDrawer(false);
 
-  return <Fragment>
+  return <Fragment >
       <IconButton onClick={() => setOpenDrawer(true)} sx={{
       flexShrink: 0,
       color: "grey.600"
@@ -26,10 +26,17 @@ export default function MobileMenu() {
 
       <Drawer anchor="left" open={openDrawer} onClose={handleClose} sx={{
       zIndex: 15001
+    }}
+    PaperProps={{
+      sx: {
+        width: { xs: "50vw", sm: "30vw", md: "20vw" },
+        height: "auto", // Dynamic height
+        maxHeight: "100vh", // Prevent overflow beyond viewport height
+      },
     }}>
-        <Box width="30vw" height="100%" position="relative">
+        <Box sx={{ width:{xs:'50vw', sm: '30vw',md:'20vw' }}}  height="100%" position="relative">
           <Scrollbar autoHide={false} sx={{
-          height: "100vh"
+          height: "100%"
         }}>
             <Box px={5} py={8} maxWidth={500} margin="auto" position="relative" height="100%">
               {

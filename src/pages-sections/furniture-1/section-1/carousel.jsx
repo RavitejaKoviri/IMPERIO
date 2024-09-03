@@ -8,6 +8,7 @@ import { H1, H6, Paragraph } from "components/Typography";
 // STYLED COMPONENTS
 import { StyledButton, ContentWrapper } from "./styles";
 import { COMMON_DOT_STYLES } from "components/carousel/styles";
+import './section-1.css';
 
 // =============================================================================
 // =============================================================================
@@ -20,9 +21,9 @@ export default function HeroCarousel({mainCarouselData}) {
   //   backgroundImage:`url(${item.imgUrl})`,
   //   textAlign:'center'
   // }
-  return <Carousel dots arrows={false} slidesToShow={1} spaceBetween={0} dotStyles={COMMON_DOT_STYLES} dotColor={palette.primary.main}>
+  return <Carousel className="home-carousel" dots arrows={false} slidesToShow={1} spaceBetween={0} dotStyles={COMMON_DOT_STYLES} dotColor={palette.primary.main}>
       {mainCarouselData.map(item => <div key={item.id} >
-          <ContentWrapper >
+          <ContentWrapper style={{ backgroundImage:`url(${item.imgUrl})`}} >
           <Container >
               {/* <div className="carousel-content" >
                 <H6>{item.subTitle}</H6>

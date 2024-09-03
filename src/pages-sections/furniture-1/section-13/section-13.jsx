@@ -58,7 +58,7 @@ export default function Section13({ heading, description }) {
     <Container>
       <p className="H1">{heading}</p>
 
-      <Carousel
+      <Carousel className="outergrid"
         responsive={responsive}
         slidesToShow={4}
         arrowStyles={{
@@ -77,7 +77,7 @@ export default function Section13({ heading, description }) {
       {data.map(item => (
           
           <div key={item.id} className="pt-1 pb-1">
-            <ProductCard7
+            <ProductCard7 className="product-card7"
               slug={encode(item.productname, item.productid)}
               id={item.productid}
               ptitle={dispatch(capital(item.productname))}
