@@ -16,7 +16,6 @@ const ValidationForm = ({closeDialog}) => {
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState('');
   const [phoneNotExist, setPhoneNotExist] = useState(false);
-  const [isTyping, setIsTyping] = useState(false); // Track if user is typing
   const dispatch = useDispatch();
   const numberValidOrNot = useSelector((state) => state.user.validMobileNumber);
   const otp = useSelector((state) => state.user.otp);
@@ -42,11 +41,11 @@ const ValidationForm = ({closeDialog}) => {
     }
   }, [isValid]);
 
-  useEffect(() => {
-    if (otpVerified) {
-      router.push('/new-password');
-    }
-  }, [otpVerified, router]);
+  // useEffect(() => {
+  //   if (otpVerified) {
+  //     router.push('/new-password');
+  //   }
+  // }, [otpVerified]);
 
   const validationSchema = yup.object().shape({
     emailOrMobile: yup
@@ -95,13 +94,12 @@ const ValidationForm = ({closeDialog}) => {
          if (response === "false"){
           setIfInvalidOTP(true)
          }else{
-         console.log("hhhhhh")
           setIfInvalidOTP(false)
+          router.push("/new-password")
+         
          }
-          // If OTP verification is successful, otpVerified should be set to true
         } catch (error) {
-          // If there's an error in OTP verification, show an alert
-          alert('OTP verification failed. Please check your OTP and try again.');
+
         }finally {
           setIsLoading(false);
         }
@@ -129,11 +127,9 @@ const ValidationForm = ({closeDialog}) => {
           value={formik.values.emailOrMobile}
           onChange={(e) => {
             formik.handleChange(e);
-            setIsTyping(true); // Set typing state to true when user types
           }}
           onBlur={(e) => {
             formik.handleBlur(e);
-            setIsTyping(false); // Set typing state to false when user stops typing
           }}
           error={formik.touched.emailOrMobile && Boolean(formik.errors.emailOrMobile)}
           helperText={formik.touched.emailOrMobile && formik.errors.emailOrMobile}
@@ -155,7 +151,7 @@ const ValidationForm = ({closeDialog}) => {
           />
         )}
 
-        {phoneNotExist && isPhoneNumberValid && !isTyping && (
+        {phoneNotExist && isPhoneNumberValid  && (
           <p style={{ color: "maroon", marginLeft: "15px", fontSize: "12px", marginTop: "-5px", marginBottom: "5px" }}>
             Phone Number Not Registered
           </p>
