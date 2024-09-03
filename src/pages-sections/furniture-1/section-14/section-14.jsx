@@ -10,6 +10,8 @@ import Link from "next/link";
 import { Grid } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts } from "app/store/ProductsRedux/productAction";
+import '../../../components/product-cards/product-card-7/styles/card.css'
+
 import { capital } from "app/store/capitalize/capitalizeText";
 
 // ====================================================
@@ -63,7 +65,7 @@ export default function Section14({
   return<Container>
   <p className="H1">{heading}</p>
 
-  <Carousel
+  <Carousel className="outergrid"
         responsive={responsive}
         slidesToShow={4}
         arrowStyles={{
@@ -111,4 +113,3 @@ export default function Section14({
   </Link>
 </Container>
 }
-//section-7.jsx

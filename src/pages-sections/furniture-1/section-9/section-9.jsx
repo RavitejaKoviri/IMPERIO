@@ -11,6 +11,7 @@ import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategory } from "app/store/categoryRedux/categoryAction";
 import ProductCard14 from "components/product-cards/product-card-14/product-card";
+import '../../../components/product-cards/product-card-14/styles/card.css'
 import { capital } from "app/store/capitalize/capitalizeText";
 
 
@@ -49,10 +50,10 @@ export default function Section9({ heading, description }) {
   },[val])
 
   return (
-    <Container>
+    <Container >
       <H1 className="H1">{heading}</H1>
 
-      <Carousel
+      <Carousel className="outergrid"
         responsive={responsive}
         slidesToShow={4}
         arrowStyles={{
@@ -83,7 +84,7 @@ export default function Section9({ heading, description }) {
     {data.map(item => (
           
           <div key={item.id} className="pt-1 pb-1">
-            <ProductCard14
+            <ProductCard7
              id={item.categoryid}
              ptitle={dispatch(capital(item.categoryname))}
              price={item.currentprice}
