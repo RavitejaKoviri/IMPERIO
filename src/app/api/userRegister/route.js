@@ -7,7 +7,7 @@ export async function POST(request){
     try{
         const insertsql="insert into users(firstname,lastname,email,phonenumber,password,status) values($1,$2,$3,$4,$5,'Active')"
         const result=await pool.query(insertsql,[first_name,last_name,email,phone_number,password])
-        if(result.rowCount==1){
+        if(result.rowCount > 0){
         return new Response(JSON.stringify("true"), {
             status: 200,
             headers: { 'Content-Type': 'application/json' },
