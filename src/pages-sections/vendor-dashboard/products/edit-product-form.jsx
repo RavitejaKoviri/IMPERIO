@@ -59,7 +59,6 @@ const EditProductForm = () => {
     dispatch(getProductById(params.slug))
   }, []);
 
-  console.log("product by id",products)
 
   const initialValues = {
     productId: products[0].productid,
@@ -73,7 +72,6 @@ const EditProductForm = () => {
   };
 
   const handleFormSubmit = (values) => {
-    console.log("Submitted values:", values);
     dispatch(updateProductById(values));
   };
   

@@ -77,7 +77,6 @@ export default function ProductFilterCard() {
         });
   
         const result = await response.json();
-        console.log("GET API response:", result);
   
         if (response.ok) {
           setColorData(result.data);
@@ -157,7 +156,6 @@ export default function ProductFilterCard() {
         }
 
         const result = await response.json();
-        console.log("API response:", result);
         setSubcategories(result);
       } catch (error) {
         console.error("Error fetching subcategories:", error);
@@ -191,13 +189,9 @@ export default function ProductFilterCard() {
     }
   }, [subcategories]);
 
-  console.log(mappingCategories,"mapping categories");
-  console.log(categoryList);
-  console.log(subcategories);
-
+  
 
   const getid=(id)=>{
-    console.log(id,"hi hello");
   }
 
   return (
@@ -214,7 +208,8 @@ export default function ProductFilterCard() {
               onClick={() => handleCollapseToggle(item.categoryname)}
               sx={{ padding: ".5rem 0", cursor: "pointer", color: "grey.600" }}
             >
-              <Span>{item.categoryname}</Span>
+              <Span>{item.categoryname.toUpperCase().charAt(0)+item.categoryname.slice(1)}</Span>
+
             </AccordionHeader>
             <Collapse in={collapsed[item.categoryname]}>
               {item.subcategories.map((name) => (
@@ -229,7 +224,7 @@ export default function ProductFilterCard() {
                   onClick={() =>dispatch(getProducts(name.subcategoryid))}
                   // style={{border:'1px solid black'}}
                 >
-                  {name.subcategoryname}
+                  {name.subcategoryname.toUpperCase().charAt(0)+name.subcategoryname.slice(1)}
                 </Paragraph>
               ))}
             </Collapse>

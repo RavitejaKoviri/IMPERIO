@@ -23,7 +23,7 @@ const LoginPageView = ({
   // const [nullEmail,setEmailNull] = useState(false);
   const router=useRouter();
   useEffect(()=>{
-    console.log(isValid)
+   
     setValidity(loginVerified)
   },[loginVerified])
  
@@ -59,7 +59,6 @@ const LoginPageView = ({
     initialValues,
     validationSchema,
     // onSubmit: values => {
-    //   console.log(values);
     //   closeDialog?.();
     // }
   });
@@ -67,7 +66,6 @@ const LoginPageView = ({
   const handleSubmit= (e)=>{
     e.preventDefault();
     if(values.email!=''||values.password!=''){
-    console.log(values);
     dispatch(loginValidation(values))
     closeDialog();
     }

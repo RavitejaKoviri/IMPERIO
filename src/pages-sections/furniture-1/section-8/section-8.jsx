@@ -7,6 +7,7 @@ import { ProductCard7 } from "components/product-cards/product-card-7"; // CUSTO
 import { useState, useEffect } from "react";
 import "../../../components/product-cards/product-card-7/styles/card.css"
 import Link from "next/link";
+import { capital } from "app/store/capitalize/capitalizeText";
 
 // ====================================================
 export default function Section8({ heading, description }) {
@@ -19,7 +20,6 @@ export default function Section8({ heading, description }) {
           method: 'GET'
         });
 
-        //console.log(await response.json());
         const productData = await response.json();
         setData(productData);
       } catch (error) {
@@ -39,7 +39,7 @@ export default function Section8({ heading, description }) {
           <Grid item key={item.id} xs={12} sm={6} md={4} lg={3}>
             <ProductCard7
               id={item.productid}
-              ptitle={item.productname}
+              ptitle={dispatch(capital(item.productname))}
               price={item.currentprice}
               discount={item.originalprice}
             />

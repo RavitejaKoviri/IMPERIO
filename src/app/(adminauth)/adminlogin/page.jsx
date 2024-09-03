@@ -25,7 +25,6 @@ const metadata = {
 //         setLoggedIn(isAdminAuthenticated);
 //     }, [isAdminAuthenticated]);
 
-//     console.log("AdminAuth state:", isAdminAuthenticated);
 //     return loggedIn;
 // }
 

@@ -11,10 +11,7 @@ const adminLoginAuthSlice = createSlice({
     reducers: {
         adminLoginAuthentication: (state, action) => {
             // const {value} =action.payload;
-            // console.log("Action dispatched:", action);
-             console.log("Payload:", action.payload);
             if (action.payload.bool == "true" ) {
-                // console.log("jo");
                 state.AdminAuth = true;
                 state.msg=action.payload.msg;
             }
@@ -22,7 +19,6 @@ const adminLoginAuthSlice = createSlice({
 
                 state.AdminAuth=false;
             }
-           console.log(state.AdminAuth)
         },
     },
 });

@@ -21,6 +21,7 @@ import vendorCategorySlice from './vendorRedux/CategoryRedux/categorySlice';
 import vendorSubCategorySlice from './vendorRedux/SubCategroyRedux/subCategorySlice';
 import vendorProductSlice from './vendorRedux/ProductRedux/productSlice'
 import UserCartSlice from './UserCartRedux/UserCartSlice';
+import resetPasswordSlice from './resetPasswordRedux/resetPasswordSlice';
 // Persist configuration
 const persistConfig = {
   key: 'root',
@@ -43,6 +44,7 @@ const rootReducer = combineReducers({
   rating:ratingSlice,
   productBySubCategory:productBySubCategorySlice,
   cart:cartSlice,
+  resetPassword:resetPasswordSlice,
   search:searchProductSlice,
   vendorCategory:vendorCategorySlice,
   vendorSubCategory:vendorSubCategorySlice,

@@ -19,7 +19,7 @@ import { StyledCard, ContentWrapper, ColorBox, ImgBox } from "./styles"; // ====
 
 // =======================================================
 export default function ProductCard14(props) {
-  console.log("...props",props.id)
+ 
   return <StyledCard className="Grid">
       <Link href={`/products?key=${props.id}`}>
         <ImgBox className="bg-white" >

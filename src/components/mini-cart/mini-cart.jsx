@@ -23,14 +23,9 @@ export default function MiniCart({
     push
   } = useRouter();
 
-  
- 
-  
-  
-  // 
+
   const cartData = useSelector((state) => state.cartModified.cartData);
   useEffect(()=>{
-    console.log("check",cartData);
   },[cartData])
   
   const handleCartAmountChange = (amount, product) => () => {

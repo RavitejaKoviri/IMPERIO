@@ -9,11 +9,9 @@ const colorSlice = createSlice({
   initialState: initialColorState,
   reducers: { 
     postColorDetails: (state, action) => {
-        console.log(action.payload);
     },
 
     getColorDetails: (state, action) => {
-      console.log(action.payload,"in slice")
       state.colorData=action.payload;
     },
   },

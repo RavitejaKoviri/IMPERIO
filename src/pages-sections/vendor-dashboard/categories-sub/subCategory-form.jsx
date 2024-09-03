@@ -39,6 +39,9 @@ const SubCategoryForm = ({
     subCategoryName: "",
     subCategoryStatus: ""
   });
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [snackbarSeverity, setSnackbarSeverity] = useState('success');
 
   useEffect(() => {
     dispatch(getCategoriesFromVendor());
@@ -57,9 +60,11 @@ const SubCategoryForm = ({
     if (postCounter === 0) {
       document.getElementById("subcategory").style.display = 'none';
     } else {
-      document.getElementById("subcategory").style.display = 'block';
+      // document.getElementById("subcategory").style.display = 'block';
+      handleSnackbarOpen(postVendorSubCategoryMessage);
     }
   }, [postVendorSubCategoryMessage, postCounter]);
+
 
   const removePostMessage = () => {
     setPostCounter(0);
@@ -67,7 +72,18 @@ const SubCategoryForm = ({
     setPostMessage("");
   };
 
- 
+  const handleSnackbarOpen = (message, severity = 'success') => {
+    setSnackbarMessage(message);
+    setSnackbarSeverity(severity);
+    setSnackbarOpen(true);
+  };
+  
+  const handleSnackbarClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setSnackbarOpen(false);
+  };
 
   return (
     <Card sx={{ p: 6 }}>
@@ -75,7 +91,6 @@ const SubCategoryForm = ({
         initialValues={initialValues}
         validationSchema={VALIDATION_SCHEMA}
         onSubmit={(values) => {
-          console.log("hi")
           const subCategoryData = {
             categoryId: values.parent,
             subcategoryName: values.subCategoryName,
@@ -177,18 +192,26 @@ const SubCategoryForm = ({
         <div className="row">
           <div className="col-md-4"></div>
           <div className="col-md-4">
-            <div className="row">
-              <div className="col-md-10">
+          <div >
+            <div >
+              <span >
                 {postMessage}
-              </div>
-              <div className="col-md-2">
-                <h6 onClick={removePostMessage} style={{ cursor: 'pointer' }}>x</h6>
-              </div>
+              </span>
+              <span onClick={removePostMessage}>
+                &times;
+              </span>
             </div>
+          </div>
           </div>
           <div className="col-md-4"></div>
         </div>
       </div>
+
+    <Snackbar open={snackbarOpen} autoHideDuration={3000} onClose={handleSnackbarClose}>
+        <Alert onClose={handleSnackbarClose} severity={snackbarSeverity} sx={{ width: '100%' }}>
+          {snackbarMessage}
+        </Alert>
+      </Snackbar>
     </Card>
   );
 };

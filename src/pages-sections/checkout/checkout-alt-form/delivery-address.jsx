@@ -24,7 +24,6 @@ const DeliveryAddress = ({
   const dispatch = useDispatch();
   const addressList1 = useSelector((state) => state.address.addressDetails);
   const userid = useSelector((state) => state.user.userid)
-  // console.log(addressList1,"list1")
   const [addressList, setAddressList] = useState([]);
   const [openEditDialog, setOpenEditDialog] = useState(false);
   // const [editAddressId, setEditAddressId] = useState(0);

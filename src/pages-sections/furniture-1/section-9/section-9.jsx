@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCategory } from "app/store/categoryRedux/categoryAction";
 import ProductCard14 from "components/product-cards/product-card-14/product-card";
 import '../../../components/product-cards/product-card-14/styles/card.css'
+import { capital } from "app/store/capitalize/capitalizeText";
 
 
 // ====================================================
@@ -23,7 +24,6 @@ export default function Section9({ heading, description }) {
   }, []);
 
   const val = useSelector(state=> state.category.categoryData);
-  console.log(val)
 
   const responsive = [{
     breakpoint: 1440,
@@ -49,7 +49,6 @@ export default function Section9({ heading, description }) {
     setData(val);
   },[val])
 
-  console.log("data",data)
   return (
     <Container >
       <H1 className="H1">{heading}</H1>
@@ -87,7 +86,7 @@ export default function Section9({ heading, description }) {
           <div key={item.id} className="pt-1 pb-1">
             <ProductCard7
              id={item.categoryid}
-             ptitle={item.categoryname}
+             ptitle={dispatch(capital(item.categoryname))}
              price={item.currentprice}
              discount={item.originalprice}
              />

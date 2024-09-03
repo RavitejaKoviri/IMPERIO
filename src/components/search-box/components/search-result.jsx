@@ -2,13 +2,11 @@ import Link from "next/link";
 import MenuItem from "@mui/material/MenuItem"; // STYLED COMPONENT
 import { SearchResultCard } from "../styles";
 import "./styles.css";
- // ==============================================================
+// ==============================================================
 
 // ==============================================================
 export default function SearchResult(props) {
-  console.log("resu", props.results[0]);
   const searchList = props.results;
-  console.log("search..", searchList.length);
    // Converting to Encode for slug
    const encode = (name, id) => {
     let slugString = "key=" + name + "&upi="; // Adding Remaining Text and encoded id

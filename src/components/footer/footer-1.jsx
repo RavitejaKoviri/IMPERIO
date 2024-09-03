@@ -9,7 +9,7 @@ import CustomerCareLinks from "./components/customer-care-links"; // GLOBAL CUST
 
 import { Paragraph } from "components/Typography"; // STYLED COMPONENTS
 
-import { Heading, StyledLink } from "./styles";
+import { ATag, H3Tag, Heading, HrTag, StyledLink } from "./styles";
 import AppStore from "./components/app-store";
 export default function Footer1() {
   return (
@@ -81,33 +81,34 @@ export default function Footer1() {
                       </Grid>
                     
                     </Grid>
-                    <hr style={{marginTop:"2%",marginBottom:"2%",opacity:"0.2"}}/>
+                    <HrTag/>
                     {/* <hr style={{marginTop:"3%",marginBottom:"3%",opacity:"0.2"}}/> */}
                     <Grid container spacing={3}>
                       <Grid item lg={7} md={6} sm={6} xs={12}>
                         {/* <LogoSection /> */}
-                        <h3 style={{marginBottom:"20px"}}>We Accept</h3>
+                        <H3Tag>We Accept</H3Tag>
+
                       </Grid>
 
                       {
                       /* ABOUT US LINKS */
                     }
                       <Grid item lg={5} md={6} sm={6} xs={12}>
-                        <h3 style={{marginBottom:"20px"}}>Like  What  You  See ?  Follow us Here</h3>
+                        <H3Tag>Like  What  You  See ?  Follow us Here</H3Tag>
                         <SocialLinks/>
                       </Grid>
                     
                     </Grid>
-                    <hr style={{marginTop:"2%",marginBottom:"2%",opacity:"0.2"}}/>
+                    <HrTag/>
                     <Grid  display="flex" justifyContent="center" >
                       <Grid item lg={12} md={6} sm={6} xs={12} >
                         {/* <LogoSection /> */}
-                        <a style={{marginRight:"20px"}} href="">Whitehat</a>
-                        <a style={{marginRight:"20px"}}  href="">Sitemap</a>
-                        <a style={{marginRight:"20px"}}  href="">Terms of Us</a>
-                        <a style={{marginRight:"20px"}}  href="">Privacy Policy</a>
-                        <a style={{marginRight:"20px"}}  href="">Your Data And Security</a>
-                        <a style={{marginRight:"20px"}}  href="">Grievance Redressal</a><br/><br/>
+                        <ATag href="">Whitehat</ATag>
+                        <ATag href="">Sitemap</ATag>
+                        <ATag href="">Terms of Us</ATag>
+                        <ATag href="">Privacy Policy</ATag>
+                        <ATag href="">Your Data And Security</ATag>
+                        <ATag href="">Grievance Redressal</ATag>
                         <Heading style={{marginTop:"30px",marginLeft:"200px",marginBottom:"opx"}}>© Copyright ABF Limited</Heading>
                       </Grid>
                     

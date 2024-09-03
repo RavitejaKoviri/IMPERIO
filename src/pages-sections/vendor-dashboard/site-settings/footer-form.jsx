@@ -24,7 +24,6 @@ const FooterForm = () => {
   };
 
   const handleFormSubmit = async values => {
-    console.log(values);
   };
 
   return <Formik initialValues={initialValues} onSubmit={handleFormSubmit}>
@@ -37,7 +36,7 @@ const FooterForm = () => {
     }) => <form onSubmit={handleSubmit}>
           <Grid container spacing={3}>
             <Grid item xs={12}>
-              <DropZone onChange={files => console.log(files)} title="Drag & Drop Footer Logo" />
+              <DropZone onChange={files} title="Drag & Drop Footer Logo" />
             </Grid>
 
             <Grid item xs={12}>

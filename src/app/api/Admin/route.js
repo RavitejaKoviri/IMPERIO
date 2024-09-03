@@ -6,14 +6,11 @@ dotenv.config();
 
 export async function POST(req)
 {
-    console.log(req)
     const {email,password}=await req.json();
-    console.log(email)
-    console.log(password)
+
     try{
         const sqlQuery="select * from admin where adminmail=$1 and adminpassword=$2 ";
         const result=await pool.query(sqlQuery,[email,password])
-        console.log(result.rowCount);
         if(result.rowCount==1)  {
             // count=1;
             return new Response(JSON.stringify({bool:"true",msg:""}));

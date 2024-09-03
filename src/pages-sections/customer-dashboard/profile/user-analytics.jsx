@@ -6,12 +6,13 @@ import { FlexBetween, FlexBox } from "components/flex-box";
 import { H3, H5, Paragraph, Small } from "components/Typography"; // CUSTOM UTILS LIBRARY FUNCTION
 
 import { currency } from "lib"; // CUSTOM DATA MODEL
+import { useDispatch } from "react-redux";
+import { capital } from "app/store/capitalize/capitalizeText";
 
 // ==============================================================
 export default function UserAnalytics({
   user
 }) {
-  console.log(user)
   const INFO_LIST = [{
     title: "16",
     subtitle: "All Orders"
@@ -25,10 +26,13 @@ export default function UserAnalytics({
     title: "01",
     subtitle: "Awaiting Delivery"
   }];
+
+  const dispatch = useDispatch();
   return <Grid container spacing={3}>
       <Grid item md={6} xs={12}>
         <Card sx={{
         gap: 2,
+        textTransform: 'capitalize',
         height: "100%",
         display: "flex",
         p: "1rem 1.5rem",
@@ -41,7 +45,7 @@ export default function UserAnalytics({
 
           <FlexBetween flexWrap="wrap" flex={1}>
             <div>
-              <H5>{user.userfullname}</H5>
+              <H5>{dispatch(capital(user.userfullname))}</H5>
 
               {/* <FlexBox alignItems="center" gap={1}>
                 <Paragraph color="grey.600">Balance:</Paragraph>

@@ -40,7 +40,7 @@ export default function ShopLayout3({
       {
       /* HEADER */
     }
-      <Sticky fixedOn={0} onSticky={toggleIsFixed} scrollDistance={300}>
+      <Sticky fixedOn={0} onSticky={toggleIsFixed} scrollDistance={80}>
         <Header isFixed={isFixed} midSlot={HEADER_SLOT} />
         <Divider />
       </Sticky>
@@ -53,7 +53,7 @@ export default function ShopLayout3({
       {
       /* SMALL DEVICE BOTTOM NAVIGATION */
     }
-      <MobileNavigationBar />
+      {/* <MobileNavigationBar /> */}
 
       {
       /* FOOTER */

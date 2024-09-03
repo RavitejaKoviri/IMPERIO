@@ -3,13 +3,11 @@ import pool from 'utils/db';
 dotenv.config();
 
 export async function POST(request){
-    console.log("hi post")
     const {first_name,last_name,email,phone_number,password}=await request.json();
-    console.log(first_name+" "+last_name+" "+email+" "+phone_number+" "+password )
     try{
         const insertsql="insert into users(firstname,lastname,email,phonenumber,password,status) values($1,$2,$3,$4,$5,'Active')"
         const result=await pool.query(insertsql,[first_name,last_name,email,phone_number,password])
-        if(result.rowCount==1){
+        if(result.rowCount > 0){
         return new Response(JSON.stringify("true"), {
             status: 200,
             headers: { 'Content-Type': 'application/json' },
@@ -17,7 +15,6 @@ export async function POST(request){
         }
         else
         {
-          console.log("already exist")
           return new Response(JSON.stringify("false"), {
             status: 200,
             headers: { 'Content-Type': 'application/json' },

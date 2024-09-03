@@ -10,23 +10,19 @@ const categorySlice = createSlice({
   initialState: initialCategoryState,
   reducers: { 
     postCategoryDetails: (state, action) => {
-        console.log(action.payload);
     },
 
     getCategoryDetails: (state, action) => {
-      console.log(action.payload,"in slice")
       state.categoryData=action.payload;
     },
 
     deleteCategoryDetails: (state,action) => {
       // state.categoryData=action.payload;
 
-      console.log(action.payload)
     },
 
     editCategoryDetails: (state,action) => {
         // state.categoryData=action.payload;
-      console.log(action.payload)
     }
   },
 });

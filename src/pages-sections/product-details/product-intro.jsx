@@ -29,18 +29,15 @@ import ProductSpecifications from "./product-specification";
 import { getColor } from "app/store/colorRedux/colorAction";
 import ProductDescription1 from "./product-description1";
 import { useRouter } from "next/navigation";
+import { capital } from "app/store/capitalize/capitalizeText";
 
 export default function ProductIntro({ product }) {
-  console.log("this is product",typeof(product.productid));
-  console.log(product,"pr");
-  console.log(product.specification,"pr");
-  console.log("helloooo",product[0]?.overallrating);
+ 
   const router=useRouter();
   const userValid=useSelector((state)=>state.user.loginVerified)
   const [productid,setProductid]=useState(product.productid); 
   const rate = useSelector(state=>state.rating.ratingDetails)
   const [overallRating,setOverallRating]= useState(rate);
-  console.log(productid,"this is product id")
   useEffect(()=>{
      
   },[rate])
@@ -62,16 +59,17 @@ export default function ProductIntro({ product }) {
     type: "type"
   });
   const [zoomEnabled, setZoomEnabled] = useState(false);
+  const [capitalizedProductName, setCapitalizedProductName] = useState("");
+  const [capitalizedDescription, setCapitalizedDescription] = useState("");
   const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
   const imageRef = useRef(null);
   const dispatch1=useDispatch();
-  // console.log(rate,"finallllllll")
+  
 
   const handleChangeVariant = (variantName, value) => () => {
     setSelectVariants(state => ({ ...state, [variantName.toLowerCase()]: value }));
   };
   const cartItem = state.cart.find(item => item.id === productid);
-  console.log(cartItem)
 
 
   const handleCartAmountChange = amount => () => {
@@ -138,16 +136,31 @@ export default function ProductIntro({ product }) {
 
 
   useEffect(()=>{
-    console.log("welcome");
      dispatch1(getRating(productid));
   },[overallRating])
+
+  useEffect(() => {
+    if (productname) {
+      const capitalize = capital(productname);
+      capitalize().then(result => {
+        setCapitalizedProductName(result);
+      });
+    }
+  }, [productname]);
+
+  useEffect(() => {
+    if (description) {
+      const capitalize = capital(description);
+      capitalize().then(result => {
+        setCapitalizedDescription(result);
+      });
+    }
+  }, [description]);
 
   const color_id=product.colorids.split(",");
   const color_name=product.colornames.split(",");
   const color_code=product.colorcodes.split(",");
-  console.log("color id",color_id)
-  console.log("color name",color_name)
-  console.log("color code",color_code)
+ 
   return (
     <Box width="100%">
       <Grid container spacing={12} padding="5% 5% 0% 5%" >
@@ -223,7 +236,9 @@ export default function ProductIntro({ product }) {
             {
             /* PRODUCT NAME */
           }
-            <H1 mb={1}>{productname}</H1>
+            {/* <H1 mb={1}>{productname}</H1> */}
+            <H1 mb={1}>{capitalizedProductName || productname}</H1>
+
 
             {
             /* PRODUCT BRAND */
@@ -245,13 +260,14 @@ export default function ProductIntro({ product }) {
             </FlexBox> */}
 
             <FlexBox mb={1}>
-              <ProductDescription1 data={product.description}/>
+              {/* <ProductDescription1 data={product.description}/> */}
+              <ProductDescription1 data={capitalizedDescription || description}/>
             </FlexBox>
 
             {
             /* PRODUCT COLORS */
           }
-            <Box lineHeight="1" mb={1}>Colours:</Box>
+            <Box lineHeight="1" mb={1}>Colors:</Box>
               
               <Grid container spacing={1}>
               {color_name.map((variant, index) => (

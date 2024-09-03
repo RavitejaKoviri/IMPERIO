@@ -69,7 +69,6 @@ export async function GET(request) {
     }
   } 
   else if (param === "key2") {
-    console.log("hi param",param)
     try {
       const sql="SELECT * FROM categories WHERE status='active' ";
       const result = await pool.query(sql);
@@ -108,11 +107,8 @@ export async function GET(request) {
 
 
 export async function PUT(request) {
-  console.log(request,"okay");
   const id1=request.url.split('?')[2];
-  // console.log(id1,"idcategory")
   const param = request.url.split('?')[1].split('=')[1];
-  console.log(param);
  if (param === "categorystatus"){
   try {
     const sql="UPDATE categories SET  status='Inactive' WHERE categoryid=$1";

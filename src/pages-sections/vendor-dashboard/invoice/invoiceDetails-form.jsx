@@ -46,7 +46,6 @@ const InvoiceForm = ({initialValues}) => {
               });
 
               const result = await response.json();
-              console.log("API response:", result);
 
               if (response.ok) {
                 setFormStatus({

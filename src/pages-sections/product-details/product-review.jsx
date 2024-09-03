@@ -17,9 +17,7 @@ import { getReview, postReview } from "app/store/reviewRedux/reviewAction";
 import { getProduct } from "app/store/vendorProductRedux/productAction";
 
 export default function ProductReview(data) {
-  console.log(data,"entry");
   const pro1 = data.data.specs.productid;
-  console.log("final value",pro1);
   const initialValues = {
     rating: 0,
     comment: "",
@@ -38,7 +36,6 @@ const storedComments = data.review;
   const dispatch = useDispatch();
 
   // const storedComments= useSelector(state=>state.review.reviewDetails);
-  console.log(storedComments,"sakhfd");
 
   // 
 
@@ -67,9 +64,7 @@ const storedComments = data.review;
         proid:pro1,
         ...values,
       };
-      console.log(newComment);
       const updatedCommentList = [...commentList, newComment];
-      console.log(commentList);
       setCommentList(updatedCommentList);
       dispatch(postReview(mainvalues));
       resetForm();
