@@ -33,7 +33,7 @@ const CategoriesPageView = () => {
   const getCategoriesState = useSelector((state) => state.vendorCategory.categoryList);
   const [getCategories, setGetCategories] = useState(getCategoriesState);
   const [currentPage, setCurrentPage] = useState(1);
-  const rowsPerPage = 2;
+  const rowsPerPage = 8;
 
   useEffect(() => {
     dispatch(getCategoriesFromVendor());

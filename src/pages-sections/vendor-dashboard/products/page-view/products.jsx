@@ -43,7 +43,7 @@ const ProductsPageView = (
   const[price,setPrice]=useState("");
   const products = useSelector((state)=>state.vendorProduct.productList);
   const [currentPage,setCurrentPage] = useState(1);
-  const productsPerPage = 1;
+  const productsPerPage = 8;
   useEffect(() => {
     dispatch(getProductFromVendor());
   },[]);
@@ -161,7 +161,10 @@ const ProductsPageView = (
           </TableBody>
         </Table>
       </TableContainer>
-      <Pagination count={Math.ceil(productsLength/productsPerPage)} onChange={handleChangePage} page={currentPage} />
+      <Pagination 
+        count={Math.ceil(productsLength/productsPerPage)} 
+        onChange={handleChangePage} 
+        page={currentPage} />
 
     </Box>;
 };
