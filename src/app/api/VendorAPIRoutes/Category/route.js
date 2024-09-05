@@ -124,7 +124,7 @@ export async function DELETE(req)
         }
         else{
             return new Response("deleted failed Try again ",{
-                status:200,
+                status:404,
                 headers:{
                     'Content-Type':'application/json'
                 }
