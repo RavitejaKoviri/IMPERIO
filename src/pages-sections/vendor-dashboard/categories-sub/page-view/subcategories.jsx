@@ -51,7 +51,7 @@ const SubCategoriesPageView = () => {
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
 
-  const rowsPerPage = 4;
+  const rowsPerPage = 8;
 
   // useEffect(() => {
   //   dispatch(getCategoriesFromVendor());
