@@ -29,14 +29,37 @@ export default function EditAddressForm({ address, handleClose }) {
     mobilenumber: address.mobilenumber || "",
   };
 
-  const VALIDATION_SCHEMA = yup.object().shape({
-    name: yup.string().required("Name is required"),
-    street: yup.string().required("Street is required"),
-    city: yup.string().required("City is required"),
-    statename: yup.string().required("State is required"),
-    pincode: yup.string().required("Pincode is required"),
-    country: yup.string().required("Country is required"),
-    mobilenumber: yup.string().required("Mobile number is required"),
+  // const VALIDATION_SCHEMA = yup.object().shape({
+  //   name: yup.string().required("Name is required"),
+  //   street: yup.string().required("Street is required"),
+  //   city: yup.string().required("City is required"),
+  //   statename: yup.string().required("State is required"),
+  //   pincode: yup.string().required("Pincode is required"),
+  //   country: yup.string().required("Country is required"),
+  //   mobilenumber: yup.string().required("Mobile number is required"),
+  // });
+
+  const VALIDATION_SCHEMA = yup.object({
+    street2: yup.string(),
+    name: yup
+      .string()
+      .matches(/^[a-zA-Z\s]*$/, "Only letters and spaces are allowed")
+      .required("required"),
+    address1: yup.string().required("required"),
+    contact: yup.number().required("required"),
+    city: yup
+      .string()
+      .matches(/^[a-zA-Z\s]*$/, "Only letters and spaces are allowed")
+      .required("required"),
+    state: yup
+      .string()
+      .matches(/^[a-zA-Z\s]*$/, "Only letters and spaces are allowed")
+      .required("required"),
+    country: yup
+      .string()
+      .matches(/^[a-zA-Z\s]*$/, "Only letters and spaces are allowed")
+      .required("required"),
+    pincode: yup.number().required("required")
   });
   // const userid = useSelector((state) => state.user.userid);
   // const [id, setId] = useState(userid);
@@ -52,6 +75,13 @@ export default function EditAddressForm({ address, handleClose }) {
       console.error("Error updating address:", error);
     } finally {
       setSubmitting(false);
+    }
+  };
+
+  const handleTextOnly = (e, handleChange, field) => {
+    const re = /^[a-zA-Z\s]*$/;
+    if (e.target.value === '' || re.test(e.target.value)) {
+      handleChange(e);
     }
   };
 
@@ -79,7 +109,7 @@ export default function EditAddressForm({ address, handleClose }) {
                 label="Name"
                 value={values.name}
                 onBlur={handleBlur}
-                onChange={handleChange}
+                onChange={(e) => handleTextOnly(e, handleChange, 'name')}
                 error={touched.name && errors.name}
                 helperText={touched.name && errors.name}
               />
@@ -105,7 +135,7 @@ export default function EditAddressForm({ address, handleClose }) {
                 label="City"
                 value={values.city}
                 onBlur={handleBlur}
-                onChange={handleChange}
+                onChange={(e) => handleTextOnly(e, handleChange, 'city')}
                 error={touched.city && errors.city}
                 helperText={touched.city && errors.city}
               />
@@ -118,7 +148,7 @@ export default function EditAddressForm({ address, handleClose }) {
                 label="State"
                 value={values.statename}
                 onBlur={handleBlur}
-                onChange={handleChange}
+                onChange={(e) => handleTextOnly(e, handleChange, 'state')}
                 error={touched.statename && errors.statename}
                 helperText={touched.statename && errors.statename}
               />
@@ -129,6 +159,7 @@ export default function EditAddressForm({ address, handleClose }) {
                 fullWidth
                 name="pincode"
                 label="Pincode"
+                type="number"
                 value={values.pincode}
                 onBlur={handleBlur}
                 onChange={handleChange}
@@ -144,7 +175,7 @@ export default function EditAddressForm({ address, handleClose }) {
                 label="Country"
                 value={values.country}
                 onBlur={handleBlur}
-                onChange={handleChange}
+                onChange={(e) => handleTextOnly(e, handleChange, 'country')}
                 error={touched.country && errors.country}
                 helperText={touched.country && errors.country}
               />
@@ -155,6 +186,7 @@ export default function EditAddressForm({ address, handleClose }) {
                 fullWidth
                 name="mobilenumber"
                 label="Mobile Number"
+                type="number"
                 value={values.mobilenumber}
                 onBlur={handleBlur}
                 onChange={handleChange}

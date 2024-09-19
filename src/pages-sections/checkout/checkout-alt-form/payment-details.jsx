@@ -14,6 +14,13 @@ import LazyImage from "components/LazyImage";
 import { FlexBox } from "components/flex-box";
 import { Paragraph } from "components/Typography";
 import { months, years } from "data/months-years";
+import Dialog from "@mui/material/Dialog";
+import DialogTitle from "@mui/material/DialogTitle";
+import DialogContent from "@mui/material/DialogContent";
+import DialogActions from "@mui/material/DialogActions";
+import { styled } from "@mui/material/styles";
+import DialogContentText from "@mui/material/DialogContentText";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
 const PaymentDetails = ({
   values,
@@ -21,13 +28,50 @@ const PaymentDetails = ({
   touched,
   handleChange,
   toggleHasVoucher,
-  handleFieldValueChange
+  handleFieldValueChange,
 }) => {
   const [isCardInfoOpen, setIsCardInfoOpen] = useState(false);
   const [isUPIOpen, setIsUPIOpen] = useState(false);
   const [isNetBankingOpen, setIsNetBankingOpen] = useState(false);
   const [isWalletsOpen, setIsWalletsOpen] = useState(false);
   const [isVoucherOpen, setIsVoucherOpen] = useState(false);
+  const [openPopup, setOpenPopup] = useState(false);
+  const StyledDialog = styled(Dialog)(({ theme }) => ({
+    "& .MuiDialog-paper": {
+      borderRadius: 15,
+      padding: theme.spacing(2),
+      boxShadow: "0 8px 30px rgba(0, 0, 0, 0.12)",
+    },
+  }));
+
+  const StyledDialogTitle = styled(DialogTitle)(({ theme }) => ({
+    textAlign: "center",
+    color: theme.palette.primary.main,
+    fontWeight: 600,
+    fontSize: "1.5rem",
+  }));
+
+  const StyledDialogContent = styled(DialogContent)(({ theme }) => ({
+    textAlign: "center",
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(3),
+  }));
+
+  const StyledDialogContentText = styled(DialogContentText)(({ theme }) => ({
+    color: theme.palette.text.secondary,
+    fontSize: "1rem",
+    marginTop: theme.spacing(1),
+  }));
+
+  const StyledDialogActions = styled(DialogActions)(({ theme }) => ({
+    justifyContent: "center",
+    padding: theme.spacing(2),
+  }));
+
+  const StyledButton = styled(Button)(({ theme }) => ({
+    borderRadius: 20,
+    padding: theme.spacing(1, 4),
+  }));
 
   const toggleSection = (section) => {
     switch (section) {
@@ -51,11 +95,15 @@ const PaymentDetails = ({
     }
   };
 
+  const handlePlaceOrder = () => {
+    // Simulating a successful order placement
+    setOpenPopup(true);
+    // You can add your API call here in the future
+  };
+
   return (
-    
     <Card sx={{ p: 3, mb: 3 }}>
-        <Heading number={3} title="Payment-Details" />
-       
+      <Heading number={3} title="Payment-Details" />
 
       {/* Card Information */}
       <Box mb={3}>
@@ -71,41 +119,89 @@ const PaymentDetails = ({
           <Box mt={3} gap={2} maxWidth="400px">
             {/* Card form fields */}
             <Grid container spacing={2}>
-          <Grid item sm={6} xs={12}>
-            <TextField fullWidth type="text" name="cardHolderName" onChange={handleChange} label="Enter Your Name" value={values.cardHolderName} error={!!touched.cardHolderName && !!errors.cardHolderName} helperText={touched.cardHolderName && errors.cardHolderName} />
-          </Grid>
+              <Grid item sm={6} xs={12}>
+                <TextField
+                  fullWidth
+                  type="text"
+                  name="cardHolderName"
+                  onChange={handleChange}
+                  label="Enter Your Name"
+                  value={values.cardHolderName}
+                  error={!!touched.cardHolderName && !!errors.cardHolderName}
+                  helperText={touched.cardHolderName && errors.cardHolderName}
+                />
+              </Grid>
 
-          <Grid item sm={6} xs={12}>
-            <TextField fullWidth type="number" name="cardNumber" onChange={handleChange} label="Enter Your Card Number" value={values.cardNumber} error={!!touched.cardNumber && !!errors.cardNumber} helperText={touched.cardNumber && errors.cardNumber} />
-          </Grid>
+              <Grid item sm={6} xs={12}>
+                <TextField
+                  fullWidth
+                  type="number"
+                  name="cardNumber"
+                  onChange={handleChange}
+                  label="Enter Your Card Number"
+                  value={values.cardNumber}
+                  error={!!touched.cardNumber && !!errors.cardNumber}
+                  helperText={touched.cardNumber && errors.cardNumber}
+                />
+              </Grid>
 
-          <Grid item sm={4} xs={12}>
-            <TextField select fullWidth type="number" name="cardMonth" onChange={handleChange} value={values.cardMonth} label="Expire Card Month" error={!!touched.cardMonth && !!errors.cardMonth} helperText={touched.cardMonth && errors.cardMonth}>
-              {months.map(item => <MenuItem value={item} key={item}>
-                  {item}
-                </MenuItem>)}
-            </TextField>
-          </Grid>
+              <Grid item sm={4} xs={12}>
+                <TextField
+                  select
+                  fullWidth
+                  type="number"
+                  name="cardMonth"
+                  onChange={handleChange}
+                  value={values.cardMonth}
+                  label="Expire Card Month"
+                  error={!!touched.cardMonth && !!errors.cardMonth}
+                  helperText={touched.cardMonth && errors.cardMonth}
+                >
+                  {months.map((item) => (
+                    <MenuItem value={item} key={item}>
+                      {item}
+                    </MenuItem>
+                  ))}
+                </TextField>
+              </Grid>
 
-          <Grid item sm={4} xs={12}>
-            <TextField select fullWidth type="number" name="cardYear" onChange={handleChange} value={values.cardYear} label="Expire Card Year" error={!!touched.cardYear && !!errors.cardYear} helperText={touched.cardYear && errors.cardYear}>
-              {years.map(item => <MenuItem value={item} key={item}>
-                  {item}
-                </MenuItem>)}
-            </TextField>
-          </Grid>
+              <Grid item sm={4} xs={12}>
+                <TextField
+                  select
+                  fullWidth
+                  type="number"
+                  name="cardYear"
+                  onChange={handleChange}
+                  value={values.cardYear}
+                  label="Expire Card Year"
+                  error={!!touched.cardYear && !!errors.cardYear}
+                  helperText={touched.cardYear && errors.cardYear}
+                >
+                  {years.map((item) => (
+                    <MenuItem value={item} key={item}>
+                      {item}
+                    </MenuItem>
+                  ))}
+                </TextField>
+              </Grid>
 
-          <Grid item sm={4} xs={12}>
-            <TextField fullWidth type="number" name="cardCVC" label="CVC/CVV" value={values.cardCVC} onChange={handleChange} error={!!touched.cardCVC && !!errors.cardCVC} helperText={touched.cardCVC && errors.cardCVC} />
-          </Grid>
+              <Grid item sm={4} xs={12}>
+                <TextField
+                  fullWidth
+                  type="number"
+                  name="cardCVC"
+                  label="CVC/CVV"
+                  value={values.cardCVC}
+                  onChange={handleChange}
+                  error={!!touched.cardCVC && !!errors.cardCVC}
+                  helperText={touched.cardCVC && errors.cardCVC}
+                />
+              </Grid>
 
-          <Grid item xs={12}>
+              {/* <Grid item xs={12}>
             <FormControlLabel label="Save this card" control={<Checkbox size="small" />} onChange={e} />
-          </Grid>
-
-          
-          </Grid>
-
+          </Grid> */}
+            </Grid>
 
             <Button variant="contained" color="primary" type="button">
               PAY
@@ -139,13 +235,9 @@ const PaymentDetails = ({
               PAY
             </Button>
           </FlexBox>
-          < p  >Pay by an UPI App</p>
+          <p>Pay by an UPI App</p>
         </Collapse>
       </Box>
-
-    
-       
-    
 
       {/* Net Banking */}
       <Box mb={3}>
@@ -158,9 +250,8 @@ const PaymentDetails = ({
         </ButtonBase>
 
         <Collapse in={isNetBankingOpen}>
-        <h3>Popular Banks</h3>
+          <h3>Popular Banks</h3>
 
-        
           {/* First Row */}
           <FlexBox mt={3} gap={2} maxWidth={400}>
             <TextField
@@ -205,17 +296,17 @@ const PaymentDetails = ({
           </FlexBox>
           <h3>Other Banks</h3>
           <FlexBox mt={3} gap={2}>
-            <select 
-           
-            name="---Select Banks--" id="" placeholder="---Select Banks--">
+            <select
+              name="---Select Banks--"
+              id=""
+              placeholder="---Select Banks--"
+            >
               <option value="volvo">Volvo</option>
               <option value="saab">Saab</option>
               <option value="opel">Opel</option>
               <option value="audi">Audi</option>
-            
             </select>
           </FlexBox>
-        
         </Collapse>
       </Box>
 
@@ -292,9 +383,40 @@ const PaymentDetails = ({
         </Collapse>
       </Box>
 
-      <Button fullWidth type="submit" color="primary" variant="contained">
+      {/* <Button fullWidth type="submit" color="primary" variant="contained">
+        Place Order
+      </Button> */}
+      <Button
+        fullWidth
+        type="button"
+        color="primary"
+        variant="contained"
+        onClick={handlePlaceOrder}
+      >
         Place Order
       </Button>
+
+      <StyledDialog open={openPopup} onClose={() => setOpenPopup(false)}>
+        <StyledDialogTitle>Order Placed Successfully</StyledDialogTitle>
+        <StyledDialogContent>
+          <CheckCircleOutlineIcon
+            sx={{ fontSize: 60, color: "success.main", mb: 2 }}
+          />
+          <StyledDialogContentText>
+            Your order has been placed successfully. Thank you for your
+            purchase!
+          </StyledDialogContentText>
+        </StyledDialogContent>
+        <StyledDialogActions>
+          <StyledButton
+            onClick={() => setOpenPopup(false)}
+            color="primary"
+            variant="contained"
+          >
+            CLOSE
+          </StyledButton>
+        </StyledDialogActions>
+      </StyledDialog>
     </Card>
   );
 };

@@ -14,16 +14,39 @@ import { H5 } from "components/Typography"; // CUSTOM DATA MODEL
 import { useDispatch, useSelector } from "react-redux";
 import { getAddress, postAddress } from "app/store/AddressRedux/addressAction";
 
+// const validationSchema = yup.object({
+//   street2: yup.string(),
+//   name: yup.string().required("required"),
+//   address1: yup.string().required("required"),
+//   contact: yup.number().required("required"),
+//   city: yup.string().required("required"),
+//   state: yup.string().required("required"),
+//   country: yup.string().required("required"),
+//   pincode: yup.number().required("required")
+// }); // ==================================================================
+
 const validationSchema = yup.object({
   street2: yup.string(),
-  name: yup.string().required("required"),
+  name: yup
+    .string()
+    .matches(/^[a-zA-Z\s]*$/, "Only letters and spaces are allowed")
+    .required("required"),
   address1: yup.string().required("required"),
   contact: yup.number().required("required"),
-  city: yup.string().required("required"),
-  state: yup.string().required("required"),
-  country: yup.string().required("required"),
+  city: yup
+    .string()
+    .matches(/^[a-zA-Z\s]*$/, "Only letters and spaces are allowed")
+    .required("required"),
+  state: yup
+    .string()
+    .matches(/^[a-zA-Z\s]*$/, "Only letters and spaces are allowed")
+    .required("required"),
+  country: yup
+    .string()
+    .matches(/^[a-zA-Z\s]*$/, "Only letters and spaces are allowed")
+    .required("required"),
   pincode: yup.number().required("required")
-}); // ==================================================================
+});
 
 // ==================================================================
 export default function NewAddressForm({
@@ -44,6 +67,13 @@ export default function NewAddressForm({
     state: "Sylhet",
     country: "Bangladesh",
     pincode: 4336
+  };
+
+  const handleTextOnly = (e, handleChange, field) => {
+    const re = /^[a-zA-Z\s]*$/;
+    if (e.target.value === '' || re.test(e.target.value)) {
+      handleChange(e);
+    }
   };
   
   const handleSubmit=(values)=>{
@@ -93,7 +123,7 @@ export default function NewAddressForm({
                   label="Name"
                   onBlur={handleBlur}
                   value={values.name}
-                  onChange={handleChange}
+                  onChange={(e) => handleTextOnly(e, handleChange, 'name')}
                   error={!!touched.name && !!errors.name}
                   helperText={touched.name && errors.name}
                 />
@@ -119,7 +149,7 @@ export default function NewAddressForm({
                   onBlur={handleBlur}
                   label="City"
                   value={values.city}
-                  onChange={handleChange}
+                  onChange={(e) => handleTextOnly(e, handleChange, 'city')}
                   error={!!touched.city && !!errors.city}
                   helperText={touched.city && errors.city}
                 />
@@ -130,6 +160,7 @@ export default function NewAddressForm({
                   fullWidth
                   name="pincode"
                   onBlur={handleBlur}
+                  type="number"
                   label="Pincode"
                   value={values.pincode}
                   onChange={handleChange}
@@ -145,7 +176,7 @@ export default function NewAddressForm({
                   onBlur={handleBlur}
                   label="State"
                   value={values.state}
-                  onChange={handleChange}
+                  onChange={(e) => handleTextOnly(e, handleChange, 'state')}
                   error={!!touched.state && !!errors.state}
                   helperText={touched.state && errors.state}
                 />
@@ -158,7 +189,7 @@ export default function NewAddressForm({
                   onBlur={handleBlur}
                   label="Country"
                   value={values.country}
-                  onChange={handleChange}
+                  onChange={(e) => handleTextOnly(e, handleChange, 'country')}
                   error={!!touched.country && !!errors.country}
                   helperText={touched.country && errors.country}
                 />
@@ -169,6 +200,7 @@ export default function NewAddressForm({
                   fullWidth
                   label="Phone"
                   name="contact"
+                  type="number"
                   onBlur={handleBlur}
                   value={values.contact}
                   onChange={handleChange}
